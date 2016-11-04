@@ -2,19 +2,16 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 
 class TrackList extends React.Component{
-    state = {
-        songsList = [],
-        currentPlayingIndex,
-    }
-    
     constructor(props) {
         super(props);
-        songsList = searchTracks();
- 
+        this.songsList = window.searchTracks("");
     }
 
     render(){
-        return <div> {this.props.children} </div>;
+       var tracksToView = this.state.songsList.map(track => 
+             <div> {this.props.children} </div>);
+
+        return tracksToView;
     }
 }
 
