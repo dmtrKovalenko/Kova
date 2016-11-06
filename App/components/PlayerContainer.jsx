@@ -1,6 +1,5 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import TrackList from '~TracksList.jsx';
 
 class PlayerContainter extends React.Component{
     constructor(props) {
@@ -12,8 +11,8 @@ class PlayerContainter extends React.Component{
         }   
     }
 
-    render(){
-        return <div> <TrackList/> </div>;
+    render() {
+        return <div> { this.props.children } </div>;
     }
 }
 
