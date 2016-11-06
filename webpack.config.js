@@ -18,8 +18,16 @@ var config = {
         test : /\.jsx?/,
         include : APP_DIR,
         loader : 'babel',
-        
-      }
+        exclude: /node_modules/,
+      },
+      {
+        test: /\.css$/,
+            loader: 'style!css'
+      },
+      {
+        test: /\.(jpe?g|png|gif|svg)$/i,
+        loader:'file'
+      },
     ]
   },
   plugins:[

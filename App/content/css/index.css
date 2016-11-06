@@ -1,0 +1,9 @@
+.track-card-container{
+    margin-bottom: 100px;
+    max-height: 300px;
+}
+
+.track-card:hover {
+    box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22) !important;
+    cursor: pointer !important; 
+}
