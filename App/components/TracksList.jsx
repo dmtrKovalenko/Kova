@@ -16,9 +16,7 @@ class TrackList extends React.Component{
     }
 
     playSong (id){
-       SC.stream('/tracks/' + id).then(function(player){
-            player.play();
-       });
+       this.props.onSongChange(this.state.songsList, id);
     }
     
     getTracks(filter){
@@ -30,7 +28,7 @@ class TrackList extends React.Component{
             this.state.songsList.map(track => 
                 <div onClick={() => this.playSong(track.id)} className="track-card-container col-lg-2 col-md-3 col-sm-4 col-xs-6">
                     <Card className="track-card">
-                        <CardHeader  title={track.user.username} textStyle={{'vertical-align': 'middle'}} avatar={track.user.avatar_url}/>
+                        <CardHeader  title={track.user.username} textStyle={{'verticalAlign': 'middle'}} avatar={track.user.avatar_url}/>
                         <CardMedia overlay= {<CardTitle title={track.title.slice(0, 40)} subtitle={track.genre} />} >
                             <img src={track.artwork_url ? track.artwork_url.replace('large.jpg', 't500x500.jpg') : defaultImg} />
                         </CardMedia>
