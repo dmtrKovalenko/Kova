@@ -1,16 +1,16 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-import AppBar from 'material-ui/AppBar';
 import PlayerContainer from './components/PlayerContainer.jsx'
+import injectTapEventPlugin from 'react-tap-event-plugin';
+
+injectTapEventPlugin();
 
 const App = () => (
-  <PlayerContainer>
-    <MuiThemeProvider>
-        <AppBar title="Title"
-                iconClassNameRight="muidocs-icon-navigation-expand-more"/>
-    </MuiThemeProvider>
-  </PlayerContainer>
+  <MuiThemeProvider>
+    <PlayerContainer>
+    </PlayerContainer>
+  </MuiThemeProvider>
 ); 
 
 ReactDOM.render(

@@ -1,6 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import TrackList from '~TracksList.jsx';
+import TrackList from './TracksList.jsx';
+import Player from './Player.jsx';
+import AppBar from 'material-ui/AppBar';
 
 class PlayerContainter extends React.Component{
     constructor(props) {
@@ -8,12 +10,27 @@ class PlayerContainter extends React.Component{
 
         this.state = {
             playList : [],
-            isPlaying : false,
+            isPlaying : false     
         }   
     }
 
-    render(){
-        return <div> <TrackList/> </div>;
+    selectSong(newPlayList, newSongId){
+        this.setState({
+            playList : newPlayList,
+            isPlaying: true,
+            currentSongId: newSongId
+        });
+    }
+
+    render() {
+        return <div>
+                    <AppBar title="Title"
+                            iconClassNameRight="muidocs-icon-navigation-expand-more"/>
+                    <TrackList onSongChange = {this.selectSong.bind(this)}/> 
+                    <Player playList = {this.state.playList}
+                            currentSong = {this.state.playList.find(s => s.id == this.state.currentSongId)}
+                            isPlaying = {this.state.isPlaying}/>
+               </div>;
     }
 }
 

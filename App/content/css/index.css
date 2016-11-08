@@ -1,0 +1,19 @@
+.tracks-container{
+    padding: 30px 30px;
+}
+
+.track-card-container{
+    margin-bottom: 100px;
+    height: 300px;
+}
+
+@media(max-width:650px){
+    .track-card-container{
+        margin-bottom: 50px;
+    }
+}
+
+.track-card:hover {
+    box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22) !important;
+    cursor: pointer !important; 
+}
