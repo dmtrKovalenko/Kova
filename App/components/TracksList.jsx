@@ -4,7 +4,6 @@ import {Card, CardActions, CardHeader, CardMedia, CardTitle, CardText} from 'mat
 import '../content/css/index.css';
 import defaultImg from 'file!../content/img/4sh_music_embed_player_default_cover.png';
 
-
 class TrackList extends React.Component{
     constructor(props) {
         super(props);
@@ -26,7 +25,6 @@ class TrackList extends React.Component{
     render(){
        var tracks =
             this.state.songsList.map(track => 
-
                 <div key={track.id} onClick={() => this.playSong(track.id)} className="track-card-container col-lg-2 col-md-3 col-sm-4 col-xs-6">
                     <Card className="track-card">
                         <CardHeader  title={track.user.username} textStyle={{'verticalAlign': 'middle'}} avatar={track.user.avatar_url}/>

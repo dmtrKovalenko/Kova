@@ -28,7 +28,7 @@ class PlayerContainter extends React.Component{
                             iconClassNameRight="muidocs-icon-navigation-expand-more"/>
                     <TrackList onSongChange = {this.selectSong.bind(this)}/> 
                     <Player playList = {this.state.playList}
-                            currentSongId = {this.state.currentSongId}
+                            currentSong = {this.state.playList.find(s => s.id == this.state.currentSongId)}
                             isPlaying = {this.state.isPlaying}/>
                </div>;
     }
