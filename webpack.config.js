@@ -6,11 +6,12 @@ var APP_DIR = path.resolve(__dirname, 'App');
 
 var config = {
   entry: ['webpack-dev-server/client?http://localhost:8080',
-        'webpack/hot/only-dev-server',
-        './App/index.jsx'],
+          'webpack/hot/only-dev-server',
+          './App/index.jsx'],
   output: {
     path: BUILD_DIR,
     filename: 'bundle.js',
+    publicPath: BUILD_DIR
   },
   module : {
     loaders : [
@@ -22,13 +23,16 @@ var config = {
       },
       {
         test: /\.css$/,
-            loader: 'style!css'
+        loader: 'style!css'
       },
       {
         test: /\.(jpe?g|png|gif|svg)$/i,
-        loader:'file'
+        loader:'file?name=/content/img/[name].[ext]'
       },
     ]
+  },
+  resolve: {
+    root: path.resolve('App'),
   },
   plugins:[
       new webpack.HotModuleReplacementPlugin(),

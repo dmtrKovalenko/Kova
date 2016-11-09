@@ -7,12 +7,10 @@ import Previous from 'material-ui/svg-icons/av/skip-previous';
 import Slider from 'material-ui/Slider';
 import Next from 'material-ui/svg-icons/av/skip-next';
 import Avatar from 'material-ui/Avatar';
-import defaultImg from 'file!../content/img/4sh_music_embed_player_default_cover.png';
+import defaultImg from '../content/img/default-artwork.png';
 import '../content/css/player.css';
 
-const floatButtonStyle = {
-    marginRight: 20,
-};
+const floatButtonClassName =  "control-button";
 
 class Player extends React.Component{
     constructor(props) {
@@ -49,39 +47,38 @@ class Player extends React.Component{
        var player;
 
        if (this.props.currentSong){
-            return <div className="player">
-                <div className="artwork-container">
-                    <Avatar src={this.props.currentSong.artwork_url ? 
-                            this.props.currentSong.artwork_url.replace('large.jpg', 't500x500.jpg') : defaultImg} 
-                            size={60}/>       
-                </div>
-                <div className="row">
-                    <div className="col-xs-3 col-sm-2">
+          return <div className="player">
+                    <div className="artwork flex-container">
+                        <Avatar src={this.props.currentSong.artwork_url ? 
+                                this.props.currentSong.artwork_url.replace('large.jpg', 't500x500.jpg') : defaultImg} 
+                                size={60}/>       
+                    </div>
+                    
+                    <div className="title flex-container">
                         <a className="player-song-title">{this.props.currentSong.title}</a>
                         <a className="player-user-name">{this.props.currentSong.user.username}</a>
                     </div>
-                    <div className="col-xs-3 col-sm-4 col-md-4 col-lg-6">
+
+                    <div className="slider flex-container">
                         <Slider sliderStyle={{marginBottom:0}}/>
                     </div>
-                    <div className="col-xs-6 col-sm-4 col-md-3 col-lg-2">
-                        <FloatingActionButton mini={true} style={floatButtonStyle}>
+
+                    <div className="controls flex-container">
+                        <FloatingActionButton mini={true} className={floatButtonClassName}>
                             <Previous />
                         </FloatingActionButton>
 
-                        <FloatingActionButton style={floatButtonStyle} onClick= {() => this.pause()}>
+                        <FloatingActionButton className={floatButtonClassName} onClick= {() => this.pause()}>
                             {playButtonIcon}
                         </FloatingActionButton>
 
-                        <FloatingActionButton mini={true} style={floatButtonStyle}>
+                        <FloatingActionButton mini={true}>
                             <Next />
                         </FloatingActionButton>
                     </div>
-                </div>
-            </div>;      
-       } else {
-           return null;
-       }
-      
+                </div>;      
+    } 
+        return null;
     }
 }
 
