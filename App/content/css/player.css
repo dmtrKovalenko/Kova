@@ -5,11 +5,65 @@
     background: white;
     padding : 10px 15px;
     box-shadow: 0 -5px 5px -5px rgba(0,0,0,0.4);
+    display: flex;
+    align-items:space-between;
 }
 
-.artwork-container{
-    display: inline-block;
-    float:left;
+.control-button {
+    margin-right: 20px;
+}
+
+.artwork.flex-container{
+    order:1;
+}
+
+.title.flex-container{
+    order: 2;
+    max-width: 45%;
+}
+
+.slider.flex-container{
+    order:3;
+    width: 60%;
+    margin: 0 auto;
+}
+
+.controls.flex-container{
+    order:4;
+    margin-left: auto;
+}
+
+@media(max-width:550px){
+    .control-button{
+        margin-right: 10px !important;
+    }
+    .controls.flex-container{
+        min-width: 150px;
+    }
+}
+ 
+@media(max-width:900px){
+    .player{
+        flex-wrap: wrap;
+    }
+    .slider.flex-container{
+        order: 4;
+        flex-grow:0;
+        flex-basis: 90%;
+        align-content: flex-start;
+    }
+    .controls.flex-container{
+        order: 3;
+    }
+}
+
+@media(min-width:900px){
+    .title.flex-container{
+        max-width: 30%;
+    }
+    .slider.flex-container{
+        min-width: 400px;
+    }
 }
 
 a.player-song-title, a.player-user-name{

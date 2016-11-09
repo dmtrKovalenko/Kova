@@ -11,6 +11,7 @@ var config = {
   output: {
     path: BUILD_DIR,
     filename: 'bundle.js',
+    publicPath: BUILD_DIR
   },
   module : {
     loaders : [
@@ -26,9 +27,12 @@ var config = {
       },
       {
         test: /\.(jpe?g|png|gif|svg)$/i,
-        loader:'file'
+        loader:'file?name=/content/img/[name].[ext]'
       },
     ]
+  },
+  resolve: {
+    root: path.resolve('App'),
   },
   plugins:[
       new webpack.HotModuleReplacementPlugin(),
