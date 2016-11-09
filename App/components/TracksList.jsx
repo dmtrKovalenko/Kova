@@ -25,7 +25,7 @@ class TrackList extends React.Component{
     render(){
        var tracks =
             this.state.songsList.map(track => 
-                <div key={track.id} onClick={() => this.playSong(track.id)} className="track-card-container col-lg-2 col-md-3 col-sm-4 col-xs-6">
+                <div key={track.id} onClick={() => this.playSong(track.id)} className="track-card-container col-lg-2 col-md-3 col-sm-4 col-xs-12">
                     <Card className="track-card">
                         <CardHeader  title={track.user.username} textStyle={{'verticalAlign': 'middle'}} avatar={track.user.avatar_url}/>
                         <CardMedia overlay= {<CardTitle title={track.title.slice(0, 30)} subtitle={track.genre} />} >
