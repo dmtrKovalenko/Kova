@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import {Card, CardActions, CardHeader, CardMedia, CardTitle, CardText} from 'material-ui/Card';
 import '../content/css/index.css';
-import defaultImg from 'file!../content/img/4sh_music_embed_player_default_cover.png';
+import defaultImg from '../content/img/default-artwork.png';
 
 class TrackList extends React.Component{
     constructor(props) {

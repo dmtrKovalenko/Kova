@@ -7,7 +7,7 @@ import Previous from 'material-ui/svg-icons/av/skip-previous';
 import Slider from 'material-ui/Slider';
 import Next from 'material-ui/svg-icons/av/skip-next';
 import Avatar from 'material-ui/Avatar';
-import defaultImg from 'file!../content/img/4sh_music_embed_player_default_cover.png';
+import defaultImg from '../content/img/default-artwork.png';
 import '../content/css/player.css';
 
 const floatButtonStyle = {
