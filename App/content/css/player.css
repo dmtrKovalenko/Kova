@@ -19,13 +19,12 @@
 
 .title.flex-container{
     order: 2;
-    max-width: 45%;
+    max-width: 30%;
 }
 
 .slider.flex-container{
     order:3;
     width: 60%;
-    margin: 0 auto;
 }
 
 .controls.flex-container{
@@ -33,12 +32,28 @@
     margin-left: auto;
 }
 
+@media(max-width:400px){
+    .control-button{
+        margin-right: 5px;
+    }
+}
+
+@media(max-width:450px){
+    .artwork.flex-container{
+        display: none;
+        margin-left: 5px;
+    }
+}
+
 @media(max-width:550px){
     .control-button{
-        margin-right: 10px !important;
+        margin-right: 10px;
     }
     .controls.flex-container{
-        min-width: 150px;
+        min-width: 30%;
+    }
+    .title.flex-container{
+        max-width: 50%;
     }
 }
  
@@ -63,6 +78,14 @@
     }
     .slider.flex-container{
         min-width: 400px;
+    }
+    .controls.flex-container{
+        min-width: 170px;
+    }
+
+    .flex-container{
+        margin-left: 5px;
+        margin-right: 5px;
     }
 }
 
