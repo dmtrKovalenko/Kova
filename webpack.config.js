@@ -10,8 +10,7 @@ var config = {
           './App/index.jsx'],
   output: {
     path: BUILD_DIR,
-    filename: 'bundle.js',
-    publicPath: BUILD_DIR
+    filename: 'bundle.js'
   },
   module : {
     loaders : [
@@ -30,9 +29,6 @@ var config = {
         loader:'file?name=/content/img/[name].[ext]'
       },
     ]
-  },
-  resolve: {
-    root: path.resolve('App'),
   },
   plugins:[
       new webpack.HotModuleReplacementPlugin(),

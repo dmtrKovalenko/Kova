@@ -7,7 +7,7 @@
     height: 300px;
 }
 
-@media(max-width:650px){
+@media(min-width:400px) and (max-width:650px){
     .track-card-container{
         margin-bottom: 150px;
     }
