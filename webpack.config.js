@@ -35,7 +35,7 @@ var config = {
   ],
   devServer:{
       hot:true,
-      contentBase:'./App/'
+      contentBase:'./App/',
   }
 };
 

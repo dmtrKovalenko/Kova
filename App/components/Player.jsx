@@ -1,8 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import FloatingActionButton from 'material-ui/FloatingActionButton';
-import PlayIcon from 'material-ui/svg-icons/av/play-arrow';
-import PauseIcon from 'material-ui/svg-icons/av/pause';
+import PlayPauseIcon from './PlayPauseToggleIcon.jsx'
 import Previous from 'material-ui/svg-icons/av/skip-previous';
 import Slider from 'material-ui/Slider';
 import Next from 'material-ui/svg-icons/av/skip-next';
@@ -55,8 +54,7 @@ class Player extends React.Component{
     }
 
     render() {
-       var playButtonIcon = this.state.isPaused ? <PlayIcon /> : <PauseIcon />
-       var player;
+       var playIconClassName = this.state.isPaused ? 'paused' : 'playing';
 
        if (this.props.currentSong){
           return <div className="player">
@@ -87,8 +85,8 @@ class Player extends React.Component{
                             <Previous />
                         </FloatingActionButton>
 
-                        <FloatingActionButton className={floatButtonClassName} onClick= {() => this.pause()}>
-                            {playButtonIcon}
+                        <FloatingActionButton className="control-button play-button" onClick= {() => this.pause()}>
+                            <PlayPauseIcon className={playIconClassName}/>
                         </FloatingActionButton>
 
                         <FloatingActionButton mini={true}>
