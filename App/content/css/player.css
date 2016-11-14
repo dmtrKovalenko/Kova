@@ -25,6 +25,17 @@
 .slider.flex-container{
     order:3;
     width: 60%;
+    display: flex;
+}
+
+.time {
+    padding: 20px;
+    font-size: 18;
+    color: #8c8e92;
+}
+
+.slider-container{
+    flex-basis: 90%;
 }
 
 .controls.flex-container{
@@ -57,6 +68,12 @@
     }
 }
  
+@media (min-width:550px){
+    .flex-container{
+        margin-left: 10px;
+        margin-right: 10px;
+    }
+} 
 @media(max-width:900px){
     .player{
         flex-wrap: wrap;
@@ -76,16 +93,8 @@
     .title.flex-container{
         max-width: 30%;
     }
-    .slider.flex-container{
-        min-width: 400px;
-    }
     .controls.flex-container{
-        min-width: 170px;
-    }
-
-    .flex-container{
-        margin-left: 5px;
-        margin-right: 5px;
+        min-width: 180px;
     }
 }
 
