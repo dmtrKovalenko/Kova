@@ -50,7 +50,7 @@ class Player extends React.Component{
     }
 
     changeVolume(value){
-
+        this.state.currentSCPlayer.setVolume(value);
     }
 
     secondsToHMS(ms){
@@ -86,7 +86,8 @@ class Player extends React.Component{
                     </div>
 
                     <div className="controls flex-container">
-                        <VolumeBar />
+                        <VolumeBar changeVolumeHandler={this.changeVolume.bind(this)}
+                                   initialVolume={this.state.currentSCPlayer.getVolume()}/>
                         <FloatingActionButton mini={true} className={floatButtonClassName}>
                             <Previous />
                         </FloatingActionButton>

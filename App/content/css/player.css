@@ -58,13 +58,13 @@
 
 @media(max-width:550px){
     .control-button{
-        margin-right: 10px;
+        margin-right: 7px;
     }
     .controls.flex-container{
         min-width: 30%;
     }
     .title.flex-container{
-        max-width: 50%;
+        max-width: 42%;
     }
 }
  
@@ -128,11 +128,18 @@ a.player-user-name{
     padding: 0px 13px 10px;
 }
 
+@media(max-width:330px){
+    .volume-bar{
+        display: none;
+    }
+}
+
 @media(min-width:900px){
     .volume-slider-container{
         bottom:60px;
     }
 }
+
 .hidden{
     display: none;
 }
