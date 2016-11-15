@@ -17,6 +17,7 @@
     "mobile-detect": "^1.3.3",
     "moment": "^2.16.0",
     "react": "^15.3.2",
+    "react-click-outside": "^2.2.0",
     "react-dom": "^15.3.2",
     "react-tap-event-plugin": "^1.0.0",
     "webpack": "^1.13.3"

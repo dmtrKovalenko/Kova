@@ -94,7 +94,7 @@
         max-width: 30%;
     }
     .controls.flex-container{
-        min-width: 180px;
+        min-width: 230px;
     }
 }
 
@@ -114,4 +114,25 @@ a.player-song-title{
 
 a.player-user-name{
     font-size: 15px;
+}
+
+.volume-bar{
+    display: inline-block;
+}
+
+.volume-slider-container{
+    position: absolute;
+    bottom: 120px;
+    width: 44px;
+    margin: 0 auto;
+    padding: 0px 13px 10px;
+}
+
+@media(min-width:900px){
+    .volume-slider-container{
+        bottom:60px;
+    }
+}
+.hidden{
+    display: none;
 }

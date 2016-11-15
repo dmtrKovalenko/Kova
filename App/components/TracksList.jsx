@@ -21,7 +21,7 @@ class TrackList extends React.Component{
     getTracks(filter){
         this.state.songsList = window.searchTracks(filter, this.setCurrentSongs)
     }
-
+    
     render(){
        var tracks =
             this.state.songsList.map(track => 

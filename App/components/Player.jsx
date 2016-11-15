@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import FloatingActionButton from 'material-ui/FloatingActionButton';
 import PlayPauseIcon from './PlayPauseToggleIcon.jsx'
+import VolumeBar from './VolumeBar.jsx'
 import Previous from 'material-ui/svg-icons/av/skip-previous';
 import Slider from 'material-ui/Slider';
 import Next from 'material-ui/svg-icons/av/skip-next';
@@ -48,6 +49,10 @@ class Player extends React.Component{
         this.state.currentSCPlayer.seek(value);
     }
 
+    changeVolume(value){
+
+    }
+
     secondsToHMS(ms){
       var tempTime = moment.utc(ms).format("mm:ss");
       return tempTime;
@@ -81,6 +86,7 @@ class Player extends React.Component{
                     </div>
 
                     <div className="controls flex-container">
+                        <VolumeBar />
                         <FloatingActionButton mini={true} className={floatButtonClassName}>
                             <Previous />
                         </FloatingActionButton>
