@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import FloatingActionButton from 'material-ui/FloatingActionButton';
 import PlayPauseIcon from './PlayPauseToggleIcon.jsx'
+import VolumeBar from './VolumeBar.jsx'
 import Previous from 'material-ui/svg-icons/av/skip-previous';
 import Slider from 'material-ui/Slider';
 import Next from 'material-ui/svg-icons/av/skip-next';
@@ -48,6 +49,10 @@ class Player extends React.Component{
         this.state.currentSCPlayer.seek(value);
     }
 
+    changeVolume(value){
+        this.state.currentSCPlayer.setVolume(value);
+    }
+
     secondsToHMS(ms){
       var tempTime = moment.utc(ms).format("mm:ss");
       return tempTime;
@@ -72,7 +77,7 @@ class Player extends React.Component{
                     <div className="slider flex-container">
                         <div className="current time"> {this.secondsToHMS(this.state.playbackTime)} </div>
                         <div className="slider-container">
-                            <Slider sliderStyle={{marginBottom:0}} 
+                            <Slider sliderStyle={{marginBottom:0, marginTop:30}} 
                                     max={this.props.currentSong.duration} 
                                     value={this.state.playbackTime}
                                     onChange={this.seek.bind(this)}/>
@@ -81,6 +86,8 @@ class Player extends React.Component{
                     </div>
 
                     <div className="controls flex-container">
+                        <VolumeBar changeVolumeHandler={this.changeVolume.bind(this)}
+                                   initialVolume={this.state.currentSCPlayer.getVolume()}/>
                         <FloatingActionButton mini={true} className={floatButtonClassName}>
                             <Previous />
                         </FloatingActionButton>

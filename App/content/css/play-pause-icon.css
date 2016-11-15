@@ -56,15 +56,18 @@
   transition: transform 0.25s ease, -webkit-transform 0.25s ease;
 }
 
-.play-button:hover .triangle-1, 
-.play-button:hover .triangle-2{
-   border-right: 22px solid rgba(0, 188, 212 , 0.6);
+@media(min-width:900px){
+  .play-button:hover .triangle-1, 
+  .play-button:hover .triangle-2{
+      border-right: 22px solid rgba(0, 188, 212 , 0.6);
+  }
 }
 
 .play-button span + div{
    /* ovverride default transition for material ui button */
    transition: initial !important;
 }
+
 .right {
   height: 100%;
   float: right;
