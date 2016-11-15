@@ -77,7 +77,7 @@ class Player extends React.Component{
                     <div className="slider flex-container">
                         <div className="current time"> {this.secondsToHMS(this.state.playbackTime)} </div>
                         <div className="slider-container">
-                            <Slider sliderStyle={{marginBottom:0}} 
+                            <Slider sliderStyle={{marginBottom:0, marginTop:30}} 
                                     max={this.props.currentSong.duration} 
                                     value={this.state.playbackTime}
                                     onChange={this.seek.bind(this)}/>

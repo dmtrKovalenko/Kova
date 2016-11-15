@@ -10,7 +10,7 @@
 }
 
 .control-button {
-    margin-right: 20px;
+    margin-right: 10px;
 }
 
 .artwork.flex-container{
@@ -29,13 +29,13 @@
 }
 
 .time {
-    padding: 20px;
+    padding: 25 15 15;
     font-size: 18;
     color: #8c8e92;
 }
 
 .slider-container{
-    flex-basis: 90%;
+    flex-basis: 100%;
 }
 
 .controls.flex-container{
@@ -78,14 +78,25 @@
     .player{
         flex-wrap: wrap;
     }
+
     .slider.flex-container{
         order: 4;
         flex-grow:0;
-        flex-basis: 90%;
+        flex-basis: 100%;
         align-content: flex-start;
     }
+
+    /*Ovverride default material ui styles*/
+    .slider-container > div > div {
+        margin-top:14px !important;
+    }
+
     .controls.flex-container{
         order: 3;
+    }
+
+    .time {
+        padding: 10px 10px 0;
     }
 }
 
