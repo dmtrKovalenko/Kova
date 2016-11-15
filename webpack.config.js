@@ -26,7 +26,7 @@ var config = {
       },
       {
         test: /\.(jpe?g|png|gif|svg)$/i,
-        loader:'file?name=/content/img/[name].[ext]'
+        loader:'file?name=content/img/[name].[ext]'
       },
     ]
   },
@@ -35,7 +35,7 @@ var config = {
   ],
   devServer:{
       hot:true,
-      contentBase:'./App/'
+      contentBase:'./App/',
   }
 };
 
