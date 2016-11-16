@@ -1,6 +1,5 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 import enhanceWithClickOutside from 'react-click-outside';
 import IconButton from 'material-ui/IconButton';
 import Paper from 'material-ui/Paper';
