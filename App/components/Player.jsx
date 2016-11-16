@@ -63,7 +63,7 @@ class Player extends React.Component{
        var playIconClassName = this.state.isPaused ? 'paused' : 'playing';
 
        if (this.props.currentSong){
-          return <div className="player">
+          return <div className="player animated slideInUp">
                     <div className="artwork flex-container">
                         <Avatar src={this.props.currentSong.artwork_url ? 
                                 this.props.currentSong.artwork_url.replace('large.jpg', 't500x500.jpg') : defaultImg} 
