@@ -30,6 +30,7 @@ class Player extends React.Component{
             });
 
             player.on('time', () => this.setState({playbackTime : this.state.currentSCPlayer.currentTime()}));
+            player.on('finish', () => this.props.changeSongIndex(this.props.currentSongIndex + 1));
         }.bind(this));
     }
 
@@ -88,15 +89,18 @@ class Player extends React.Component{
                     <div className="controls flex-container">
                         <VolumeBar changeVolumeHandler={this.changeVolume.bind(this)}
                                    initialVolume={this.state.currentSCPlayer.getVolume()}/>
-                        <FloatingActionButton mini={true} className={floatButtonClassName}>
+                        <FloatingActionButton mini={true} className={floatButtonClassName}
+                                              onClick={() => this.props.changeSongIndex(this.props.currentSongIndex - 1)}>
                             <Previous />
                         </FloatingActionButton>
 
-                        <FloatingActionButton className="control-button play-button" onClick= {() => this.pause()}>
+                        <FloatingActionButton className="control-button play-button" 
+                                              onClick= {() => this.pause()}>
                             <PlayPauseIcon className={playIconClassName}/>
                         </FloatingActionButton>
 
-                        <FloatingActionButton mini={true}>
+                        <FloatingActionButton mini={true}
+                                              onClick={() => this.props.changeSongIndex(this.props.currentSongIndex + 1)}>
                             <Next />
                         </FloatingActionButton>
                     </div>

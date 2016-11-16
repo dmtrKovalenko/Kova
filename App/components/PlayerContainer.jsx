@@ -36,7 +36,8 @@ class PlayerContainter extends React.Component{
                     <TrackList onSongChange = {this.selectSong.bind(this)}/> 
                     <Player currentSongIndex = {this.state.currentSongIndex}
                             currentSong = {this.state.playList[this.state.currentSongIndex]}
-                            isPlaying = {this.state.isPlaying}/>
+                            isPlaying = {this.state.isPlaying}
+                            changeSongIndex = {this.setCurrentSongIndex.bind(this)}/>
                </div>;
     }
 }
