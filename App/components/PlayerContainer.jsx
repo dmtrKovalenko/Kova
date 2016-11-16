@@ -14,12 +14,19 @@ class PlayerContainter extends React.Component{
         }   
     }
 
-    selectSong(newPlayList, newSongId){
+    selectSong(newPlayList, newSongIndex){
         this.setState({
             playList : newPlayList,
             isPlaying: true,
-            currentSongId: newSongId
+            currentSongIndex: newSongIndex
         });
+    }
+
+    setCurrentSongIndex(index){
+        this.setState({
+            isPlaying:true,
+            currentSongIndex: index
+        })
     }
 
     render() {
@@ -27,8 +34,8 @@ class PlayerContainter extends React.Component{
                     <AppBar title="Title"
                             iconClassNameRight="muidocs-icon-navigation-expand-more"/>
                     <TrackList onSongChange = {this.selectSong.bind(this)}/> 
-                    <Player playList = {this.state.playList}
-                            currentSong = {this.state.playList.find(s => s.id == this.state.currentSongId)}
+                    <Player currentSongIndex = {this.state.currentSongIndex}
+                            currentSong = {this.state.playList[this.state.currentSongIndex]}
                             isPlaying = {this.state.isPlaying}/>
                </div>;
     }
