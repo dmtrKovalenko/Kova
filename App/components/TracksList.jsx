@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import {Card, CardActions, CardHeader, CardMedia, CardTitle, CardText} from 'material-ui/Card';
 import '../content/css/index.css';
 import defaultImg from '../content/img/default-artwork.png';
+import SongCard from './SongCard.jsx';
 
 class TrackList extends React.Component{
     constructor(props) {
@@ -25,14 +26,9 @@ class TrackList extends React.Component{
     render(){
        var tracks =
             this.state.songsList.map(track => 
-                <div key={track.id} onClick={() => this.playSong(track)} className="track-card-container col-lg-2 col-md-3 col-sm-4 col-xs-12">
-                    <Card className="track-card">
-                        <CardHeader  title={track.user.username} textStyle={{'verticalAlign': 'middle'}} avatar={track.user.avatar_url}/>
-                        <CardMedia overlay= {<CardTitle title={track.title.slice(0, 30)} subtitle={track.genre} />} >
-                            <img src={track.artwork_url ? track.artwork_url.replace('large.jpg', 't500x500.jpg') : defaultImg} />
-                        </CardMedia>
-                    </Card>
-                </div>)
+                <SongCard key={track.id}
+                          artwork={track.artwork_url ? track.artwork_url.replace('large.jpg', 't500x500.jpg') : defaultImg}
+                          title={track.title}/>);
             
         return <div className="tracks-container"> {tracks} </div>
     }
