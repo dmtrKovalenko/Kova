@@ -54,7 +54,6 @@
     transform: scale(1.05) !important;
 }
 
- 
 /* CARD TITLE */
 
 .card h2 {
@@ -95,7 +94,7 @@
 	font-weight: 300;
 }
 
-.card:hover .circle-1,.card:hover .circle-2 {
+.card:not(.now-playing):hover .circle-1,.card:not(.now-playing):hover .circle-2 {
 	-webkit-transform: translateX(-50%)translateY(-50%)scale(0.1);
 	-moz-transform: translateX(-50%)translateY(-50%)scale(0.1);
 	transform: translateX(-50%)translateY(-50%)scale(0.1);
@@ -143,6 +142,17 @@
     height: 1300px;
     background-color: #00BCD4;
     z-index: 1;
+}
+
+.now-playing .circle-2{ 
+	display: none;
+}
+
+.now-playing .circle-1{
+	width: 100%;
+	height: 50%;
+	top:72%;
+	border-radius: 2%;
 }
 
 .play {
@@ -203,12 +213,6 @@ path {
     stroke-dasharray: 70;
 }
 
-@-webkit-keyframes 'path' {
-    0% {stroke-dashoffset: 0;}
-    50% {stroke-dashoffset: 70;}
-    100% {stroke-dashoffset: 0;}
-}
-
 @-moz-keyframes path {
     0% {stroke-dashoffset: 0;}
     50% {stroke-dashoffset: 70;}
@@ -236,12 +240,6 @@ path {
     -webkit-transform-origin: 50% 50%;
     -moz-transform-origin: 50% 50%;
     transform-origin: 50% 50%;
-}
-
-@-webkit-keyframes 'svg' {
-    0% {-webkit-transform:rotate(0deg)}
-    50% {-webkit-transform:rotate(360deg)}
-    100% {-webkit-transform:rotate(720deg)}
 }
 
 @-moz-keyframes svg {

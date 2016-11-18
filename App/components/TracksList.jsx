@@ -28,7 +28,8 @@ class TrackList extends React.Component{
             this.state.songsList.map(track => 
                 <SongCard key={track.id}
                           artwork={track.artwork_url ? track.artwork_url.replace('large.jpg', 't500x500.jpg') : defaultImg}
-                          title={track.title}/>);
+                          title={track.title}
+                          play={() => this.playSong(track)}/>);
             
         return <div className="tracks-container"> {tracks} </div>
     }

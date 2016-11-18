@@ -31,6 +31,7 @@ class Player extends React.Component{
 
             player.on('time', () => this.setState({playbackTime : this.state.currentSCPlayer.currentTime()}));
             player.on('finish', () => this.props.changeSongIndex(this.props.currentSongIndex + 1));
+            player.on('buffering_end', () => this.props.songLoaded());
         }.bind(this));
     }
 

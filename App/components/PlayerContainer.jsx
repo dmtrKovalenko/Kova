@@ -10,7 +10,7 @@ class PlayerContainter extends React.Component{
 
         this.state = {
             playList : [],
-            isPlaying : false     
+            isPlaying : false, 
         }   
     }
 
@@ -33,11 +33,13 @@ class PlayerContainter extends React.Component{
         return <div>
                     <AppBar title="Title"
                             iconClassNameRight="muidocs-icon-navigation-expand-more"/>
-                    <TrackList onSongChange = {this.selectSong.bind(this)}/> 
+                    <TrackList onSongChange = {this.selectSong.bind(this)}
+                               isLoading = {this.state.isLoading}/> 
                     <Player currentSongIndex = {this.state.currentSongIndex}
                             currentSong = {this.state.playList[this.state.currentSongIndex]}
                             isPlaying = {this.state.isPlaying}
-                            changeSongIndex = {this.setCurrentSongIndex.bind(this)}/>
+                            changeSongIndex = {this.setCurrentSongIndex.bind(this)}
+                            songLoaded = {() => this.setState({songIsLoading : false})}/>
                </div>;
     }
 }

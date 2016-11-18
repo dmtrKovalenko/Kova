@@ -10,22 +10,36 @@ class SongCard extends React.Component{
         }
     }
 
+    componentWillReceiveProps(nextProps){
+        if (!nextProps.isLoading){
+            this.SongLoaded();
+        }
+    }
+
     handleCardClick(event){
         var play = $(event.target);
         $(play).addClass('active').fadeOut();;
         $(play).parent().children('.circle-1').addClass('active');
         $(play).parent('.card').addClass('active');
         $(play).parent().children('.circle-2').addClass('active');
-        $(play).parent().children('.spinner').delay(1000).fadeIn();
-        $(play).parent().children('.spinner').delay(2000).fadeOut();
-        $(play).parent().children('.message').delay(4000).fadeIn();
-        $(play).parent().children('.message').delay(2000).fadeOut();
-        setTimeout(function(){
-            $(play).removeClass('active').fadeIn();
-            $(play).parent().children('.circle-1').removeClass('active');
-            $(play).parent().children('.circle-2').removeClass('active');
-            $(play).parent('.card').removeClass('active');
-        }, 7000)
+        $(play).parent().children('.spinner').delay(400).fadeIn();
+ 
+        this.setState({isLoading : true});
+        this.props.play();
+    }
+
+    SongLoaded(){
+        this.setState({isLoading : false});
+
+        $('.card.active').children('.spinner').fadeOut();
+        setTimeout(() => $('.card.active').addClass('now-playing'), 600)
+        
+
+        //$('.card.active').children('.message').delay(4000).fadeIn();
+        //$('.card.active span').removeClass('active').fadeIn();
+        //$('.card.active').children('.circle-1').removeClass('active');
+        //$('.card.active').children('.circle-2').removeClass('active');
+        //$('.card.active').removeClass('active');
     }
 
     render() {
@@ -34,7 +48,7 @@ class SongCard extends React.Component{
 
                     <h2>{this.props.title}</h2>
                     <p className="message">Oops, something went wrong :(    </p>
-                    <span id="play" className="play" onClick={this.handleCardClick}></span>
+                    <span id="play" className="play" onClick={this.handleCardClick.bind(this)}></span>
                     
                     <span className="circle-1"></span>
                     <span className="circle-2"></span>
