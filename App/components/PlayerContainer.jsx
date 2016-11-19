@@ -10,7 +10,8 @@ class PlayerContainter extends React.Component{
 
         this.state = {
             playList : [],
-            isPlaying : false, 
+            isPlaying : false,
+            isLoading : false,
         }   
     }
 
@@ -18,7 +19,8 @@ class PlayerContainter extends React.Component{
         this.setState({
             playList : newPlayList,
             isPlaying: true,
-            currentSongIndex: newSongIndex
+            currentSongIndex: newSongIndex,
+            isLoading: true,
         });
     }
 
@@ -29,17 +31,21 @@ class PlayerContainter extends React.Component{
         })
     }
 
+    getCurrentSongId(){
+        return this.state.currentSongIndex != undefined ?
+            this.state.playList[this.state.currentSongIndex].id : null;
+    }
+
     render() {
         return <div>
                     <AppBar title="Title"
                             iconClassNameRight="muidocs-icon-navigation-expand-more"/>
                     <TrackList onSongChange = {this.selectSong.bind(this)}
-                               isLoading = {this.state.isLoading}/> 
+                               isLoading = {this.state.isLoading}
+                               currentSongId = { this.getCurrentSongId()}/> 
                     <Player currentSongIndex = {this.state.currentSongIndex}
                             currentSong = {this.state.playList[this.state.currentSongIndex]}
-                            isPlaying = {this.state.isPlaying}
-                            changeSongIndex = {this.setCurrentSongIndex.bind(this)}
-                            songLoaded = {() => this.setState({songIsLoading : false})}/>
+                            changeSongIndex = {this.setCurrentSongIndex.bind(this)}/>
                </div>;
     }
 }

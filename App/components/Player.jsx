@@ -10,6 +10,7 @@ import Avatar from 'material-ui/Avatar';
 import defaultImg from '../content/img/default-artwork.png';
 import moment from 'moment';
 import '../content/css/player.css';
+import SDK from '../soundCloudSDK.jsx';
 
 const floatButtonClassName =  "control-button";
 
@@ -17,42 +18,40 @@ class Player extends React.Component{
     constructor(props) {
         super(props);
         this.state = {
-            isPaused : false
+            isPaused : false,
+            isPlaying: false,
         }
     }
    
     componentWillReceiveProps(nextProps) {
-        SC.stream('/tracks/' + nextProps.currentSong.id).then(function(player){
-            player.play();
-            this.setState({
-                currentSCPlayer : player,
-                isPaused : false
-            });
+        SDK.streamSong(nextProps.currentSong.id,() => this.setInitialHandlers());
 
-            player.on('time', () => this.setState({playbackTime : this.state.currentSCPlayer.currentTime()}));
-            player.on('finish', () => this.props.changeSongIndex(this.props.currentSongIndex + 1));
-            player.on('buffering_end', () => this.props.songLoaded());
-        }.bind(this));
+        if (nextProps.currentSong){
+            this.setState({isPlaying: true, isPaused:false});
+        }
+    }
+
+    setInitialHandlers(){
+        let component = this;
+
+        SDK.onTimeChanged(() => component.setState({playbackTime :  window.SCplayer.currentTime()}));
+        SDK.onPlayEnded(() => component.props.changeSongIndex(this.props.currentSongIndex + 1));
     }
 
     pause() {
-        if (this.state.currentSCPlayer){
+        if (this.state.isPlaying){
             this.setState({isPaused : !this.state.isPaused})
 
             if(this.state.isPaused){
-                this.state.currentSCPlayer.play();
+                SDK.play();
             } else{
-                this.state.currentSCPlayer.pause();
+                SDK.pause();
             }   
         }
     }
 
     seek(event, value){
-        this.state.currentSCPlayer.seek(value);
-    }
-
-    changeVolume(value){
-        this.state.currentSCPlayer.setVolume(value);
+        SDK.seek(value);
     }
 
     secondsToHMS(ms){
@@ -63,7 +62,7 @@ class Player extends React.Component{
     render() {
        var playIconClassName = this.state.isPaused ? 'paused' : 'playing';
 
-       if (this.props.currentSong){
+       if (this.state.isPlaying){
           return <div className="player animated slideInUp">
                     <div className="artwork flex-container">
                         <Avatar src={this.props.currentSong.artwork_url ? 
@@ -88,8 +87,7 @@ class Player extends React.Component{
                     </div>
 
                     <div className="controls flex-container">
-                        <VolumeBar changeVolumeHandler={this.changeVolume.bind(this)}
-                                   initialVolume={this.state.currentSCPlayer.getVolume()}/>
+                        <VolumeBar initialVolume={SDK.getVolume()}/>
                         <FloatingActionButton mini={true} className={floatButtonClassName}
                                               onClick={() => this.props.changeSongIndex(this.props.currentSongIndex - 1)}>
                             <Previous />

@@ -8,6 +8,7 @@ import VolumeDown from 'material-ui/svg-icons/av/volume-down';
 import VolumeUp from 'material-ui/svg-icons/av/volume-up';
 import VolumeMute from 'material-ui/svg-icons/av/volume-mute';
 import {cyan500} from 'material-ui/styles/colors';
+import SDK from '../soundCloudSDK.jsx';
 import '../content/css/animate.css';
 import '../content/css/player.css';
 
@@ -28,11 +29,6 @@ class VolumeBar extends React.Component{
         this.setState({isDisplaying:false});
     }
 
-    setVolume(event, value){
-        this.setState({currentVolume:value});
-        this.props.changeVolumeHandler(value);
-    }
-
     render(){
         let volumeBarClassName = "volume-slider-container animated ";
         
@@ -51,7 +47,7 @@ class VolumeBar extends React.Component{
                                 defaultValue={this.props.initialVolume}
                                 min = {0}
                                 max = {1}
-                                onChange={this.setVolume.bind(this)} />
+                                onChange={SDK.setVolume.bind(this)} />
                     </Paper >
                     <IconButton onClick={this.showVolumeBar.bind(this)}>
                         {volumeIcon}
