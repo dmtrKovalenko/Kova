@@ -64,7 +64,7 @@ class SongCard extends React.Component{
                     <span className="circle-2"></span>
 
                     <div className="spinner">
-                        <svg className="load-circle" xmlns="http://www.w3.org/2000/svg"  version="1.1" id="Livello_1" x="0px" y="0px" width="39.053px" height="36.653px" viewBox="0 0 39.053 36.653" enableBackground="new 0 0 39.053 36.653">
+                        <svg className="load-circle" xmlns="http://www.w3.org/2000/svg" version="1.1" id="Livello_1" x="0px" y="0px" width="39.053px" height="36.653px" viewBox="0 0 39.053 36.653" enableBackground="new 0 0 39.053 36.653">
                             <path fill="none" stroke="#fff" strokeWidth="3" strokeLinecap="round" strokeMiterlimit="10" d="M11.989,32.312  c-4.463-2.599-7.463-7.435-7.463-12.972c0-8.283,6.716-15,15-15s15,6.717,15,15"></path>
                         </svg>
                     </div>
