@@ -13,16 +13,6 @@
 	transition-timing-function: cubic-bezier(.4,0,.5,1);
 }
 
-.container {
-    width: 100%;
-    text-align: center;
-    top: 50%;
-    position: relative;
-    -webkit-transform: translateY(-50%);
-	-moz-transform: translateY(-50%);
-	transform: translateY(-50%);
-}
-
 .card {
     z-index: 0;
     width: 250px;
@@ -49,8 +39,6 @@
     -moz-transform: scale(1.05) !important;
     transform: scale(1.05) !important;
 }
-
-/* CARD TITLE */
 
 .card h2 {
     position: absolute;
@@ -97,6 +85,18 @@
 	margin-top: 0;
 }
 
+.card.was-played{
+    overflow: visible;
+}
+
+.card.was-played.active{
+    z-index: 10;
+}
+
+.card.now-playing{
+    overflow: visible;
+    z-index: 10;
+}
 
 .circle-1,.circle-2 {
 	border-radius: 50%;
@@ -107,12 +107,6 @@
 	-moz-transform: translateX(-50%)translateY(-50%)scale(0);
 	transform: translateX(-50%)translateY(-50%)scale(0);
 	margin-top: 10px;
-}
-
-.circle-1.active,.circle-2.active {
-    -webkit-transform: translateX(-50%)translateY(-50%)scale(1) !important;
-	-moz-transform: translateX(-50%)translateY(-50%)scale(1) !important;
-	transform: translateX(-50%)translateY(-50%)scale(1) !important;
 }
 
 .circle-1 {  
@@ -132,6 +126,13 @@
     z-index: 1;
 }
 
+.active .circle-1, 
+.active .circle-2 {
+    -webkit-transform: translateX(-50%)translateY(-50%)scale(1) !important;
+	-moz-transform: translateX(-50%)translateY(-50%)scale(1) !important;
+	transform: translateX(-50%)translateY(-50%)scale(1) !important;
+}
+
 .was-played .circle-1,
 .now-playing .circle-1{
     background-position: 55% 50%; 
@@ -146,18 +147,22 @@
     animation: 0.6s play normal forwards;
 }
 
+@-webkit-keyframes play{
+    0%{width:100%; height: 100%; background-image: url(../img/card-play.png);}
+    50%{width: 100px; height: 90px;background-image: url(../img/card-play.png);}
+    100%{width: 70px;height: 70px; top: 0; left: 100%;background-image: url(../img/card-play.png);}
+}
+
 @keyframes play{
     0%{width:100%; height: 100%; background-image: url(../img/card-play.png);}
     50%{width: 100px; height: 90px;background-image: url(../img/card-play.png);}
     100%{width: 70px;height: 70px; top: 0; left: 100%;background-image: url(../img/card-play.png);}
 }
 
-.card.was-played{
-    overflow: visible;
-}
-
-.card.was-played.active{
-    z-index: 10;
+@-moz-keyframes play{
+    0%{width:100%; height: 100%; background-image: url(../img/card-play.png);}
+    50%{width: 100px; height: 90px;background-image: url(../img/card-play.png);}
+    100%{width: 70px;height: 70px; top: 0; left: 100%;background-image: url(../img/card-play.png);}
 }
 
 .now-playing .circle-2,
@@ -180,11 +185,6 @@
     background-image: url(../img/card-play.png);
 }
 
-.now-playing.card{
-    overflow: visible;
-    z-index: 10;
-}
-
 .play {
 	cursor: pointer;
 	width: 34px;
@@ -201,48 +201,13 @@
 	transition-delay: .4s;  
 }
 
-.play.active {
+.active .play{
 	display: none;
 }
 
 .card:hover .play {
 	margin-top: 0;
 	opacity: 1;
-}
-
-.loader {
-	width: 100px;
-    height: 100px;
-	border-radius: 50%;
-	position: absolute;
-	left: 50%;
-    top: 50%;
-    z-index: 4;
-    background: #ffffff;
-    -webkit-transform: translateX(-50%)translateY(-50%)scale(0);
-	-moz-transform: translateX(-50%)translateY(-50%)scale(0);
-	transform: translateX(-50%)translateY(-50%)scale(0);
-}
-
- .loader.active {
-	-webkit-animation: 2s loader 1s infinite;
-	-moz-animation: 2s loader 1s infinite;
-	animation: 2s loader 1s infinite;
-}
-
-@-webkit-keyframes loader {
-	0% {-webkit-transform: translateX(-50%)translateY(-50%)scale(0);opacity:0.5;}
-	100% {-webkit-transform: translateX(-50%)translateY(-50%)scale(10);opacity:0;}
-}
-
-@-moz-keyframes loader {
-	0% {-moz-transform: translateX(-50%)translateY(-50%)scale(0);opacity:0.5;}
-	100% {-moz-transform: translateX(-50%)translateY(-50%)scale(10);opacity:0;}
-}
-
-@keyframes loader {
-	0% {transform: translateX(-50%)translateY(-50%)scale(0);opacity:0.5;}
-	100% {transform: translateX(-50%)translateY(-50%)scale(10);opacity:0;}
 }
 
 path {
