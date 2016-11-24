@@ -3,6 +3,8 @@ import ReactDOM from 'react-dom';
 import {Card, CardActions, CardHeader, CardMedia, CardTitle, CardText} from 'material-ui/Card';
 import '../content/css/index.css';
 import defaultImg from '../content/img/default-artwork.png';
+import SongCard from './SongCard.jsx';
+import SDK from '../soundCloudSDK.jsx';
 
 class TrackList extends React.Component{
     constructor(props) {
@@ -11,29 +13,30 @@ class TrackList extends React.Component{
             songsList : []
         }
 
-        window.searchTracks("", (tracks) => this.setState({songsList : tracks}).bind(this)); 
+        SDK.searchTracks("", (tracks) => this.setState({songsList : tracks}).bind(this));
+    }
+
+    componentWillReceiveProps(nextProps) {
+        this.setState({currentSongId : nextProps.currentSongId})
     }
 
     playSong (track){
-       this.props.onSongChange(this.state.songsList, this.state.songsList.indexOf(track));
+        this.props.onSongChange(this.state.songsList, this.state.songsList.indexOf(track));
     }
-    
+
     getTracks(filter){
         this.state.songsList = window.searchTracks(filter, this.setCurrentSongs)
     }
-    
+
     render(){
        var tracks =
-            this.state.songsList.map(track => 
-                <div key={track.id} onClick={() => this.playSong(track)} className="track-card-container col-lg-2 col-md-3 col-sm-4 col-xs-12">
-                    <Card className="track-card">
-                        <CardHeader  title={track.user.username} textStyle={{'verticalAlign': 'middle'}} avatar={track.user.avatar_url}/>
-                        <CardMedia overlay= {<CardTitle title={track.title.slice(0, 30)} subtitle={track.genre} />} >
-                            <img src={track.artwork_url ? track.artwork_url.replace('large.jpg', 't500x500.jpg') : defaultImg} />
-                        </CardMedia>
-                    </Card>
-                </div>)
-            
+            this.state.songsList.map(track =>
+                <SongCard key={track.id}
+                          artwork={track.artwork_url ? track.artwork_url.replace('large.jpg', 't500x500.jpg') : defaultImg}
+                          title={track.title}
+                          play={() => this.playSong(track)}
+                          isCurrent={this.state.currentSongId == track.id}/>);
+
         return <div className="tracks-container"> {tracks} </div>
     }
 }
