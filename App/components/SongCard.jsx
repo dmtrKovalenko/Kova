@@ -12,15 +12,34 @@ class SongCard extends React.Component{
         }
     }
 
+    componentWillUpdate(nextProps, nextState){
+        if (this.state.isActive && this.state.isLoading == false && this.props.isCurrent){
+            this.setState({wasPlayed : true});
+        }
+    }
+
+    componentDidUpdate(prevProps, prevState){
+        if (this.props.isCurrent && !this.state.wasPlayed && !this.state.isActive){
+            this.playLoadAnimation();
+        }
+    }
+
     handleCardClick(event){
         this.props.play();
-
-        this.setState({isActive : true, isLoading:true});
-        setTimeout(() => this.setState({isLoading : false}), 600);
+        this.playLoadAnimation();
     }
- 
+
+    playLoadAnimation(){
+        this.setState({isActive : true, isLoading:true});
+        setTimeout(() => this.setState({isLoading : false}), 1600);
+    }
+
     getClassName(value){
         if(this.props.isCurrent){
+            if (this.state.wasPlayed){
+                return value + ' was-played active';
+            }
+
             if(this.state.isActive && this.state.isLoading){
                 return value + ' active';
             }
@@ -30,17 +49,19 @@ class SongCard extends React.Component{
             }
         }
 
+        if (this.state.wasPlayed){
+            return value + ' was-played';
+        }
+
         return value;
     }
 
     render() {
         return <div className={this.getClassName("card")} 
                     style={{backgroundImage : "url(" + this.props.artwork + ")"}}>
-
                     <h2>{this.props.title}</h2>
                     <p className="message">Oops, something went wrong :( </p>
                     <span id="play" className={this.getClassName("play")}  onClick={this.handleCardClick.bind(this)}></span>
-                    
                     <span className={this.getClassName("circle-1")}></span>
                     <span className={this.getClassName("circle-2")}></span>
                     <span className="loader"></span>

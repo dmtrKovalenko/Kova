@@ -1,6 +1,3 @@
-
-/* DEFAULT */
-
 .centred,.circle-1,.circle-2,.play,.spinner {
 	-webkit-transform: translateX(-50%)translateY(-50%);
 	-moz-transform: translateX(-50%)translateY(-50%);
@@ -16,8 +13,6 @@
 	transition-timing-function: cubic-bezier(.4,0,.5,1);
 }
 
-/* MAIN */
-
 .container {
     width: 100%;
     text-align: center;
@@ -29,6 +24,7 @@
 }
 
 .card {
+    z-index: 0;
     width: 250px;
     height: 300px;
     background-size: cover;
@@ -101,10 +97,6 @@
 	margin-top: 0;
 }
 
-.card:hover .play {
-	margin-top: 0;
-	opacity: 1;
-}
 
 .circle-1,.circle-2 {
 	border-radius: 50%;
@@ -121,15 +113,6 @@
     -webkit-transform: translateX(-50%)translateY(-50%)scale(1) !important;
 	-moz-transform: translateX(-50%)translateY(-50%)scale(1) !important;
 	transform: translateX(-50%)translateY(-50%)scale(1) !important;
-}
-
-.circle-1.active{
-    width: 100%;
-    height: 100%;
-}
-
-.play.active {
-	opacity: 0 !important;
 }
 
 .circle-1 {  
@@ -149,19 +132,18 @@
     z-index: 1;
 }
 
-.now-playing .circle-2{ 
-	display: none;
+.was-played .circle-1,
+.now-playing .circle-1{
+    background-position: 55% 50%; 
+    background-size: 25px 25px;
+    background-repeat: no-repeat;
+    box-shadow: rgba(0, 0, 0, 0.156863) 0px 3px 10px, rgba(0, 0, 0, 0.227451) 0px 3px 10px;
 }
 
 .now-playing .circle-1{
     -webkit-animation: 0.6s play normal forwards;
     -moz-animation: 0.6s play normal forwards;
     animation: 0.6s play normal forwards;
-
-        background-position: 55% 50%; 
-    background-size: 25px 25px;
-    background-repeat: no-repeat;
-    box-shadow: rgba(0, 0, 0, 0.156863) 0px 3px 10px, rgba(0, 0, 0, 0.227451) 0px 3px 10px;
 }
 
 @keyframes play{
@@ -170,8 +152,37 @@
     100%{width: 70px;height: 70px; top: 0; left: 100%;background-image: url(../img/card-play.png);}
 }
 
+.card.was-played{
+    overflow: visible;
+}
+
+.card.was-played.active{
+    z-index: 10;
+}
+
+.now-playing .circle-2,
+.was-played .circle-2{ 
+	display: none;
+}
+
+.was-played .circle-1{
+    opacity:0;
+    width: 70px;
+    height: 70px;
+    top:0;
+    left:100%;
+    margin-top: 0;
+}
+
+.was-played.active .circle-1{
+    margin-top: 10px;
+    opacity: 1;
+    background-image: url(../img/card-play.png);
+}
+
 .now-playing.card{
     overflow: visible;
+    z-index: 10;
 }
 
 .play {
@@ -190,6 +201,15 @@
 	transition-delay: .4s;  
 }
 
+.play.active {
+	display: none;
+}
+
+.card:hover .play {
+	margin-top: 0;
+	opacity: 1;
+}
+
 .loader {
 	width: 100px;
     height: 100px;
@@ -204,7 +224,7 @@
 	transform: translateX(-50%)translateY(-50%)scale(0);
 }
 
-.loader.active {
+ .loader.active {
 	-webkit-animation: 2s loader 1s infinite;
 	-moz-animation: 2s loader 1s infinite;
 	animation: 2s loader 1s infinite;
@@ -250,6 +270,10 @@ path {
 	top: 50%;
 	z-index: 5;
 	display: none;
+}
+
+.card.active:not(.now-playing):not(.was-played) .spinner{
+    display: block;
 }
 
 .load-circle {

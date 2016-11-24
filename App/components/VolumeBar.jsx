@@ -29,6 +29,10 @@ class VolumeBar extends React.Component{
         this.setState({isDisplaying:false});
     }
 
+    setVolume(event, value){
+        SDK.setVolume(value);
+    }
+
     render(){
         let volumeBarClassName = "volume-slider-container animated ";
         
@@ -47,7 +51,7 @@ class VolumeBar extends React.Component{
                                 defaultValue={this.props.initialVolume}
                                 min = {0}
                                 max = {1}
-                                onChange={SDK.setVolume.bind(this)} />
+                                onChange={this.setVolume} />
                     </Paper >
                     <IconButton onClick={this.showVolumeBar.bind(this)}>
                         {volumeIcon}
