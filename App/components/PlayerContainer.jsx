@@ -2,7 +2,9 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import TrackList from './TracksList.jsx';
 import Player from './Player.jsx';
+import Filters from './Filters.jsx';
 import AppBar from 'material-ui/AppBar';
+import TextField from 'material-ui/TextField';
 
 class PlayerContainter extends React.Component{
     constructor(props) {
@@ -38,8 +40,7 @@ class PlayerContainter extends React.Component{
 
     render() {
         return <div>
-                    <AppBar title="Title"
-                            iconClassNameRight="muidocs-icon-navigation-expand-more"/>
+                    <Filters/>                  
                     <TrackList onSongChange = {this.selectSong.bind(this)}
                                isLoading = {this.state.isLoading}
                                currentSongId = { this.getCurrentSongId()}/> 
