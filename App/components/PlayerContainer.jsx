@@ -5,6 +5,7 @@ import Player from './Player.jsx';
 import Filters from './Filters.jsx';
 import AppBar from 'material-ui/AppBar';
 import TextField from 'material-ui/TextField';
+import Filter from '../types/Filter.jsx';
 
 class PlayerContainter extends React.Component{
     constructor(props) {
@@ -14,6 +15,7 @@ class PlayerContainter extends React.Component{
             playList : [],
             isPlaying : false,
             isLoading : false,
+            Filters : new Filter(),
         }   
     }
 
@@ -40,10 +42,14 @@ class PlayerContainter extends React.Component{
 
     render() {
         return <div>
-                    <Filters/>                  
-                    <TrackList onSongChange = {this.selectSong.bind(this)}
+                    <Filters filter = {this.state.Filters}
+                             applyFilters = {(filters) => this.setState({Filters : filters})}/>
+
+                    <TrackList filter = {this.state.Filters}
+                               onSongChange = {this.selectSong.bind(this)}
                                isLoading = {this.state.isLoading}
-                               currentSongId = { this.getCurrentSongId()}/> 
+                               currentSongId = { this.getCurrentSongId()}/>
+
                     <Player currentSongIndex = {this.state.currentSongIndex}
                             currentSong = {this.state.playList[this.state.currentSongIndex]}
                             changeSongIndex = {this.setCurrentSongIndex.bind(this)}/>

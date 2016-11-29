@@ -105,3 +105,9 @@
     transform: none;
   }
 }
+
+@media(max-width:450px){
+    .app-bar h1 {
+        display: none;
+    }
+}

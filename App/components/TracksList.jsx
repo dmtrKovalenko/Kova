@@ -13,11 +13,12 @@ class TrackList extends React.Component{
             songsList : []
         }
 
-        SDK.searchTracks("", (tracks) => this.setState({songsList : tracks}).bind(this));
+        SDK.searchTracks(this.props.filter, (tracks) => this.setState({songsList : tracks}).bind(this));
     }
 
     componentWillReceiveProps(nextProps) {
-        this.setState({currentSongId : nextProps.currentSongId})
+        this.setState({currentSongId : nextProps.currentSongId});
+        SDK.searchTracks(nextProps.filter, (tracks) => this.setState({songsList : tracks}).bind(this));
     }
 
     playSong (track){
