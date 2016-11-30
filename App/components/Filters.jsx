@@ -36,8 +36,7 @@ class Filters extends React.Component{
 
     setQuery(event){
         if (event.key == 'Enter'){
-            this.props.filter.query = event.currentTarget.value;
-            this.props.applyFilters(this.props.filter);
+            this.props.applyFilters(new Filter(event.currentTarget.value));
         }
     }
 
