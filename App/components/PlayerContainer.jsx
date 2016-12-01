@@ -2,7 +2,11 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import TrackList from './TracksList.jsx';
 import Player from './Player.jsx';
+import Filters from './Filters.jsx';
 import AppBar from 'material-ui/AppBar';
+import TextField from 'material-ui/TextField';
+import Filter from '../types/Filter.jsx';
+import Immutable from 'Immutable';
 
 class PlayerContainter extends React.Component{
     constructor(props) {
@@ -12,6 +16,7 @@ class PlayerContainter extends React.Component{
             playList : [],
             isPlaying : false,
             isLoading : false,
+            Filters : Immutable.Map({filter : new Filter()}),
         }   
     }
 
@@ -36,13 +41,22 @@ class PlayerContainter extends React.Component{
             this.state.playList[this.state.currentSongIndex].id : null;
     }
 
+    applyNewFilters(newFilters){
+        this.setState(({Filters}) => ({
+            Filters: Filters.update('filter', filter =>  newFilters)
+        }));
+    }
+
     render() {
         return <div>
-                    <AppBar title="Title"
-                            iconClassNameRight="muidocs-icon-navigation-expand-more"/>
-                    <TrackList onSongChange = {this.selectSong.bind(this)}
+                    <Filters filter = {this.state.Filters}
+                             applyFilters = {(newFilters) => this.applyNewFilters(newFilters)}/>
+
+                    <TrackList filter = {this.state.Filters}
+                               onSongChange = {this.selectSong.bind(this)}
                                isLoading = {this.state.isLoading}
-                               currentSongId = { this.getCurrentSongId()}/> 
+                               currentSongId = { this.getCurrentSongId()}/>
+
                     <Player currentSongIndex = {this.state.currentSongIndex}
                             currentSong = {this.state.playList[this.state.currentSongIndex]}
                             changeSongIndex = {this.setCurrentSongIndex.bind(this)}/>

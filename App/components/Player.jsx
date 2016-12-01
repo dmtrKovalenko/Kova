@@ -24,9 +24,8 @@ class Player extends React.Component{
     }
    
     componentWillReceiveProps(nextProps) {
-        SDK.streamSong(nextProps.currentSong.id,() => this.setInitialHandlers());
-
-        if (nextProps.currentSong){
+        if(nextProps.currentSong){
+            SDK.streamSong(nextProps.currentSong.id,() => this.setInitialHandlers());
             this.setState({isPlaying: true, isPaused:false});
         }
     }
