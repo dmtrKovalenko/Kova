@@ -1,3 +1,7 @@
+.search-bar{
+   display: none;
+}
+
 .search-bar,
 .app-bar > div{
      -webkit-animation-duration: 1s;
@@ -6,17 +10,19 @@
     animation-fill-mode: both;
 }
 
-.app-bar.collapsed .search-bar {
+.app-bar.active-search .search-bar {
+    display: block;
     animation-name: bounceInRight;
     -webkit-animation-name:bounceInRight;
 }
 
 .app-bar .search-bar{
+    display: block;
     -webkit-animation-name: bounceOutRight;
     animation-name: bounceOutRight;
 }
 
-.app-bar.collapsed > div{
+.app-bar.active-search > div{
     -webkit-animation-name: bounceInRight;
     animation-name: bounceInRight;
     animation-duration: 0.95s;
@@ -31,14 +37,14 @@
 
 @media(max-width:450px){
     /* little hack here, dont know why, but its work - showing app title, when search bar is not opened */
-    .app-bar:not(.collapsed) h1 {
+    .app-bar:not(.active-search) h1 {
         transition-delay: .3s;
         overflow: visible !important;
         transition: opacity 1;
         width: 0;
     }
 
-    .app-bar.collapsed h1{
+    .app-bar.active-search h1{
         opacity: 0;
     }
 }
@@ -52,7 +58,7 @@
 
   to {
     opacity: 1;
-    -webkit-transform: translate3d(40px, 0, 0);
+    -webkit-transform: translate3d(250px, 0, 0);
     transform: translate3d(250px, 0, 0);
   }
 }

@@ -9,7 +9,7 @@ import Filter from '../types/Filter.jsx';
 
 const styles = {
     floatingLabelStyle :  {color : '#fff', fontWeight: 300, top:'23.5px'},
-    floatingLabelFocusStyle : {color : 'rgba(255, 255, 255, 1)', fontWeight: 'bold'},
+    floatingLabelFocusStyle : {color : '#fff', fontWeight: 'bold'},
     underlineFocusStyle :  { borderColor: 'rgba(255, 255, 255, 0.8)' },
     hintStyle : {color : 'rgba(255, 255, 255, 0.6)'},
     textFieldStyle : {height:'55px'},
@@ -44,7 +44,7 @@ class Filters extends React.Component{
         let appbarClassName;
 
         if (this.state.wasOpenedFirstTime) {
-            appbarClassName = this.state.isSearchBarCollapsed ? "app-bar collapsed" : "app-bar";
+            appbarClassName = this.state.isSearchBarCollapsed ? "app-bar active-search" : "app-bar";
         }
 
         return <AppBar className={appbarClassName}
