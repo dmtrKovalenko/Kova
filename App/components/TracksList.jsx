@@ -5,6 +5,7 @@ import '../content/css/index.css';
 import defaultImg from '../content/img/default-artwork.png';
 import SongCard from './SongCard.jsx';
 import SDK from '../soundCloudSDK.jsx';
+import Immutable from 'Immutable';
 
 class TrackList extends React.Component{
     constructor(props) {
@@ -13,13 +14,23 @@ class TrackList extends React.Component{
             songsList : []
         }
 
-        SDK.searchTracks("", (tracks) => this.setState({songsList : tracks}).bind(this));
+        SDK.searchTracks(this.props.filter, (tracks) => this.setState({songsList : tracks}).bind(this));
     }
 
     componentWillReceiveProps(nextProps) {
-        this.setState({currentSongId : nextProps.currentSongId})
+        if (nextProps.currentSongId){
+            this.setState({currentSongId : nextProps.currentSongId});
+        }
+
+        if(!Immutable.is(nextProps.filter, this.props.filter)){
+            SDK.searchTracks(nextProps.filter.toJS().filter, (tracks) => this.setState({songsList : tracks}).bind(this));
+        }
     }
 
+    shouldComponentUpdate(nextProps){
+        return true;
+    }
+ 
     playSong (track){
         this.props.onSongChange(this.state.songsList, this.state.songsList.indexOf(track));
     }

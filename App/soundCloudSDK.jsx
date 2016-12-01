@@ -1,12 +1,14 @@
 export default {
-    searchTracks(query, callback){
+    searchTracks(filter, callback){
         SC.get('/tracks', {
-            q: query,
-            streamable:true,
+            q: filter.query,
+            linked_partitioning: 1,
+            offset: 0,
+            limit: 50,
         }).then(function(tracks) {
             console.log(tracks);
 
-            callback(tracks);
+            callback(tracks.collection);
         });
     },
     
