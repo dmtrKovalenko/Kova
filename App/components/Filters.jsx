@@ -41,30 +41,26 @@ class Filters extends React.Component{
     }
 
     render() {
-        let searchBarClassName = "search-bar animated ";
-        let iconClassName = "search-icon animated ";
+        let appbarClassName;
 
         if (this.state.wasOpenedFirstTime) {
-            searchBarClassName += this.state.isSearchBarCollapsed ? "animated bounceInRight" : "animated bounceOutRight";
-            iconClassName += this.state.isSearchBarCollapsed ? "animated searchInRight" : "animated searchOutRight";
-        } else {
-            searchBarClassName += "hidden";
+            appbarClassName = this.state.isSearchBarCollapsed ? "app-bar collapsed" : "app-bar";
         }
 
-        return <AppBar className="app-bar"
+        return <AppBar className={appbarClassName}
                        title="Kova"
                        iconClassNameRight="muidocs-icon-navigation-expand-more"
                        zDepth = {2}
-                       style = {{overflow:'hidden'}}
-                       iconElementRight={
-                            <div className={iconClassName}>
+                       style = {{overflow:'hidden', position: 'fixed'}}
+                       iconElementRight= {
+                            <div className="search-icon">
                                 <IconButton onClick={this.showSearchBar.bind(this)}
                                             style={styles.iconStyle}>
                                     <SearchIcon color={'#fff'} tooltip="Search"/>
                                 </IconButton>
                             </div>}>
 
-                            <div className={searchBarClassName}>
+                            <div className="search-bar">
                                 <TextField 
                                     hintText="Start type song title here"
                                     floatingLabelText="Search"
