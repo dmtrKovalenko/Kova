@@ -30,7 +30,7 @@ class VolumeBar extends React.Component{
     }
 
     setVolume(event, value){
-        SDK.setVolume(value);
+        //SDK.setVolume(value);
     }
 
     render(){

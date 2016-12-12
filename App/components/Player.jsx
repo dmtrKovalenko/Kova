@@ -10,9 +10,10 @@ import Avatar from 'material-ui/Avatar';
 import defaultImg from '../content/img/default-artwork.png';
 import moment from 'moment';
 import '../content/css/player.css';
-import SDK from '../soundCloudSDK.jsx';
+import defaultSDK from '../soundCloudSDK.jsx';
 
 const floatButtonClassName =  "control-button";
+let SDK = new defaultSDK();
 
 class Player extends React.Component{
     constructor(props) {
@@ -25,16 +26,8 @@ class Player extends React.Component{
    
     componentWillReceiveProps(nextProps) {
         if(nextProps.currentSong){
-            SDK.streamSong(nextProps.currentSong.id,() => this.setInitialHandlers());
             this.setState({isPlaying: true, isPaused:false});
         }
-    }
-
-    setInitialHandlers(){
-        let component = this;
-
-        SDK.onTimeChanged(() => component.setState({playbackTime :  window.SCplayer.currentTime()}));
-        SDK.onPlayEnded(() => component.props.changeSongIndex(this.props.currentSongIndex + 1));
     }
 
     pause() {
@@ -42,9 +35,9 @@ class Player extends React.Component{
             this.setState({isPaused : !this.state.isPaused})
 
             if(this.state.isPaused){
-                SDK.play();
+                this.audioPlayer.play();
             } else{
-                SDK.pause();
+                this.audioPlayer.pause();
             }   
         }
     }
@@ -58,11 +51,19 @@ class Player extends React.Component{
       return tempTime;
     }
 
+    setTime(){
+        this.setState({playbackTime:this.audioPlayer.currentTime})
+    }
     render() {
        var playIconClassName = this.state.isPaused ? 'paused' : 'playing';
 
        if (this.state.isPlaying){
           return <div className="player animated slideInUp">
+                    <audio ref={(audio) => {this.audioPlayer = audio}} 
+                           src={SDK.getStreamUrl(this.props.currentSong)}
+                           onCanPlayThrough={() => this.audioPlayer.play()}
+                           onTimeUpdate={() => this.setTime()}/>
+                    
                     <div className="artwork flex-container">
                         <Avatar src={this.props.currentSong.artwork_url ? 
                                 this.props.currentSong.artwork_url.replace('large.jpg', 't500x500.jpg') : defaultImg} 
@@ -86,7 +87,7 @@ class Player extends React.Component{
                     </div>
 
                     <div className="controls flex-container">
-                        <VolumeBar initialVolume={SDK.getVolume()}/>
+                        <VolumeBar initialVolume={50}/>
                         <FloatingActionButton mini={true} className={floatButtonClassName}
                                               onClick={() => this.props.changeSongIndex(this.props.currentSongIndex - 1)}>
                             <Previous />

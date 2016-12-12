@@ -148,9 +148,9 @@
 }
 
 @-webkit-keyframes play{
-    0%{width:100%; height: 100%; background-image: url(../img/card-play.png);}
-    50%{width: 100px; height: 90px;transform: translate(120%, -250%);background-image: url(../img/card-play.png);}
-    100%{width: 70px;height: 70px; background-image: url(../img/card-play.png);}
+  0%{width:100%; height: 100%; background-image: url(../img/card-play.png);}
+    20%{width:110px; height: 110px;}
+    100%{width: 70px;height: 70px;transform: translate(120%, -250%);background-image: url(../img/card-play.png);}
 }
 
 @keyframes play{
@@ -160,9 +160,9 @@
 }
 
 @-moz-keyframes play{
-    0%{width:100%; height: 100%; background-image: url(../img/card-play.png);}
-    50%{width: 100px; height: 90px;background-image: url(../img/card-play.png);}
-    100%{width: 70px;height: 70px; background-image: url(../img/card-play.png);}
+     0%{width:100%; height: 100%; background-image: url(../img/card-play.png);}
+    20%{width:110px; height: 110px;}
+    100%{width: 70px;height: 70px;-moz-transform: translate(120%, -250%);background-image: url(../img/card-play.png);}
 }
 
 .now-playing .circle-2,
