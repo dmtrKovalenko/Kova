@@ -22,6 +22,7 @@ class Player extends React.Component{
         this.state = {
             isPaused : false,
             isPlaying: false,
+            playbackTime: 0,
         }
     }
    
