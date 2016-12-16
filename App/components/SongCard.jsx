@@ -25,11 +25,13 @@ class SongCard extends React.Component{
 
     selectSong(){
         this.card.classList.add('active');
+        setTimeout(()=> this.title.classList.add('active'), 500)
         this.fab.style.backgroundImage = 'none';
     }
 
     unSelectSong(){
         this.card.classList.remove('active');
+        setTimeout(()=> this.title.classList.remove('active'), 600)
         setTimeout(()=>this.fab.style.backgroundImage = 'url(content/img/card-play.png)', 700)
     }
 
@@ -48,10 +50,8 @@ class SongCard extends React.Component{
                    <div className="close"
                         onClick={this.unSelectSong.bind(this)}></div>
 
-                  <div className="title-container">
-                    <Avatar className="user-avatar"
-                            src={this.props.userAvatar}
-                            size={50}/>
+                  <div ref={(ref) => { this.title = ref; }}
+                       className="title-container">
                     <span className="user-name"> {this.props.userName} </span>
                     <span className="title"> {this.props.title} </span>
                   </div> 

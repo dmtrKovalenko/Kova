@@ -48,7 +48,6 @@ class TrackList extends React.Component{
                           artwork={track.artwork_url ? track.artwork_url.replace('large.jpg', 't500x500.jpg') : defaultImg}
                           title={track.title}
                           userName={track.user.username}
-                          userAvatar={track.user.avatar_url}
                           play={() => this.playSong(track)}
                           isCurrent={this.state.currentSongId == track.id}/>);
 
