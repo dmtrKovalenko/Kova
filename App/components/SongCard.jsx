@@ -25,7 +25,7 @@ class SongCard extends React.Component{
 
     selectSong(){
         this.card.classList.add('active');
-        setTimeout(()=> this.title.classList.add('active'), 500)
+        setTimeout(()=> this.title.classList.add('active'), 480)
         this.fab.style.backgroundImage = 'none';
     }
 

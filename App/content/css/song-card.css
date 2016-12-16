@@ -130,7 +130,7 @@
 	color:#857f7f;
 	font-weight: bold;
 	margin: 5px 5px 0;
-	max-width: 130px;
+	width: 130px;
 	font-size: 14px;
 }
 
@@ -145,7 +145,6 @@
 .title-container.active .title{
 	text-align: center;
 	color: white;
-	max-width: 100%;
 	width: 100%;
 	margin: auto;
 	-webkit-transition: all 0.2s ease;

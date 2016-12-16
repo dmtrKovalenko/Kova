@@ -13,6 +13,7 @@ import '../content/css/player.css';
 import defaultSDK from '../soundCloudSDK.jsx';
 
 const floatButtonClassName =  "control-button";
+const defaultVolume = 0.5;
 let SDK = new defaultSDK();
 
 class Player extends React.Component{
@@ -29,6 +30,10 @@ class Player extends React.Component{
             this.setState({isPlaying: true, isPaused:false});
         }
     }
+    
+    shouldComponentUpdate (nextProps, nextState){
+        return true;
+    }
 
     pause() {
         if (this.state.isPlaying){
@@ -42,18 +47,24 @@ class Player extends React.Component{
         }
     }
 
-    seek(event, value){
-        SDK.seek(value);
-    }
-
-    secondsToHMS(ms){
-      var tempTime = moment.utc(ms).format("mm:ss");
-      return tempTime;
+    startPlay(){
+        this.audioPlayer.volume = defaultVolume;
+        this.audioPlayer.play();
     }
 
     setTime(){
         this.setState({playbackTime:this.audioPlayer.currentTime})
     }
+
+    seek(event, value){
+        this.audioPlayer.currentTime = value;
+    }
+
+    secondsToHMS(ss){
+      var tempTime = moment.utc(ss).format("mm:ss");
+      return tempTime;
+    }
+
     render() {
        var playIconClassName = this.state.isPaused ? 'paused' : 'playing';
 
@@ -61,8 +72,8 @@ class Player extends React.Component{
           return <div className="player animated slideInUp">
                     <audio ref={(audio) => {this.audioPlayer = audio}} 
                            src={SDK.getStreamUrl(this.props.currentSong)}
-                           onCanPlayThrough={() => this.audioPlayer.play()}
-                           onTimeUpdate={() => this.setTime()}/>
+                           onCanPlayThrough={() => this.startPlay()}
+                           onTimeUpdate={this.setTime.bind(this)}/>
                     
                     <div className="artwork flex-container">
                         <Avatar src={this.props.currentSong.artwork_url ? 
@@ -76,10 +87,10 @@ class Player extends React.Component{
                     </div>
 
                     <div className="slider flex-container">
-                        <div className="current time"> {this.secondsToHMS(this.state.playbackTime)} </div>
+                        <div className="current time"> {this.secondsToHMS(this.state.playbackTime * 1000)} </div>
                         <div className="slider-container">
                             <Slider sliderStyle={{marginBottom:0, marginTop:30}} 
-                                    max={this.props.currentSong.duration} 
+                                    max={this.props.currentSong.duration / 1000} 
                                     value={this.state.playbackTime}
                                     onChange={this.seek.bind(this)}/>
                         </div>
@@ -87,7 +98,9 @@ class Player extends React.Component{
                     </div>
 
                     <div className="controls flex-container">
-                        <VolumeBar initialVolume={50}/>
+                        <VolumeBar initialVolume={defaultVolume}
+                                   setVolume = {(value) => this.audioPlayer.volume = value}/>
+
                         <FloatingActionButton mini={true} className={floatButtonClassName}
                                               onClick={() => this.props.changeSongIndex(this.props.currentSongIndex - 1)}>
                             <Previous />
