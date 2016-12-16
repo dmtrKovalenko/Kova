@@ -4,8 +4,10 @@ import {Card, CardActions, CardHeader, CardMedia, CardTitle, CardText} from 'mat
 import '../content/css/index.css';
 import defaultImg from '../content/img/default-artwork.png';
 import SongCard from './SongCard.jsx';
-import SDK from '../soundCloudSDK.jsx';
+import defaultSDK from '../soundCloudSDK.jsx';
 import Immutable from 'Immutable';
+
+let SDK = new defaultSDK();
 
 class TrackList extends React.Component{
     constructor(props) {
@@ -45,6 +47,7 @@ class TrackList extends React.Component{
                 <SongCard key={track.id}
                           artwork={track.artwork_url ? track.artwork_url.replace('large.jpg', 't500x500.jpg') : defaultImg}
                           title={track.title}
+                          userName={track.user.username}
                           play={() => this.playSong(track)}
                           isCurrent={this.state.currentSongId == track.id}/>);
 

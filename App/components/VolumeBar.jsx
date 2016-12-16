@@ -14,10 +14,9 @@ import '../content/css/player.css';
 
 class VolumeBar extends React.Component{
     constructor(props){
-        super(props);
+        super(props);    
         this.state = {
-            isDisplaying : null,
-            currentVolume : props.initialVolume
+            isDisplaying : null
         }
     }
     
@@ -30,7 +29,8 @@ class VolumeBar extends React.Component{
     }
 
     setVolume(event, value){
-        SDK.setVolume(value);
+       this.setState({currentVolume: value})
+       this.props.setVolume(value);
     }
 
     render(){
@@ -49,9 +49,8 @@ class VolumeBar extends React.Component{
                         <Slider style={{height: 100}} 
                                 axis="y"
                                 defaultValue={this.props.initialVolume}
-                                min = {0}
-                                max = {1}
-                                onChange={this.setVolume} />
+                                min = {0}  max = {1}
+                                onChange={this.setVolume.bind(this)} />
                     </Paper >
                     <IconButton onClick={this.showVolumeBar.bind(this)}>
                         {volumeIcon}

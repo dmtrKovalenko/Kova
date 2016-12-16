@@ -1,4 +1,7 @@
-export default {
+const SCStremUrl = 'https://api.soundcloud.com/tracks/%track.id%/stream?client_id=f4323c6f7c0cd73d2d786a2b1cdae80c';
+const trackIdToken = '%track.id%';
+
+class SDK{
     searchTracks(filter, callback){
         SC.get('/tracks', {
             q: filter.query,
@@ -10,56 +13,12 @@ export default {
 
             callback(tracks.collection);
         });
-    },
+    }
     
-    streamSong(id, callback){
-        SC.stream('/tracks/' + id).then(function(player){
-            window.SCplayer = player;
-            SCplayer.play();
-
-            if(callback){
-                callback();
-            } 
-        }.bind(this));
-    },
-
-    getVolume(){
-        if(!window.SCplayer){
-            return 1;
-        }
-
-        return window.SCplayer.getVolume();
-    },    
-
-    setVolume (value){
-        window.SCplayer.setVolume(value);
-    },
-
-    play(){
-        window.SCplayer.play();
-    },
-
-    pause(){
-        window.SCplayer.pause();
-    },
-
-    seek(value){
-        window.SCplayer.seek(value);
-    },
-
-    getCurrentTime(){
-        return window.SCplayer.currentTime();
-    },
-
-    onTimeChanged(callback){
-        window.SCplayer.on('time', callback);
-    },
-    
-    onPlayEnded(callback){
-        window.SCplayer.on('finish', callback);
-    },
-    
-    onPlayStarted(callback){
-        window.SCplayer.on('buffering_end', callback);
+    getStreamUrl(track){
+        const url = SCStremUrl.replace(trackIdToken, track.id);
+        return url;
     }
 }
+
+export default SDK;

@@ -8,7 +8,7 @@
     display: flex;
     align-items:space-between;
     animation-duration: 0.25s;
-    z-index: 100;
+    z-index: 1001;
 }
 
 .control-button {
