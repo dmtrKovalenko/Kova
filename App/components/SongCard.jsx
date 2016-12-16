@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import '../content/css/song-card.css';
 import SDK from '../soundCloudSDK.jsx';
 import defaultImg from '../content/img/night-default-artwork.png';
+import Avatar from 'material-ui/Avatar';
 
 class SongCard extends React.Component{
     constructor(props) {
@@ -46,6 +47,14 @@ class SongCard extends React.Component{
                    <div className="fab-sha"></div>
                    <div className="close"
                         onClick={this.unSelectSong.bind(this)}></div>
+
+                  <div className="title-container">
+                    <Avatar className="user-avatar"
+                            src={this.props.userAvatar}
+                            size={50}/>
+                    <span className="user-name"> {this.props.userName} </span>
+                    <span className="title"> {this.props.title} </span>
+                  </div> 
                </div>
     }
 }

@@ -1,9 +1,9 @@
 .card {
 	width: 260px;
-    height: 350px;
+    height: 340px;
     background-color: #fff;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
-    margin: 30px 20px 60px;
+    margin: 30px 20px 40px;
     position: relative;
     overflow: hidden;
     display: inline-block;
@@ -11,7 +11,7 @@
 
 .card .main {
 	width: 100%;
-	height: 70%;
+	height: 80%;
 	z-index: 1;
 	background-position: center;
     background-repeat: no-repeat;
@@ -29,8 +29,8 @@
 	transition: 1s background-image ease;
 	position: absolute;
 	z-index: 99;
-	right: 20px;
-	top: calc(70% - 30px);
+	right: 15px;
+	top: calc(80% - 30px);
 	border-radius: 50%;
 	cursor: pointer;
 	box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
@@ -52,7 +52,7 @@
 	width: 50px;
 	height: 50px;
 	right: 20px;
-	top: calc(70% - 25px);
+	top: calc(80% - 30px);
 	border: 1px solid #4DD0E1;
 	border-radius: 50%;
 	transform: scale3d(0.9, 0.9, 1);
@@ -104,4 +104,34 @@
 	transform: rotateZ(135deg) scale3d(1, 1, 1);
 	transition: 0.4s cubic-bezier(0.65, -0.68, 0.49, 1.94);
 	transition-delay: .4s;
+}
+
+.title-container{
+	padding:7px 10px;
+	font-family: Roboto, sans-serif;
+}
+
+.title-container .user-avatar{
+	float: left;
+}
+
+.title-container .user-name,
+.title-container .title{
+	float: left;
+	text-overflow: ellipsis;
+	text-align: left;
+	white-space: nowrap;
+	overflow: hidden;
+}
+
+.title-container .user-name{
+	margin: 5px 5px 0;
+	max-width: 130px;
+	font-size: 14px;
+}
+
+.title-container .title{
+	width: 185px;
+    margin: 3px 0 0 5px;
+    font-size: 16px;
 }
