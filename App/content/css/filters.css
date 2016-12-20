@@ -1,5 +1,10 @@
 .search-bar{
    display: none;
+   width: 450px;
+}
+
+.search-bar > div {
+  width: 100% !important;
 }
 
 .search-bar,
@@ -29,9 +34,22 @@
 }
 
 .app-bar > div{
-    -webkit-animation-name: searchOutRight;
-    animation-name: searchOutRight;
+    -webkit-animation-name: searchOutRight450;
+    animation-name: searchOutRight450;
     animation-duration: 0.61s;
+}
+
+
+@media(max-width:550px){
+  .search-bar{
+    width: 250px;
+  }
+
+  .app-bar > div{
+    -webkit-animation-name: searchOutRight250;
+    animation-name: searchOutRight250;
+    animation-duration: 0.61s;
+  }
 }
 
 
@@ -49,7 +67,35 @@
     }
 }
 
-@-webkit-keyframes searchOutRight {
+@-webkit-keyframes searchOutRight450 {
+  20% {
+    opacity: 1;
+    -webkit-transform: translate3d(-20px, 0, 0);
+    transform: translate3d(-20px, 0, 0);
+  }
+
+  to {
+    opacity: 1;
+     -webkit-transform: translate3d(-20px, 0, 0);
+    transform: translate3d(-20px, 0, 0);
+  }
+}
+
+@keyframes searchOutRight450 {
+  20% {
+    opacity: 1;
+    -webkit-transform: translate3d(-20px, 0, 0);
+    transform: translate3d(-20px, 0, 0);
+  }
+
+  to {
+    opacity: 1;
+    -webkit-transform: translate3d(450px, 0, 0);
+    transform: translate3d(450px, 0, 0);
+  }
+}
+
+@-webkit-keyframes searchOutRight250 {
   20% {
     opacity: 1;
     -webkit-transform: translate3d(-20px, 0, 0);
@@ -63,7 +109,7 @@
   }
 }
 
-@keyframes searchOutRight {
+@keyframes searchOutRight250 {
   20% {
     opacity: 1;
     -webkit-transform: translate3d(-20px, 0, 0);
@@ -72,10 +118,11 @@
 
   to {
     opacity: 1;
-    -webkit-transform: translate3d(40px, 0, 0);
+    -webkit-transform: translate3d(250px, 0, 0);
     transform: translate3d(250px, 0, 0);
   }
 }
+
 
 @-webkit-keyframes bounceInRight {
   from, 60%, 75%, 90%, to {
@@ -85,8 +132,8 @@
 
   from {
     opacity: 0;
-    -webkit-transform: translate3d(250px, 0, 0);
-    transform: translate3d(250px, 0, 0);
+    -webkit-transform: translate3d(350px, 0, 0);
+    transform: translate3d(350px, 0, 0);
   }
 
   60% {

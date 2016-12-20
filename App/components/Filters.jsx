@@ -31,12 +31,17 @@ class Filters extends React.Component{
             this.state.wasOpenedFirstTime = true;
         }
 
+        if(!this.state.isSearchBarCollapsed){
+            setTimeout(() => this.searchInput.focus(), 200) 
+        }
+
         this.setState({isSearchBarCollapsed : !this.state.isSearchBarCollapsed});
     }
 
     setQuery(event){
         if (event.key == 'Enter'){
             this.props.applyFilters(new Filter(event.currentTarget.value));
+            this.searchInput.blur();
         }
     }
 
@@ -61,7 +66,8 @@ class Filters extends React.Component{
                             </div>}>
 
                             <div className="search-bar">
-                                <TextField 
+                                <TextField
+                                    ref={(ref) => {this.searchInput = ref}} 
                                     hintText="Start type song title here"
                                     floatingLabelText="Search"
                                     floatingLabelStyle={styles.floatingLabelStyle}
