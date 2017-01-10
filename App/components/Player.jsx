@@ -31,10 +31,6 @@ class Player extends React.Component{
             this.setState({isPlaying: true, isPaused:false});
         }
     }
-    
-    shouldComponentUpdate (nextProps, nextState){
-        return true;
-    }
 
     pause() {
         if (this.state.isPlaying){
@@ -66,6 +62,11 @@ class Player extends React.Component{
       return tempTime;
     }
 
+    selectNextSong(){
+        debugger
+        this.props.changeSongIndex(this.props.currentSongIndex + 1)
+    }
+
     render() {
        var playIconClassName = this.state.isPaused ? 'paused' : 'playing';
 
@@ -73,8 +74,9 @@ class Player extends React.Component{
           return <div className="player animated slideInUp">
                     <audio ref={(audio) => {this.audioPlayer = audio}} 
                            src={SDK.getStreamUrl(this.props.currentSong)}
-                           onCanPlayThrough={() => this.startPlay()}
-                           onTimeUpdate={this.setTime.bind(this)}/>
+                           onCanPlayThrough={this.startPlay.bind(this)}
+                           onTimeUpdate={this.setTime.bind(this)}
+                           onEnded={this.selectNextSong.bind(this)}/>
                     
                     <div className="artwork flex-container">
                         <Avatar src={this.props.currentSong.artwork_url ? 
@@ -113,7 +115,7 @@ class Player extends React.Component{
                         </FloatingActionButton>
 
                         <FloatingActionButton mini={true}
-                                              onClick={() => this.props.changeSongIndex(this.props.currentSongIndex + 1)}>
+                                              onClick={this.selectNextSong.bind(this)}>
                             <Next />
                         </FloatingActionButton>
                     </div>

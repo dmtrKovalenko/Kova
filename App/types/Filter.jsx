@@ -1,6 +1,7 @@
 class Filter {
-    constructor(query){
-        this.query = query
+    constructor(query, limit){
+        this.query = query,
+        this.limit = limit ? limit : 50;
     }
 }
 

@@ -3,10 +3,6 @@
    width: 450px;
 }
 
-.search-bar > div {
-  width: 100% !important;
-}
-
 .search-bar,
 .app-bar > div{
      -webkit-animation-duration: 1s;

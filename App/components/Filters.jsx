@@ -1,18 +1,22 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import AppBar from 'material-ui/AppBar';
-import TextField from 'material-ui/TextField';
+import AutoComplete from 'material-ui/AutoComplete';
 import IconButton from 'material-ui/IconButton';
 import SearchIcon from 'material-ui/svg-icons/action/search';
 import '../content/css/filters.css';
 import Filter from '../types/Filter.jsx';
+import Immutable from 'Immutable';
+import defaultSDK from '../soundCloudSDK.jsx';
+
+let SDK = new defaultSDK();
 
 const styles = {
     floatingLabelStyle :  {color : '#fff', fontWeight: 300, top:'23.5px'},
     floatingLabelFocusStyle : {color : '#fff', fontWeight: 'bold'},
     underlineFocusStyle :  { borderColor: 'rgba(255, 255, 255, 0.8)' },
     hintStyle : {color : 'rgba(255, 255, 255, 0.6)'},
-    textFieldStyle : {height:'55px'},
+    style : {height:'60px'},
     iconStyle : {marginTop:'3px', marginRight:'8px'},
     inputStyle : {marginTop: '3px', color: '#fff'}
 }
@@ -23,6 +27,7 @@ class Filters extends React.Component{
         this.state = {
             isSearchBarCollapsed : false,
             wasOpenedFirstTime : false,
+            dataSource: [],
         }
     }
 
@@ -38,11 +43,14 @@ class Filters extends React.Component{
         this.setState({isSearchBarCollapsed : !this.state.isSearchBarCollapsed});
     }
 
-    setQuery(event){
-        if (event.key == 'Enter'){
-            this.props.applyFilters(new Filter(event.currentTarget.value));
-            this.searchInput.blur();
-        }
+    handleUpdateInput(value){
+        SDK.searchTracks(new Filter(value, 10), 
+            (tracks) => this.setState({dataSource : tracks.map((tr) => tr.title)}).bind(this));
+    };
+
+    setQuery(value){
+        this.props.applyFilters(new Filter(value));
+        this.searchInput.blur();
     }
 
     render() {
@@ -65,19 +73,23 @@ class Filters extends React.Component{
                                 </IconButton>
                             </div>}>
 
-                            <div className="search-bar">
-                                <TextField
-                                    ref={(ref) => {this.searchInput = ref}} 
-                                    hintText="Start type song title here"
-                                    floatingLabelText="Search"
-                                    floatingLabelStyle={styles.floatingLabelStyle}
-                                    floatingLabelFocusStyle = {styles.floatingLabelFocusStyle}
-                                    underlineFocusStyle={styles.underlineFocusStyle}
-                                    hintStyle={styles.hintStyle}
-                                    style = {styles.textFieldStyle}
-                                    inputStyle = {styles.inputStyle}
-                                    onKeyPress = {this.setQuery.bind(this)}/>
-                            </div>
+                        <div className="search-bar">
+                            <AutoComplete
+                                hintText="Start typing song title here"
+                                dataSource={this.state.dataSource}
+                                ref={(ref) => {this.searchInput = ref}} 
+                                floatingLabelText="Search"
+                                floatingLabelStyle={styles.floatingLabelStyle}
+                                floatingLabelFocusStyle = {styles.floatingLabelFocusStyle}
+                                underlineFocusStyle={styles.underlineFocusStyle}
+                                hintStyle={styles.hintStyle}
+                                style = {styles.style}
+                                textFieldStyle = {styles.style}
+                                inputStyle = {styles.inputStyle}
+                                fullWidth={true}
+                                onUpdateInput={(value) => this.handleUpdateInput(value)}
+                                onNewRequest ={(value) => this.setQuery(value)}/>
+                        </div>
                </AppBar>
     }
 }

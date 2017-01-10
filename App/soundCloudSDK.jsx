@@ -7,7 +7,7 @@ class SDK{
             q: filter.query,
             linked_partitioning: 1,
             offset: 0,
-            limit: 50,
+            limit: filter.limit,
         }).then(function(tracks) {
             console.log(tracks);
 
