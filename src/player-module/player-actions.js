@@ -46,6 +46,25 @@ export function changeVolume(newValue){
     }
 }
 
+export function seekStarted(){
+    return {
+        type: types.SEEK_STARTED
+    }
+}
+
+export function seek(value){
+    return {
+        type: types.SEEK,
+        value: value
+    }
+}
+
+export function seeked(){
+    return {
+        type: types.SEEK_ENDED
+    }
+}
+
 export const actions = {
     play,
     pause,

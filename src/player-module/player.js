@@ -20,6 +20,7 @@ const ACTION_HANDLERS = {
             playList: action.playList,
             isPlaying: true, 
             isPaused: false,
+            playbackTime: 0,
             currentSongIndex: action.playList.findIndex(song => song.id == action.songId)
         });
     },
@@ -36,6 +37,24 @@ const ACTION_HANDLERS = {
         });
     },
 
+    [types.SEEK_STARTED]: (state, action) => {
+        return Object.assign({}, state, {
+            isSeeking: true,
+        });
+    },
+
+    [types.SEEK]: (state, action) => {
+        return Object.assign({}, state, {
+            playbackTime: action.value
+        });
+    },
+
+    [types.SEEK_ENDED]: (state, action) => {
+        return Object.assign({}, state, {
+            isSeeking: false,
+        });
+    },
+
     [types.PLAY_NEXT_SONG] : (state, action) => {
         return getUpdatedSongIndexState(state.currentSongIndex + 1, state);
     },
@@ -48,7 +67,7 @@ const ACTION_HANDLERS = {
 function getUpdatedSongIndexState(newIndex, state){
     const newSong = state.playList[newIndex];
 
-    if(!newSong){
+    if(!newSong) {
         return state;
     }
 
@@ -67,7 +86,8 @@ const initialState = {
     currentSongId : null,
     playbackTime : null,
     playList : null,
-    currentSongIndex : null
+    currentSongIndex : null,
+    isSeeking: false
 }
 
 export default function playerReducer (state = initialState, action) {

@@ -7,11 +7,13 @@ import Slider from 'material-ui/Slider'
 import Next from 'material-ui/svg-icons/av/skip-next'
 import Avatar from 'material-ui/Avatar'
 import defaultImg from '../../../assets/default-artwork.png'
+import {formatMS, formatSS} from '../../../utils/TimeHelper'
 import '../styles/Controls.scss'
 
 export const PlayerControls = (props) => {
     const floatButtonClassName =  "control-button";
     const playIconClassName = props.isPaused ? 'paused' : 'playing';
+    let sliderRef;
 
     if (props.currentSong && props.isPlaying){
         return (
@@ -29,16 +31,19 @@ export const PlayerControls = (props) => {
 
                 <div className="slider flex-container">
                     <div className="current time"> 
-                        {props.playbackTime} 
+                        {formatSS(props.playbackTime)} 
                     </div>
                     <div className="slider-container">
-                        <Slider sliderStyle={{marginBottom:0, marginTop:30}} 
+                        <Slider ref={ref => sliderRef = ref}
+                                sliderStyle={{marginBottom:0, marginTop:30}} 
                                 max={props.currentSong.duration / 1000}
                                 value={props.playbackTime}
-                                /*todo add seek method*//>
+                                onDragStart={props.seekStarted}
+                                onChange={(event, value) => props.seek(value)}
+                                onDragStop={props.seeked}/>
                     </div>
                     <div className="duration time">
-                        00:00
+                        {formatMS(props.currentSong.duration)} 
                     </div>
                 </div>
 
