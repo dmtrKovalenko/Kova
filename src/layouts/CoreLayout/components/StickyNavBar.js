@@ -16,6 +16,10 @@ class StickyNavBar extends React.Component {
         }
     }
 
+    shouldComponentUpdate(nextProps, nextState){
+        return nextState.isExpanded != this.state.isExpanded || nextState.isSmaller != this.state.isSmaller;
+    }
+
     componentDidMount(){
         window.addEventListener('scroll', this.handleScroll.bind(this));
     }
@@ -25,13 +29,11 @@ class StickyNavBar extends React.Component {
     }
 
     handleScroll() {
-        if (window.scrollY > 70) {
-            if (!this.state.isSmaller) {
-                this.setState({
-                    isSmaller : true 
-                });
-            }
-        } else {
+        if (window.scrollY > 70 && !this.state.isSmaller) {
+            this.setState({
+                isSmaller : true 
+            });
+        } else if (window.scrollY < 70 && this.state.isSmaller) {
             this.setState({
                 isExpanded : false,
                 isSmaller : false,
@@ -60,7 +62,7 @@ class StickyNavBar extends React.Component {
     }
 
     getRandomSlogan() {
-        var index = Math.floor(Math.random() * (Slogans.length + 1));
+        var index = Math.floor(Math.random() * (Slogans.length));
 
         return Slogans[index];
     }

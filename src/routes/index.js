@@ -6,9 +6,10 @@ import CounterRoute from './Counter'
 export const createRoutes = (store) => ({
   path        : '/',
   component   : CoreLayout,
-  indexRoute  : Songs(store),
+  indexRoute  : { onEnter: (nextState, replace) => replace('/songs') },
   childRoutes : [
-    CounterRoute(store)
+    CounterRoute(store),
+    Songs(store)
   ]
 })
 

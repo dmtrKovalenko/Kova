@@ -7,10 +7,10 @@ header {
     left: 0;
     z-index: 1001;
     background-color: rgb(0, 188, 212);
-    -webkit-transition: all 0.3s ease-in-out;
-    -moz-transition: all 0.3s ease-in-out;
-    -ms-transition: all 0.3s ease-in-out;
-    transition: all 0.3s ease-in-out;
+    -webkit-transition: all 0.3s ease;
+    -moz-transition: all 0.3s ease;
+    -ms-transition: all 0.3s ease;
+    transition: all 0.3s ease;
     padding: 10px 10px 0;
     box-shadow: rgba(0, 0, 0, 0.156863) 0px 3px 10px, rgba(0, 0, 0, 0.227451) 0px 3px 10px;
     
@@ -55,7 +55,7 @@ header {
 
 header.smaller {
     height: 64px;
-
+    
     .logo-img,
     .subheader{
         transition: transform .4s ease;
@@ -81,7 +81,13 @@ header.expanded {
 }
 
 @media all and (max-width: 660px) {
-    header h1.logo {
-        margin-top:15px;
+    header {
+        h1.logo {
+            margin-top:15px;
+        }
+
+        .logo-container {
+            margin-top:13px;
+        }
     }
 }   

@@ -23,6 +23,10 @@ class SearchBar extends React.Component{
         });
     };
 
+    search = (value) => {
+        this.props.router.push({ pathname: '/songs', query: { q: value }});
+    }
+
     render() {
         return (
             <Paper zDepth={2}
@@ -35,7 +39,8 @@ class SearchBar extends React.Component{
                     <AutoComplete hintText="Search"
                                   dataSource={this.state.dataSource}
                                   onUpdateInput={this.handleUpdateInput}
-                                  fullWidth={true} />
+                                  fullWidth={true}
+                                  onNewRequest={this.search.bind(this)} />
                 </div>
             </Paper>)
     } 

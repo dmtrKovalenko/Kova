@@ -23,17 +23,21 @@ class SongCard extends React.Component{
     }
 
     selectSong() {
-        this.card.classList.add('active');
-        this.fab.style.backgroundImage = 'none';
+        if(this.card) {
+            this.card.classList.add('active');
+            this.fab.style.backgroundImage = 'none';
 
-        setTimeout(() => this.title.classList.add('active'), 480)
+            setTimeout(() => this.title.classList.add('active'), 480)
+        }
     }
 
     unSelectSong() {
-        this.card.classList.remove('active');
-        
-        setTimeout(() => this.title.classList.remove('active'), 600)
-        setTimeout(() => this.fab.style.backgroundImage = '', 700)
+        if(this.card) {
+            this.card.classList.remove('active');
+            
+            setTimeout(() => this.title.classList.remove('active'), 600)
+            setTimeout(() => this.fab.style.backgroundImage = '', 700)
+        }
     }
 
     render() {

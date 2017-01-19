@@ -10,12 +10,12 @@ import '../../../styles/core.scss'
 export const CoreLayout = (props) => (
    <div className="app">
       <StickyNav>
-        <SearchBar/>
+        <SearchBar router={props.router}/>
       </StickyNav>
 
       <div className="main-content">
         {props.children}
-      </div>]
+      </div>
       
       <PlayerControls currentSong={props.currentSong}
                       isPlaying={props.isPlaying}

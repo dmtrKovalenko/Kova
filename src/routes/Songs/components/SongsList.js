@@ -10,8 +10,23 @@ class SongsList extends React.Component{
         super(props);
     }
 
+    shouldComponentUpdate(nextProps) {
+        if (this.props.location.query != nextProps.location.query ||
+            !Immutable.is(this.props.songsList, nextProps.songsList)) {
+            return true;
+        }
+
+        return false;
+    }
+
     componentDidMount() {
-        this.props.fetchSongs(new Filter());
+        this.props.fetchSongs(new Filter(this.props.location.query.q));
+    }
+
+    componentDidUpdate(prevProps) {
+        if (this.props.location.query != prevProps.location.query) {
+            this.props.fetchSongs(new Filter(this.props.location.query.q));
+        }
     }
 
     render() {

@@ -2,6 +2,7 @@ import { injectReducer } from '../../store/reducers'
 import { combineReducers } from 'redux'
 
 export default (store) => ({
+  path : 'songs',
   getComponent (nextState, cb) {
     require.ensure([], (require) => {
       const SongsList = require('./containers/SongsListContainer').default;
