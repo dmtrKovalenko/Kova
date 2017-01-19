@@ -1,43 +1,41 @@
 header {
     width: 100%;
-    height: 300px;
+    height: 370px;
     overflow: hidden;
     position: fixed;
     top: 0;
     left: 0;
     z-index: 1001;
     background-color: rgb(0, 188, 212);
-    -webkit-transition: height 0.3s;
-    -moz-transition: height 0.3s;
-    -ms-transition: height 0.3s;
-    transition: height 0.3s;
+    -webkit-transition: all 0.3s ease-in-out;
+    -moz-transition: all 0.3s ease-in-out;
+    -ms-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
     padding: 10px 10px 0;
-    box-shadow: 0 1px 3px rgba(0,0,0,.12), 0 1px 2px rgba(0,0,0,.24);
+    box-shadow: rgba(0, 0, 0, 0.156863) 0px 3px 10px, rgba(0, 0, 0, 0.227451) 0px 3px 10px;
     
     .logo-img {
-        width: 300px;
-        margin-left: calc(50% - 70px);
+        width: 350px;
+        margin-left: calc(50% - 80px);
+    }
+
+    .search-button{
+        float: right;
     }
 
     .logo-container {
         display: block;
         text-align: center;
         margin-top:13px;
-        
-        .left-navigation{
-            display: block;
-            position: relative;
-            top: 4px;
-        }
 
         .logo {
+            -webkit-transition: all 0.3s ease-in-out;
+            -moz-transition: all 0.3s ease-in-out;
+            -ms-transition: all 0.3s ease-in-out;
+            transition: all 0.3s ease-in-out;
             color:white;
             font-weight: 400;
-            font-size: 35px;
-            -webkit-transition: all 0.5s;
-            -moz-transition: all 0.5s;
-            -ms-transition: all 0.5s;
-            transition: all 0.5s;
+            font-size: 40px;
             margin-top:0;
         }
 
@@ -58,12 +56,10 @@ header {
 header.smaller {
     height: 64px;
 
-    .logo-img{
-        display: none;
-    }
-
-    .left-navigation{
-        display: inline-block;
+    .logo-img,
+    .subheader{
+        transition: transform .4s ease;
+        transform: translateY(200px);
     }
 
     h1.logo {
@@ -74,11 +70,15 @@ header.smaller {
         left: 60px;
     }
 
-    .subheader { 
-        opacity: 0;
+    .children{
+        transition: transform .3s ease;
+        transform: translateY(-160px);
     }
 }
 
+header.expanded { 
+    height: 135px;
+}
 
 @media all and (max-width: 660px) {
     header h1.logo {

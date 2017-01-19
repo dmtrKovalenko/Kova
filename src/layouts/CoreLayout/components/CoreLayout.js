@@ -3,12 +3,15 @@ import AppBar from 'material-ui/AppBar'
 import Player from './Player'
 import PlayerControls from './PlayerControls'
 import StickyNav from './StickyNavBar'
+import SearchBar from './SearchBar'
 import '../styles/CoreLayout.scss'
 import '../../../styles/core.scss'
 
 export const CoreLayout = (props) => (
    <div className="app">
-      <StickyNav/>
+      <StickyNav>
+        <SearchBar/>
+      </StickyNav>
 
       <div className="main-content">
         {props.children}
