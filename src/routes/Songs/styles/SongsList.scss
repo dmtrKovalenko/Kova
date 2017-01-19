@@ -1,0 +1,10 @@
+.tracks-container{
+    padding: 25px 30px 115px;
+    text-align: center;
+}
+
+@media(min-width:1340px){
+    .tracks-container{
+        padding: 25px 60px 115px;
+    }
+}

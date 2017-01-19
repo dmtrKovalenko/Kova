@@ -1,0 +1,167 @@
+.player {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background: white;
+  padding: 10px 15px;
+  box-shadow: 0 -5px 5px -5px rgba(0, 0, 0, 0.4);
+  display: flex;
+  animation-duration: 0.25s;
+  z-index: 1001;
+}
+
+.control-button {
+  margin-right: 10px;
+}
+
+.artwork.flex-container {
+  order: 1;
+}
+
+.title.flex-container {
+  order: 2;
+  max-width: 30%;
+}
+
+.slider.flex-container {
+  order: 3;
+  width: 60%;
+  display: flex;
+}
+
+.time {
+  padding: 27px 15px 15px;
+  font-size: 18px;
+  color: #8c8e92;
+}
+
+.slider-container {
+  flex-basis: 100%;
+}
+
+.controls.flex-container {
+  order: 4;
+  margin-left: auto;
+}
+
+a {
+  &.player-song-title, &.player-user-name {
+    display: block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    cursor: pointer;
+    margin-top: 9px;
+    color: #337ab7;
+  }
+  &.player-song-title {
+    font-size: 17px;
+    color: black;
+  }
+  &.player-user-name {
+    font-size: 15px;
+  }
+}
+
+.volume-bar {
+  display: inline-block;
+}
+
+.volume-slider-container {
+  z-index: 20;
+  position: absolute;
+  bottom: 100px;
+  width: 44px;
+  margin: 0 auto;
+  padding: 0px 13px 10px;
+}
+
+@media (max-width: 900px) {
+  .player {
+    flex-wrap: wrap;
+  }
+  .slider.flex-container {
+    order: 4;
+    flex-grow: 0;
+    flex-basis: 100%;
+    align-content: flex-start;
+  }
+  /*Ovverride default material ui styles*/
+  .slider-container > div > div {
+    margin-top: 14px !important;
+  }
+  .controls.flex-container {
+    order: 3;
+  }
+  .time {
+    padding: 12px 10px 0;
+  }
+}
+
+@media (min-width: 900px) {
+  .title.flex-container {
+    max-width: 30%;
+  }
+  .controls.flex-container {
+    min-width: 230px;
+  }
+  .volume-slider-container {
+    bottom: 60px;
+  }
+}
+
+@media (max-width: 550px) {
+  .control-button {
+    margin-right: 7px;
+  }
+  .controls.flex-container {
+    min-width: 30%;
+  }
+  .title.flex-container {
+    max-width: 38%;
+  }
+  .artwork.flex-container {
+    margin-right: 5px;
+  }
+  .player {
+    padding-left: 2px;
+  }
+}
+
+@media (min-width: 550px) {
+  .flex-container {
+    margin-left: 10px;
+    margin-right: 10px;
+  }
+}
+
+@media (max-width: 400px) {
+  .control-button {
+    margin-right: 5px;
+  }
+}
+
+@media (max-width: 450px) {
+  .volume-bar {
+    display: none;
+  }
+}
+
+@media (max-width: 350px) {
+  .artwork.flex-container {
+    display: none;
+  }
+  .title.flex-container {
+    width: 50%;
+    margin-left: 10px;
+  }
+}
+
+.hidden {
+  display: none;
+}
+
+.play-pause-svg{
+  fill: black;
+  margin-right: 10px;
+}

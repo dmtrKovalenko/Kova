@@ -1,0 +1,161 @@
+.card {
+  width: 260px;
+  height: 340px;
+  background-color: #fff;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  margin: 30px 20px 40px;
+  position: relative;
+  overflow: hidden;
+  display: inline-block;
+
+  .main {
+    width: 100%;
+    height: 80%;
+    z-index: 1;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+
+  .fab {
+    width: 60px;
+    height: 60px;
+    background-color: #4DD0E1;
+    background-image: url(../../../assets/card-play.png);
+    background-repeat: no-repeat;
+    background-size: 20px;
+    background-position: 21px 19px;
+    transition: 1s background-image ease;
+    position: absolute;
+    z-index: 99;
+    right: 18px;
+    top: calc(80% - 30px);
+    border-radius: 50%;
+    cursor: pointer;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+    transform: scale3d(1, 1, 1);
+    transition: 0.6s cubic-bezier(0.65, -0.4, 0.49, 1.4);
+    transition-delay: .2s;
+  }
+
+  &.active .fab {
+    cursor: default;
+    transform: scale3d(13, 13, 1);
+    transition: 0.6s cubic-bezier(0.65, -0.68, 0.49, 1.94);
+    transition-delay: .1s;
+    background-color: #4DD0E1;
+  }
+
+  .fab-sha {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    right: 18px;
+    top: calc(80% - 30px);
+    border: 1px solid #4DD0E1;
+    border-radius: 50%;
+    transform: scale3d(0.9, 0.9, 1);
+    transition: .4s ease-in-out;
+    transition-delay: .5s;
+  }
+
+  &.active .fab-sha {
+    transform: scale3d(4, 4, 1);
+    border: 3px solid #4DD0E1;
+    transition: .4s ease-in-out;
+  }
+}
+
+.close {
+  width: 48px;
+  height: 48px;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  z-index: 999;
+  transform: rotateZ(0deg) scale3d(0, 0, 0);
+  cursor: pointer;
+  transition: 0.4s cubic-bezier(0.65, -0.68, 0.49, 1.94);
+  text-align: left;
+  opacity: 1;
+
+  &:before {
+    content: "";
+    position: absolute;
+    width: 24px;
+    height: 3px;
+    background-color: white;
+    margin-left: calc(50% - 12px);
+    margin-top: calc(50% - 1.5px);
+  }
+
+  &:after {
+    content: "";
+    position: absolute;
+    height: 24px;
+    width: 3px;
+    background-color: white;
+    margin-top: calc(50% - 12px);
+    margin-left: calc(50% - 1.5px);
+  }
+}
+
+.card.active .close {
+  transform: rotateZ(135deg) scale3d(1, 1, 1);
+  transition: 0.4s cubic-bezier(0.65, -0.68, 0.49, 1.94);
+  transition-delay: .4s;
+}
+
+.title-container {
+  padding: 7px 10px;
+  font-family: Roboto, sans-serif;
+
+  .user-avatar {
+    float: left;
+  }
+
+  .user-name, .title {
+    float: left;
+    text-overflow: ellipsis;
+    text-align: left;
+    white-space: nowrap;
+    overflow: hidden;
+    position: relative;
+    z-index: 1000;
+  }
+
+  .user-name {
+    color: #857f7f;
+    font-weight: bold;
+    margin: 5px 5px 0;
+    width: 130px;
+    font-size: 14px;
+  }
+
+  .title {
+    width: 185px;
+    margin: 3px 0 0 5px;
+    font-size: 15px;
+    color: #686161;
+  }
+
+  &.active {
+    .user-name, .title {
+      text-align: center;
+      color: white;
+      width: 100%;
+      margin: auto;
+      -webkit-transition: all 0.2s ease;
+      -moz-transition: all 0.2s ease;
+      transition: all 0.2s ease;
+    }
+
+    .user-name {
+      font-size: 16px;
+    }
+
+    .title {
+      font-size: 18px;
+    }
+  }
+}
