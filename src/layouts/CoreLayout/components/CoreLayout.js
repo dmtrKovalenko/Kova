@@ -2,15 +2,18 @@ import React from 'react'
 import AppBar from 'material-ui/AppBar'
 import Player from './Player'
 import PlayerControls from './PlayerControls'
+import StickyNav from './StickyNavBar'
 import '../styles/CoreLayout.scss'
 import '../../../styles/core.scss'
 
 export const CoreLayout = (props) => (
    <div className="app">
-      <AppBar title="Kova"/>
+      <StickyNav/>
 
-      {props.children}
-
+      <div className="main-content">
+        {props.children}
+      </div>]
+      
       <PlayerControls currentSong={props.currentSong}
                       isPlaying={props.isPlaying}
                       isPaused={props.isPaused}
