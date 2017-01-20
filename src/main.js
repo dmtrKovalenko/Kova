@@ -6,7 +6,7 @@ import injectTapEventPlugin from 'react-tap-event-plugin'
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
 import '../node_modules/animate.css/animate.min.css'
 
-injectTapEventPlugin();
+injectTapEventPlugin()
 
 // ========================================================
 // Store Instantiation
@@ -24,7 +24,7 @@ let render = () => {
 
   ReactDOM.render(
     <MuiThemeProvider>
-       <AppContainer store={store} routes={routes} />
+      <AppContainer store={store} routes={routes} />
     </MuiThemeProvider>,
     MOUNT_NODE
   )
