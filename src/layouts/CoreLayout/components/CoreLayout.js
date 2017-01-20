@@ -35,7 +35,8 @@ export const CoreLayout = (props) => (
       changeVolume={props.changeVolume}
       volume={props.volume}
       isSeeking={props.isSeeking}
-      playbackTime={props.playbackTime} />
+      playbackTime={props.playbackTime}
+      playNextSong={props.playNextSong} />
   </div>
 )
 
