@@ -1,6 +1,5 @@
 export default [
   'Bring music to life.',
-  'Dance to the rhythm of your heart.',
   'Face the music.',
   'Flute: We give a hoot.',
   'Gone Chopin … Bach in five.',
@@ -15,7 +14,6 @@ export default [
   'Music = Life.',
   'Music brings harmony to the world.',
   'Music chose me, not the other way around.',
-  'Music is an outburst of the soul.',
   'Music is my life.',
   'Music is My Time Machine.',
   'Music is only love looking for words.',
@@ -24,7 +22,6 @@ export default [
   'Music is the shorthand of emotion.',
   'Music is what feelings sound like.',
   'Music is what I am. Everything else is what I do.',
-  'Music makes the world go round.',
   'Music only makes me stronger.',
   'Music speaks to the heart in ways words cannot express.',
   'Music, the mosaic of the air.',
@@ -39,5 +36,8 @@ export default [
   'When words fail, music speaks.',
   'Where clarinets go, treble follows!',
   'Where words fail, music speaks.',
-  'Without music, life would not be fair.'
+  'Without music, life would not be fair.',
+  'Dance to the rhythm of your heart',
+  'Music is an outburst of the soul',
+  'Music makes the world go round'
 ]
