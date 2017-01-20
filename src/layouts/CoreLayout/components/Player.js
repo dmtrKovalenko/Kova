@@ -52,7 +52,8 @@ class Player extends React.Component {
         src={soundCloudSdk.getStreamUrl(this.props.currentSongId)}
         controls={false}
         onCanPlayThrough={() => this.audioPlayer.play()}
-        onTimeUpdate={() => this.props.changePlaybackTime(this.audioPlayer.currentTime)} />
+        onTimeUpdate={() => this.props.changePlaybackTime(this.audioPlayer.currentTime)}
+        onEnded={() => this.props.playNextSong()} />
     )
   }
 }
