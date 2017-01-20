@@ -17,6 +17,18 @@
     background-size: cover;
   }
 
+  .powered-logo {
+    display: none;
+  }
+
+  &.img-visible .powered-logo { 
+    display: block;
+    position: absolute; 
+    z-index: 100;
+    left: 20px;
+    top: 0;
+  }
+
   .fab {
     width: 60px;
     height: 60px;
@@ -64,6 +76,60 @@
     border: 3px solid #4DD0E1;
     transition: .4s ease-in-out;
   }
+
+  .title-container {
+      padding: 7px 10px;
+      font-family: Roboto, sans-serif;
+
+      .user-avatar {
+        float: left;
+      }
+
+      .user-name, .title {
+        float: left;
+        text-overflow: ellipsis;
+        text-align: left;
+        white-space: nowrap;
+        overflow: hidden;
+        position: relative;
+        z-index: 1000;
+      }
+
+      .user-name {
+        color: #857f7f;
+        font-weight: bold;
+        margin: 5px 5px 0;
+        width: 130px;
+        font-size: 14px;
+      }
+
+      .title {
+        width: 185px;
+        margin: 3px 0 0 5px;
+        font-size: 15px;
+        color: #686161;
+      }
+  }
+
+  &.title-visible {
+      .user-name, .title {
+        text-align: center;
+        color: white;
+        width: 100%;
+        margin: auto;
+        -webkit-transition: all 0.2s ease;
+        -moz-transition: all 0.2s ease;
+        transition: all 0.2s ease;
+      }
+
+      .user-name {
+        font-size: 16px;
+      }
+
+      .title {
+        font-size: 18px;
+      }
+  }
 }
 
 .close {
@@ -106,56 +172,3 @@
   transition-delay: .4s;
 }
 
-.title-container {
-  padding: 7px 10px;
-  font-family: Roboto, sans-serif;
-
-  .user-avatar {
-    float: left;
-  }
-
-  .user-name, .title {
-    float: left;
-    text-overflow: ellipsis;
-    text-align: left;
-    white-space: nowrap;
-    overflow: hidden;
-    position: relative;
-    z-index: 1000;
-  }
-
-  .user-name {
-    color: #857f7f;
-    font-weight: bold;
-    margin: 5px 5px 0;
-    width: 130px;
-    font-size: 14px;
-  }
-
-  .title {
-    width: 185px;
-    margin: 3px 0 0 5px;
-    font-size: 15px;
-    color: #686161;
-  }
-
-  &.active {
-    .user-name, .title {
-      text-align: center;
-      color: white;
-      width: 100%;
-      margin: auto;
-      -webkit-transition: all 0.2s ease;
-      -moz-transition: all 0.2s ease;
-      transition: all 0.2s ease;
-    }
-
-    .user-name {
-      font-size: 16px;
-    }
-
-    .title {
-      font-size: 18px;
-    }
-  }
-}

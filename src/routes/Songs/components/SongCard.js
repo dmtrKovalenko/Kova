@@ -1,4 +1,5 @@
 import React from 'react'
+import PoweredBySC from '../assets/powered-by-sc.png'
 import '../styles/SongCard.scss'
 
 class SongCard extends React.Component {
@@ -21,7 +22,8 @@ class SongCard extends React.Component {
       this.card.classList.add('active')
       this.fab.style.backgroundImage = 'none'
 
-      setTimeout(() => this.title.classList.add('active'), 480)
+      setTimeout(() => (this.card.classList.add('img-visible')), 500)
+      setTimeout(() => this.card.classList.add('title-visible'), 480)
     }
   }
 
@@ -29,7 +31,8 @@ class SongCard extends React.Component {
     if (this.card) {
       this.card.classList.remove('active')
 
-      setTimeout(() => (this.title.classList.remove('active')), 600)
+      setTimeout(() => (this.card.classList.remove('img-visible')), 500)
+      setTimeout(() => (this.card.classList.remove('title-visible')), 550)
       setTimeout(() => (this.fab.style.backgroundImage = ''), 700)
     }
   }
@@ -47,6 +50,9 @@ class SongCard extends React.Component {
       <div className='fab-sha' />
       <div className='close'
         onClick={this.unSelectSong} />
+
+      <img className='powered-logo'
+        src={PoweredBySC} />
 
       <div ref={(ref) => { this.title = ref }}
         className='title-container'>
