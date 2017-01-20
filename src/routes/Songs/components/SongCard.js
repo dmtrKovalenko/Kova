@@ -51,8 +51,8 @@ class SongCard extends React.Component {
       <div className='close'
         onClick={this.unSelectSong} />
 
-      <img className="powered-logo"
-        src={'https://developers.soundcloud.com/assets/powered_by_large_white-9c2af6a93ad2b1c541f423d9e9045980.png'} />
+      <img className='powered-logo'
+        src={PoweredBySC} />
 
       <div ref={(ref) => { this.title = ref }}
         className='title-container'>

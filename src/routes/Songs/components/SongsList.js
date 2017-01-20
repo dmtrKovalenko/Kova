@@ -8,7 +8,7 @@ import '../styles/SongsList.scss'
 class SongsList extends React.Component {
   shouldComponentUpdate (nextProps) {
     if (this.props.location.query != nextProps.location.query ||
-        this.props.currentSongId != nextProps.currentSongId || 
+        this.props.currentSongId != nextProps.currentSongId ||
         !Immutable.is(this.props.songsList, nextProps.songsList)) {
       return true
     }

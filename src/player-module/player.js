@@ -75,7 +75,7 @@ function getUpdatedSongIndexState (newIndex, state) {
     currentSongId: newSong.id,
     isPlaying: true,
     isPaused: false,
-    currentSongIndex: newIndex,
+    currentSongIndex: newIndex
   })
 }
 
