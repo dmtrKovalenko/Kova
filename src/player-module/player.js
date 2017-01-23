@@ -1,4 +1,5 @@
 import * as types from '../constants/ActionTypes'
+import shuffle from '../utils/ArrayShuffler'
 
 const ACTION_HANDLERS = {
   [types.PLAY_SONG] : (state, action) => {
@@ -55,18 +56,51 @@ const ACTION_HANDLERS = {
     })
   },
 
+  [types.PLAYBACK_ENDED]: (state, action) => {
+    if(state.loop) {
+      return Object.assign({}, state, {
+        playbackTime: 0,
+        isPaused: false
+      })
+    }
+    
+    return getUpdatedSongIndexState(state.currentSongIndex + 1, state)  
+  },
+
   [types.PLAY_NEXT_SONG] : (state, action) => {
     return getUpdatedSongIndexState(state.currentSongIndex + 1, state)
   },
 
   [types.PLAY_PREVIOUS_SONG] : (state, action) => {
     return getUpdatedSongIndexState(state.currentSongIndex - 1, state)
+  },
+
+  [types.SHUFFLE] : (state, action) => {
+    const newPlayList = action.toShuffle 
+      ? shuffle(state.playList)
+      : state.unShuffledPlayList;
+
+    const unShuffledPlayList = action.toShuffle
+      ? state.playList
+      : null;
+    debugger
+    return Object.assign({}, state, {
+      shuffle: action.toShuffle,
+      playList: newPlayList,
+      unShuffledPlayList: unShuffledPlayList
+    })
+  },
+
+  [types.LOOP] : (state, action) => {
+    return Object.assign({}, state, {
+      loop: action.toLoop
+    })
   }
 }
 
 function getUpdatedSongIndexState (newIndex, state) {
   const newSong = state.playList[newIndex]
-
+    
   if (!newSong) {
     return state
   }
@@ -86,7 +120,9 @@ const initialState = {
   playbackTime : null,
   playList : null,
   currentSongIndex : null,
-  isSeeking: false
+  isSeeking: false,
+  shuffle: false,
+  loop: false
 }
 
 export default function playerReducer (state = initialState, action) {

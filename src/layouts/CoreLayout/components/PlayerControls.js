@@ -7,11 +7,28 @@ import Slider from 'material-ui/Slider'
 import Next from 'material-ui/svg-icons/av/skip-next'
 import Avatar from 'material-ui/Avatar'
 import defaultImg from '../../../assets/default-artwork.png'
+import Shuffle from 'material-ui/svg-icons/av/shuffle'
+import Loop from 'material-ui/svg-icons/av/loop'
+import Checkbox from 'material-ui/Checkbox'
 import { formatMS, formatSS } from '../../../utils/TimeHelper'
 import '../styles/Controls.scss'
 
 export const PlayerControls = (props) => {
   const floatButtonClassName = 'control-button'
+
+  const styles = {
+    CheckboxStyle : {display: 'inline-block', width: 25, marginLeft: 5},
+    IconStyle : {fill: '#857f7f'}
+  }
+
+  const checkCheckbox = (event, isChecked, callback) =>  {
+      isChecked 
+        ? event.target.classList.add('checked')
+        : event.target.classList.remove('checked')
+
+      callback(isChecked);
+  }
+
   if (props.currentSong && props.isPlaying) {
     return (
       <div className='player animated slideInUp'>
@@ -59,6 +76,21 @@ export const PlayerControls = (props) => {
             onClick={props.playNextSong}>
             <Next />
           </FloatingActionButton>
+
+          <Checkbox 
+            style={styles.CheckboxStyle}
+            iconStyle={styles.IconStyle}
+            checkedIcon={<Shuffle />}
+            uncheckedIcon={<Shuffle />}
+            onCheck={(ev, isChecked) => checkCheckbox(ev, isChecked, props.shuffle)} />
+          
+          <Checkbox 
+            style={styles.CheckboxStyle}
+            iconStyle={styles.IconStyle}
+            checkedIcon={<Loop/>}
+            uncheckedIcon={<Loop  />}
+            onCheck={(ev, isChecked) => checkCheckbox(ev, isChecked, props.loop)} />
+
         </div>
       </div>)
   } else {

@@ -11,7 +11,7 @@
 }
 
 .control-button {
-  margin-right: 10px;
+  margin-right: 5px;
 }
 
 .artwork.flex-container {
@@ -100,10 +100,10 @@ a {
 
 @media (min-width: 900px) {
   .title.flex-container {
-    max-width: 30%;
+    max-width: 20%;
   }
   .controls.flex-container {
-    min-width: 230px;
+    min-width: 260px;
   }
   .volume-slider-container {
     bottom: 60px;
@@ -111,9 +111,6 @@ a {
 }
 
 @media (max-width: 550px) {
-  .control-button {
-    margin-right: 7px;
-  }
   .controls.flex-container {
     min-width: 30%;
   }
@@ -132,12 +129,6 @@ a {
   .flex-container {
     margin-left: 10px;
     margin-right: 10px;
-  }
-}
-
-@media (max-width: 400px) {
-  .control-button {
-    margin-right: 5px;
   }
 }
 
@@ -164,4 +155,8 @@ a {
 .play-pause-svg{
   fill: black;
   margin-right: 10px;
+}
+
+.checked + div svg {
+  fill: rgb(0, 188, 212) !important;
 }
