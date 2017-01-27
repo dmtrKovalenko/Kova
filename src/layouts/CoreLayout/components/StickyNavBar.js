@@ -17,7 +17,7 @@ class StickyNavBar extends React.Component {
   }
 
   shouldComponentUpdate (nextProps, nextState) {
-    return nextState.isExpanded != this.state.isExpanded || 
+    return nextState.isExpanded != this.state.isExpanded ||
       nextState.isSmaller != this.state.isSmaller
   }
 
@@ -75,27 +75,27 @@ class StickyNavBar extends React.Component {
     return (
       <header className={headerClass}>
         <div className='top-bar'>
-            <IconButton className='hamburger-btn'>
-              <MenuIcon color={'#fff'} />
-            </IconButton>
-            
-            <div className="app-title-container">
-              <p className='app-title'> Kova </p>
-            </div>
+          <IconButton className='hamburger-btn'>
+            <MenuIcon color={'#fff'} />
+          </IconButton>
 
-            <IconButton className='search-button'
-              onClick={this.showChildren}>
-              {
-                  this.state.isExpanded
-                    ? (<CloseIcon color='#fff' />)
-                    : (<SearchIcon color={'#fff'} />)
-              }
-
-            </IconButton>
+          <div className='app-title-container'>
+            <p className='app-title'> Kova </p>
           </div>
 
+          <IconButton className='search-button'
+            onClick={this.showChildren}>
+            {
+              this.state.isExpanded
+                ? (<CloseIcon color='#fff' />)
+                : (<SearchIcon color='#fff' />)
+            }
+
+          </IconButton>
+        </div>
+
         <img className='logo-img' src={LogoImg} />
-        <h1 className='logo'> Kova  </h1>
+        <h1 className='logo'> Kova </h1>
         <h3 className='subheader'>
           { slogan }
         </h3>

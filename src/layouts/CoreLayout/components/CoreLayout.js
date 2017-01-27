@@ -27,7 +27,9 @@ export const CoreLayout = (props) => (
       seekStarted={props.seekStarted}
       seek={props.seek}
       seeked={props.seeked}
-      playbackTime={props.playbackTime} />
+      playbackTime={props.playbackTime}
+      shuffle={props.shuffle}
+      loop={props.loop} />
 
     <Player currentSongId={props.currentSongId}
       changePlaybackTime={props.changePlaybackTime}
@@ -36,7 +38,7 @@ export const CoreLayout = (props) => (
       volume={props.volume}
       isSeeking={props.isSeeking}
       playbackTime={props.playbackTime}
-      playNextSong={props.playNextSong} />
+      playbackEnded={props.playbackEnded} />
   </div>
 )
 

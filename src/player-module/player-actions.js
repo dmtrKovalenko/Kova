@@ -65,6 +65,26 @@ export function seeked () {
   }
 }
 
+export function shuffle (toShuffle) {
+  return {
+    type: types.SHUFFLE,
+    toShuffle : toShuffle
+  }
+}
+
+export function loop (toLoop) {
+  return {
+    type: types.LOOP,
+    toLoop : toLoop
+  }
+}
+
+export function playbackEnded () {
+  return {
+    type: types.PLAYBACK_ENDED
+  }
+}
+
 export const actions = {
   play,
   pause,

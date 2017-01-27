@@ -49,11 +49,14 @@ class Player extends React.Component {
   render () {
     return (
       <audio ref={ref => (this.audioPlayer = ref)}
-        src={soundCloudSdk.getStreamUrl(this.props.currentSongId)}
+        //src={soundCloudSdk.getStreamUrl(this.props.currentSongId)}
         controls={false}
         onCanPlayThrough={() => this.audioPlayer.play()}
         onTimeUpdate={() => this.props.changePlaybackTime(this.audioPlayer.currentTime)}
-        onEnded={() => this.props.playNextSong()} />
+        onEnded={() => {
+          this.props.playbackEnded()
+          this.audioPlayer.play()}
+        }/>
     )
   }
 }
