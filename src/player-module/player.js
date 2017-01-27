@@ -16,13 +16,16 @@ const ACTION_HANDLERS = {
   },
 
   [types.SELECT_SONG] : (state, action) => {
+    const newSong = action.playList.find(song => song.id == action.songId);
+    updateDocumentTitle(newSong.title);
+
     return Object.assign({}, state, {
       currentSongId: action.songId,
       playList: action.playList,
       isPlaying: true,
       isPaused: false,
       playbackTime: 0,
-      currentSongIndex: action.playList.findIndex(song => song.id == action.songId)
+      currentSongIndex: action.playList.indexOf(newSong),
     })
   },
 
@@ -99,19 +102,25 @@ const ACTION_HANDLERS = {
   }
 }
 
-function getUpdatedSongIndexState (newIndex, state) {
+const getUpdatedSongIndexState = (newIndex, state) =>  {
   const newSong = state.playList[newIndex]
     
   if (!newSong) {
     return state
   }
-
+  
+  updateDocumentTitle(newSong.title);
+  
   return Object.assign({}, state, {
     currentSongId: newSong.id,
     isPlaying: true,
     isPaused: false,
     currentSongIndex: newIndex
   })
+}
+
+const updateDocumentTitle = (songTitle) => {
+   document.title = songTitle;
 }
 
 const initialState = {
