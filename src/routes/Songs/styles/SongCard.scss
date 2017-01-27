@@ -7,6 +7,12 @@
   position: relative;
   overflow: hidden;
   display: inline-block;
+  transition: box-shadow  0.4s ease-in-out .2s;
+
+  &.active { 
+    transition-delay: .2s;
+    box-shadow: rgba(0, 0, 0, 0.188235) 0px 10px 25px, rgba(0, 0, 0, 0.227451) 0px 6px 10px;
+  }
 
   .main {
     width: 100%;
@@ -33,13 +39,10 @@
     width: 60px;
     height: 60px;
     background-color: #4DD0E1;
-    background-image: url(../../../assets/card-play.png);
-    background-repeat: no-repeat;
-    background-size: 20px;
-    background-position: 21px 19px;
     transition: 1s background-image ease;
     position: absolute;
     z-index: 99;
+    padding-top: 8px;
     right: 18px;
     top: calc(80% - 30px);
     border-radius: 50%;
@@ -48,6 +51,25 @@
     transform: scale3d(1, 1, 1);
     transition: 0.6s cubic-bezier(0.65, -0.4, 0.49, 1.4);
     transition-delay: .2s;
+    box-shadow: rgba(0, 0, 0, 0.156863) 0 2px 4px, rgba(0, 0, 0, 0.227451) 0 2px 4px;
+  }
+
+  .fab > svg {
+    cursor: pointer;
+    transition: transform .8s cubic-bezier(0.46, 0.03, 0.52, 0.96)!important;
+  }
+
+  &:not(.icon-hidden) .fab:hover {
+    transition: box-shadow  0.2s ease-in-out;
+    box-shadow: rgba(0, 0, 0, 0.188235) 0px 10px 25px, rgba(0, 0, 0, 0.227451) 0px 6px 10px;
+  }
+
+  &:not(.icon-hidden) .fab > svg:hover {
+    transform: rotate(360deg) scale(0.9);
+  }
+
+  &.icon-hidden .fab > svg {
+    display: none !important;
   }
 
   &.active .fab {
