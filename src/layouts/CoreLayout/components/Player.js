@@ -55,8 +55,9 @@ class Player extends React.Component {
         onTimeUpdate={() => this.props.changePlaybackTime(this.audioPlayer.currentTime)}
         onEnded={() => {
           this.props.playbackEnded()
-          this.audioPlayer.play()}
-        }/>
+          this.audioPlayer.play()
+        }
+        } />
     )
   }
 }

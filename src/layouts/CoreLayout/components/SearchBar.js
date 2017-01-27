@@ -33,7 +33,7 @@ class SearchBar extends React.Component {
         </IconButton>
 
         <div className='search-input'>
-          <AutoComplete hintText='Search' 
+          <AutoComplete hintText='Search'
             fullWidth
             dataSource={this.state.dataSource}
             onUpdateInput={this.handleUpdateInput}

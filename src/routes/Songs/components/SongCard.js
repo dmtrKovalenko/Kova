@@ -45,8 +45,8 @@ class SongCard extends React.Component {
       <div className='fab'
         ref={(ref) => { this.fab = ref }}
         onClick={this.handleCardClick} >
-          <PlayIcon color={'fff'}
-            style={{width: 44, height: 44}}/>
+        <PlayIcon color={'fff'}
+          style={{ width: 44, height: 44 }} />
       </div>
 
       <div className='fab-sha' />

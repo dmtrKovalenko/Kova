@@ -18,8 +18,8 @@ export const SEEK = 'SEEK'
 
 export const SEEK_ENDED = 'SEEK_ENDED'
 
-export const SHUFFLE = "SHUFFLE"
+export const SHUFFLE = 'SHUFFLE'
 
-export const LOOP = "LOOP"
+export const LOOP = 'LOOP'
 
-export const PLAYBACK_ENDED = "PLAYBACK_ENDED"
+export const PLAYBACK_ENDED = 'PLAYBACK_ENDED'
