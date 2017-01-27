@@ -4,21 +4,25 @@ import MenuIcon from 'material-ui/svg-icons/navigation/menu'
 import IconButton from 'material-ui/IconButton'
 import LogoImg from '../../../assets/logo.png'
 import SearchIcon from 'material-ui/svg-icons/action/search'
-import CloseIcon from 'material-ui/svg-icons/navigation/close'
 import Slogans from '../../../constants/MusicSlogans'
+import Paper from 'material-ui/Paper'
+import Popover, {PopoverAnimationVertical} from 'material-ui/Popover'
 
 class StickyNavBar extends React.Component {
   constructor (props) {
     super(props)
     this.state = {
       isSmaller : false,
-      isExpanded : false
+      isExpanded : false,
+      searchOpen : false
     }
   }
 
   shouldComponentUpdate (nextProps, nextState) {
-    return nextState.isExpanded != this.state.isExpanded ||
-      nextState.isSmaller != this.state.isSmaller
+    return ( 
+      nextState.isExpanded != this.state.isExpanded ||
+      nextState.isSmaller != this.state.isSmaller ||
+      nextState.searchOpen != this.state.searchOpen )
   }
 
   componentDidMount () {
@@ -36,24 +40,32 @@ class StickyNavBar extends React.Component {
       })
     } else if (window.scrollY < 100 && this.state.isSmaller) {
       this.setState({
-        isExpanded : false,
-        isSmaller : false
+        isSmaller : false,
+        searchOpen : false
       })
     }
   }
 
-  showChildren = () => {
-    if (this.state.isSmaller) {
-      this.setState({ isExpanded : !this.state.isExpanded })
+  openSearch = (event) => {
+    if(this.state.isSmaller) {
+      // This prevents ghost click.
+      event.preventDefault();
+
+      this.setState({
+        searchOpen: true,
+        anchorEl: event.currentTarget,
+      });
     }
-  }
+  };
+
+  closeSearch = () => {
+    this.setState({
+      searchOpen: false,
+    });
+  };
 
   getHeaderClassList () {
     const classList = []
-
-    if (this.state.isExpanded) {
-      classList.push('expanded')
-    }
 
     if (this.state.isSmaller) {
       classList.push('smaller')
@@ -84,14 +96,18 @@ class StickyNavBar extends React.Component {
           </div>
 
           <IconButton className='search-button'
-            onClick={this.showChildren}>
-            {
-              this.state.isExpanded
-                ? (<CloseIcon color='#fff' />)
-                : (<SearchIcon color='#fff' />)
-            }
-
+                      onTouchTap={this.openSearch}>
+             <SearchIcon color={'fff'} />
           </IconButton>
+          
+          <Popover className='search-bar'
+              open={this.state.searchOpen}
+              anchorEl={this.state.anchorEl}
+              anchorOrigin={{horizontal: 'right', vertical: 'center'}}
+              targetOrigin={{horizontal: 'right', vertical: 'center'}}
+              onRequestClose={this.closeSearch} >
+                {this.props.children}
+            </Popover>
         </div>
 
         <img className='logo-img' src={LogoImg} />
@@ -101,7 +117,9 @@ class StickyNavBar extends React.Component {
         </h3>
 
         <div className='children'>
-          {this.props.children}
+          <Paper zDepth={2} className='search-bar'>
+              {this.props.children}
+          </Paper>
         </div>
       </header>)
   }

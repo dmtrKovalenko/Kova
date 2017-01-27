@@ -1,5 +1,4 @@
 import React from 'react'
-import Paper from 'material-ui/Paper'
 import AutoComplete from 'material-ui/AutoComplete'
 import IconButton from 'material-ui/IconButton'
 import SearchIcon from 'material-ui/svg-icons/action/search'
@@ -18,8 +17,7 @@ class SearchBar extends React.Component {
       dataSource: [
         value,
         value + value,
-        value + value + value
-      ]
+        value + value + value ]
     })
   };
 
@@ -29,20 +27,19 @@ class SearchBar extends React.Component {
 
   render () {
     return (
-      <Paper zDepth={2}
-        className='search-bar'>
+      <div>
         <IconButton className='search-icon'>
           <SearchIcon />
         </IconButton>
 
         <div className='search-input'>
-          <AutoComplete hintText='Search'
+          <AutoComplete hintText='Search' 
+            fullWidth
             dataSource={this.state.dataSource}
             onUpdateInput={this.handleUpdateInput}
-            fullWidth
             onNewRequest={this.search} />
         </div>
-      </Paper>)
+      </div>)
   }
 }
 
