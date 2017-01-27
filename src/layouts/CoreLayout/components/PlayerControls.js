@@ -17,16 +17,16 @@ export const PlayerControls = (props) => {
   const floatButtonClassName = 'control-button'
 
   const styles = {
-    CheckboxStyle : {display: 'inline-block', width: 25, marginLeft: 5},
-    IconStyle : {fill: '#857f7f'}
+    CheckboxStyle : { display: 'inline-block', width: 25, marginLeft: 5 },
+    IconStyle : { fill: '#857f7f' }
   }
 
-  const checkCheckbox = (event, isChecked, callback) =>  {
-      isChecked 
+  const checkCheckbox = (event, isChecked, callback) => {
+    isChecked
         ? event.target.classList.add('checked')
         : event.target.classList.remove('checked')
 
-      callback(isChecked);
+    callback(isChecked)
   }
 
   if (props.currentSong && props.isPlaying) {
@@ -77,19 +77,19 @@ export const PlayerControls = (props) => {
             <Next />
           </FloatingActionButton>
 
-          <span className="additional-controls">
-            <Checkbox 
+          <span className='additional-controls'>
+            <Checkbox
               style={styles.CheckboxStyle}
               iconStyle={styles.IconStyle}
               checkedIcon={<Shuffle />}
               uncheckedIcon={<Shuffle />}
               onCheck={(ev, isChecked) => checkCheckbox(ev, isChecked, props.shuffle)} />
-            
-            <Checkbox 
+
+            <Checkbox
               style={styles.CheckboxStyle}
               iconStyle={styles.IconStyle}
-              checkedIcon={<Loop/>}
-              uncheckedIcon={<Loop  />}
+              checkedIcon={<Loop />}
+              uncheckedIcon={<Loop />}
               onCheck={(ev, isChecked) => checkCheckbox(ev, isChecked, props.loop)} />
           </span>
         </div>

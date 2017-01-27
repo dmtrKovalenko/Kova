@@ -6,7 +6,7 @@ import LogoImg from '../../../assets/logo.png'
 import SearchIcon from 'material-ui/svg-icons/action/search'
 import Slogans from '../../../constants/MusicSlogans'
 import Paper from 'material-ui/Paper'
-import Popover, {PopoverAnimationVertical} from 'material-ui/Popover'
+import Popover from 'material-ui/Popover'
 
 class StickyNavBar extends React.Component {
   constructor (props) {
@@ -19,7 +19,7 @@ class StickyNavBar extends React.Component {
   }
 
   shouldComponentUpdate (nextProps, nextState) {
-    return ( 
+    return (
       nextState.isExpanded != this.state.isExpanded ||
       nextState.isSmaller != this.state.isSmaller ||
       nextState.searchOpen != this.state.searchOpen )
@@ -47,21 +47,21 @@ class StickyNavBar extends React.Component {
   }
 
   openSearch = (event) => {
-    if(this.state.isSmaller) {
+    if (this.state.isSmaller) {
       // This prevents ghost click.
-      event.preventDefault();
+      event.preventDefault()
 
       this.setState({
         searchOpen: true,
-        anchorEl: event.currentTarget,
-      });
+        anchorEl: event.currentTarget
+      })
     }
   };
 
   closeSearch = () => {
     this.setState({
-      searchOpen: false,
-    });
+      searchOpen: false
+    })
   };
 
   getHeaderClassList () {
@@ -96,18 +96,18 @@ class StickyNavBar extends React.Component {
           </div>
 
           <IconButton className='search-button'
-                      onTouchTap={this.openSearch}>
-             <SearchIcon color={'fff'} />
+            onTouchTap={this.openSearch}>
+            <SearchIcon color={'fff'} />
           </IconButton>
-          
+
           <Popover className='search-bar'
-              open={this.state.searchOpen}
-              anchorEl={this.state.anchorEl}
-              anchorOrigin={{horizontal: 'right', vertical: 'center'}}
-              targetOrigin={{horizontal: 'right', vertical: 'center'}}
-              onRequestClose={this.closeSearch} >
-                {this.props.children}
-            </Popover>
+            open={this.state.searchOpen}
+            anchorEl={this.state.anchorEl}
+            anchorOrigin={{ horizontal: 'right', vertical: 'center' }}
+            targetOrigin={{ horizontal: 'right', vertical: 'center' }}
+            onRequestClose={this.closeSearch} >
+            {this.props.children}
+          </Popover>
         </div>
 
         <img className='logo-img' src={LogoImg} />
@@ -118,7 +118,7 @@ class StickyNavBar extends React.Component {
 
         <div className='children'>
           <Paper zDepth={2} className='search-bar'>
-              {this.props.children}
+            {this.props.children}
           </Paper>
         </div>
       </header>)

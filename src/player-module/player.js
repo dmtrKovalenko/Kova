@@ -16,8 +16,8 @@ const ACTION_HANDLERS = {
   },
 
   [types.SELECT_SONG] : (state, action) => {
-    const newSong = action.playList.find(song => song.id == action.songId);
-    updateDocumentTitle(newSong.title);
+    const newSong = action.playList.find(song => song.id == action.songId)
+    updateDocumentTitle(newSong.title)
 
     return Object.assign({}, state, {
       currentSongId: action.songId,
@@ -25,7 +25,7 @@ const ACTION_HANDLERS = {
       isPlaying: true,
       isPaused: false,
       playbackTime: 0,
-      currentSongIndex: action.playList.indexOf(newSong),
+      currentSongIndex: action.playList.indexOf(newSong)
     })
   },
 
@@ -60,14 +60,14 @@ const ACTION_HANDLERS = {
   },
 
   [types.PLAYBACK_ENDED]: (state, action) => {
-    if(state.loop) {
+    if (state.loop) {
       return Object.assign({}, state, {
         playbackTime: 0,
         isPaused: false
       })
     }
-    
-    return getUpdatedSongIndexState(state.currentSongIndex + 1, state)  
+
+    return getUpdatedSongIndexState(state.currentSongIndex + 1, state)
   },
 
   [types.PLAY_NEXT_SONG] : (state, action) => {
@@ -79,13 +79,13 @@ const ACTION_HANDLERS = {
   },
 
   [types.SHUFFLE] : (state, action) => {
-    const newPlayList = action.toShuffle 
+    const newPlayList = action.toShuffle
       ? shuffle(state.playList, state.currentSongIndex)
-      : state.unShuffledPlayList;
+      : state.unShuffledPlayList
 
     const unShuffledPlayList = action.toShuffle
       ? state.playList
-      : null;
+      : null
 
     return Object.assign({}, state, {
       shuffle: action.toShuffle,
@@ -102,15 +102,15 @@ const ACTION_HANDLERS = {
   }
 }
 
-const getUpdatedSongIndexState = (newIndex, state) =>  {
+const getUpdatedSongIndexState = (newIndex, state) => {
   const newSong = state.playList[newIndex]
-    
+
   if (!newSong) {
     return state
   }
-  
-  updateDocumentTitle(newSong.title);
-  
+
+  updateDocumentTitle(newSong.title)
+
   return Object.assign({}, state, {
     currentSongId: newSong.id,
     isPlaying: true,
@@ -120,7 +120,7 @@ const getUpdatedSongIndexState = (newIndex, state) =>  {
 }
 
 const updateDocumentTitle = (songTitle) => {
-   document.title = songTitle;
+  document.title = songTitle
 }
 
 const initialState = {
