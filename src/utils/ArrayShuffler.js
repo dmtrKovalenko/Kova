@@ -1,18 +1,20 @@
-export default function shuffle(array) {
-  let copy = [], i, n = array.length
+export default function shuffle(initial, currentIndex) {
+  let array = initial.slice();
+  let counter = array.length;
 
-  // While there remain elements to shuffle…
-  while (n) {
+    // While there are elements in the array
+    while (counter > 0) {
+        // Pick a random index
+        let index = Math.floor(Math.random() * counter);
 
-    // Pick a remaining element…
-    i = Math.floor(Math.random() * array.length);
+        // Decrease counter by 1
+        counter--;
 
-    // If not already shuffled, move it to the new array.
-    if (i in array) {
-      copy.push(array[i]);
-      n--;
+        // And swap the last element with it
+        let temp = array[counter];
+        array[counter] = array[index];
+        array[index] = temp;
     }
-  }
 
-  return copy;
+    return array;
 }

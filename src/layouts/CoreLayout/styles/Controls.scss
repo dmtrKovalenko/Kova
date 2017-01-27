@@ -121,7 +121,8 @@ a {
     margin-right: 5px;
   }
   .player {
-    padding-left: 2px;
+    padding-left: 5px;
+    padding-right: 5px;
   }
 }
 
@@ -133,7 +134,8 @@ a {
 }
 
 @media (max-width: 450px) {
-  .volume-bar {
+  .volume-bar,
+  .additional-controls {
     display: none;
   }
 }

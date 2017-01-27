@@ -77,16 +77,17 @@ const ACTION_HANDLERS = {
 
   [types.SHUFFLE] : (state, action) => {
     const newPlayList = action.toShuffle 
-      ? shuffle(state.playList)
+      ? shuffle(state.playList, state.currentSongIndex)
       : state.unShuffledPlayList;
 
     const unShuffledPlayList = action.toShuffle
       ? state.playList
       : null;
-    debugger
+
     return Object.assign({}, state, {
       shuffle: action.toShuffle,
-      playList: newPlayList,
+      playList: newPlayList.slice(),
+      currentSongIndex: newPlayList.findIndex(x => x.id == state.currentSongId),
       unShuffledPlayList: unShuffledPlayList
     })
   },

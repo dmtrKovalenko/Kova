@@ -77,20 +77,21 @@ export const PlayerControls = (props) => {
             <Next />
           </FloatingActionButton>
 
-          <Checkbox 
-            style={styles.CheckboxStyle}
-            iconStyle={styles.IconStyle}
-            checkedIcon={<Shuffle />}
-            uncheckedIcon={<Shuffle />}
-            onCheck={(ev, isChecked) => checkCheckbox(ev, isChecked, props.shuffle)} />
-          
-          <Checkbox 
-            style={styles.CheckboxStyle}
-            iconStyle={styles.IconStyle}
-            checkedIcon={<Loop/>}
-            uncheckedIcon={<Loop  />}
-            onCheck={(ev, isChecked) => checkCheckbox(ev, isChecked, props.loop)} />
-
+          <span className="additional-controls">
+            <Checkbox 
+              style={styles.CheckboxStyle}
+              iconStyle={styles.IconStyle}
+              checkedIcon={<Shuffle />}
+              uncheckedIcon={<Shuffle />}
+              onCheck={(ev, isChecked) => checkCheckbox(ev, isChecked, props.shuffle)} />
+            
+            <Checkbox 
+              style={styles.CheckboxStyle}
+              iconStyle={styles.IconStyle}
+              checkedIcon={<Loop/>}
+              uncheckedIcon={<Loop  />}
+              onCheck={(ev, isChecked) => checkCheckbox(ev, isChecked, props.loop)} />
+          </span>
         </div>
       </div>)
   } else {

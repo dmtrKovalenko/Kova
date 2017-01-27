@@ -22,7 +22,7 @@ class SongCard extends React.Component {
       this.card.classList.add('active')
       this.fab.style.backgroundImage = 'none'
 
-      setTimeout(() => (this.card.classList.add('img-visible')), 500)
+      setTimeout(() => (this.card.classList.add('img-visible')), 550)
       setTimeout(() => this.card.classList.add('title-visible'), 480)
     }
   }
