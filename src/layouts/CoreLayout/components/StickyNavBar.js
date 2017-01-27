@@ -22,7 +22,7 @@ class StickyNavBar extends React.Component {
     return (
       nextState.isExpanded != this.state.isExpanded ||
       nextState.isSmaller != this.state.isSmaller ||
-      nextState.searchOpen != this.state.searchOpen)
+      nextState.searchOpen != this.state.searchOpen )
   }
 
   componentDidMount () {

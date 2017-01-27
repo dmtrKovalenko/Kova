@@ -56,6 +56,8 @@
 
   .fab > svg {
     cursor: pointer;
+    max-width: 44px;
+    max-height: 44px;
     transition: transform .7s cubic-bezier(0.46, 0.03, 0.52, 0.96)!important;
   }
 

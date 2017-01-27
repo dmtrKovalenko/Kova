@@ -12,6 +12,10 @@ class SongCard extends React.Component {
     }
   }
 
+  componentWillUnmount () {
+     delete this.card;
+  }
+
   handleCardClick = () => {
     this.props.onSelect()
 
@@ -19,15 +23,15 @@ class SongCard extends React.Component {
   }
 
   selectSong = () => {
-    if (this.card) {
+    if (this.card != null) {
       this.card.classList.add('active', 'icon-hidden')
       setTimeout(() => (this.card.classList.add('img-visible')), 550)
-      setTimeout(() => this.card.classList.add('title-visible'), 480)
+      setTimeout(() => (this.card.classList.add('title-visible')), 480)
     }
   }
 
   unSelectSong = () => {
-    if (this.card) {
+    if (this.card != null) {
       this.card.classList.remove('active')
 
       setTimeout(() => (this.card.classList.remove('img-visible')), 500)
@@ -43,7 +47,6 @@ class SongCard extends React.Component {
         style={{ backgroundImage : 'url(' + this.props.artwork + ')' }} />
 
       <div className='fab'
-        ref={(ref) => { this.fab = ref }}
         onClick={this.handleCardClick} >
         <PlayIcon color={'fff'}
           style={{ width: 44, height: 44 }} />
@@ -56,8 +59,7 @@ class SongCard extends React.Component {
       <img className='powered-logo'
         src={PoweredBySC} />
 
-      <div ref={(ref) => { this.title = ref }}
-        className='title-container'>
+      <div className='title-container'>
         <span className='user-name'> {this.props.userName} </span>
         <span className='title'> {this.props.title} </span>
       </div>

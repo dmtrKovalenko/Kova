@@ -22,6 +22,7 @@ class SearchBar extends React.Component {
   };
 
   search = (value) => {
+    window.scrollTo(0,0);
     this.props.router.push({ pathname: '/songs', query: { q: value } })
   }
 
