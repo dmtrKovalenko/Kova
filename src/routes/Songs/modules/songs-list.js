@@ -19,7 +19,7 @@ export function songsLoading () {
 
 export function fetchSongs (filter) {
   return (dispatch) => {
-    dispatch(songsLoading());
+    dispatch(songsLoading())
     SoundCloudSDK.searchTracks(filter)
             .then(songs => dispatch(songsLoaded(songs)))
   }

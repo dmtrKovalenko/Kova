@@ -31,7 +31,7 @@ export const CoreLayout = (props) => (
       shuffle={props.shuffle}
       loop={props.loop} />
 
-    <Player currentSongId={props.currentSongId}
+    <Player currentStreamUrl={props.currentStreamUrl}
       changePlaybackTime={props.changePlaybackTime}
       isPaused={props.isPaused}
       changeVolume={props.changeVolume}

@@ -1,7 +1,6 @@
 import React from 'react'
-import Filter from '../../../types/Filter'
 import SongCard from './SongCard'
-import defaultImg from '../../../assets/default-artwork.png'
+import Filter from '../../../types/Filter.js'
 import Immutable from 'immutable'
 import Spinner from '../../../common-components/Spinner'
 import '../styles/SongsList.scss'
@@ -35,12 +34,12 @@ class SongsList extends React.Component {
 
     const tracks = this.props.songsList
             ? this.props.songsList.toJS().map(track =>
-                <SongCard key={track.id}
-                  artwork={track.artwork_url ? track.artwork_url.replace('large.jpg', 't500x500.jpg') : defaultImg}
-                  title={track.title}
-                  userName={track.user.username}
-                  onSelect={() => this.props.selectSong(track.id, this.props.songsList.toJS())}
-                  isCurrent={this.props.currentSongId == track.id} />)
+              <SongCard key={track.id}
+                artwork={track.artworkUrl}
+                title={track.title}
+                userName={track.user.name}
+                onSelect={() => this.props.selectSong(track.id, this.props.songsList.toJS())}
+                isCurrent={this.props.currentSongId == track.id} />)
             : null
 
     return <div className='tracks-container'> {tracks} </div>

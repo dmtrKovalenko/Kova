@@ -6,7 +6,6 @@ import Previous from 'material-ui/svg-icons/av/skip-previous'
 import Slider from 'material-ui/Slider'
 import Next from 'material-ui/svg-icons/av/skip-next'
 import Avatar from 'material-ui/Avatar'
-import defaultImg from '../../../assets/default-artwork.png'
 import Shuffle from 'material-ui/svg-icons/av/shuffle'
 import Loop from 'material-ui/svg-icons/av/loop'
 import Checkbox from 'material-ui/Checkbox'
@@ -33,14 +32,12 @@ export const PlayerControls = (props) => {
     return (
       <div className='player animated slideInUp'>
         <div className='artwork flex-container'>
-          <Avatar src={props.currentSong.artwork_url
-                            ? props.currentSong.artwork_url.replace('large.jpg', 't500x500.jpg') : defaultImg}
-            size={60} />
+          <Avatar src={props.currentSong.artworkUrl} size={60} />
         </div>
 
         <div className='title flex-container'>
           <a className='player-song-title'> {props.currentSong.title} </a>
-          <a className='player-user-name'> {props.currentSong.user.username} </a>
+          <a className='player-user-name'> {props.currentSong.user.name} </a>
         </div>
 
         <div className='slider flex-container'>
