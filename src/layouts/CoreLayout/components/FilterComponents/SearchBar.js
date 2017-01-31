@@ -2,15 +2,26 @@ import React from 'react'
 import AutoComplete from 'material-ui/AutoComplete'
 import IconButton from 'material-ui/IconButton'
 import SearchIcon from 'material-ui/svg-icons/action/search'
+import FilterIcon from 'material-ui/svg-icons/image/tune'
+import FilterModal from './FilterModal'
 
 class SearchBar extends React.Component {
   constructor (props) {
     super(props)
 
     this.state = {
-      dataSource: []
+      dataSource: [],
+      filterOpen: false
     }
-  }
+  } 
+
+  handleFiltersClose = () => {
+    this.setState({filterOpen: false});
+  };
+
+  handleFiltersOpen = () => {
+    this.setState({filterOpen: true});
+  };
 
   handleUpdateInput = (value) => {
     this.setState({
@@ -34,12 +45,17 @@ class SearchBar extends React.Component {
         </IconButton>
 
         <div className='search-input'>
-          <AutoComplete hintText='Search'
-            fullWidth
+          <AutoComplete hintText='Search' fullWidth
             dataSource={this.state.dataSource}
             onUpdateInput={this.handleUpdateInput}
             onNewRequest={this.search} />
         </div>
+
+        <IconButton className='search-icon'>
+          <FilterIcon onClick={this.handleFiltersOpen}/>
+        </IconButton>
+        <FilterModal filterOpen={this.state.filterOpen} 
+          handleFiltersClose={this.handleFiltersClose} />
       </div>)
   }
 }

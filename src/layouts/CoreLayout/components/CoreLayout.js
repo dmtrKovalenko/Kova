@@ -2,7 +2,7 @@ import React from 'react'
 import Player from './Player'
 import PlayerControls from './PlayerControls'
 import StickyNav from './StickyNavBar'
-import SearchBar from './SearchBar'
+import SearchBar from './FilterComponents/SearchBar'
 import '../styles/CoreLayout.scss'
 import '../../../styles/core.scss'
 

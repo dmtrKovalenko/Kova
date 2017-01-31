@@ -135,7 +135,8 @@ const initialState = {
   currentSongIndex : null,
   isSeeking: false,
   shuffle: false,
-  loop: false
+  loop: false,
+  filter: null,
 }
 
 export default function playerReducer (state = initialState, action) {

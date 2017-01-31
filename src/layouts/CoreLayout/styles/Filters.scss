@@ -1,0 +1,25 @@
+.genres-container {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.genre-chip {
+    margin-right: 3px !important;
+    margin-bottom: 2px !important;
+}
+
+.title {
+    color: rgba(0, 0, 0, 0.870588);
+    font-size: 22px;
+    font-weight: 400;
+}
+
+.selects-container {
+    display: flex;
+    flex-wrap: wrap;
+
+    .select-block {
+        margin-right: 10px;
+        margin: auto;
+    }
+}

@@ -7,7 +7,7 @@ class SDK {
         q: filter.query,
         linked_partitioning: 1,
         offset: 0,
-        limit: filter.limit
+        limit: filter.limit,
       }).then(function (tracks) {
         const songs = tracks.collection.map(song => MapSCSong(song))
         console.log(songs)

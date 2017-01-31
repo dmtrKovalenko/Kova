@@ -13,7 +13,7 @@ class Player extends React.Component {
       this.setVolume(this.props.volume)
     }
 
-        // On seek pause playing, but not change state to avoid change of ui
+    // On seek pause playing, but not change state to avoid change of ui
     if (prevProps.isSeeking != this.props.isSeeking) {
       this.playPause(this.props.isSeeking)
     }
@@ -54,8 +54,7 @@ class Player extends React.Component {
         onEnded={() => {
           this.props.playbackEnded()
           this.audioPlayer.play()
-        }
-        } />
+        }} />
     )
   }
 }
