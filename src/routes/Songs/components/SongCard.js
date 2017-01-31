@@ -13,7 +13,7 @@ class SongCard extends React.Component {
   }
 
   componentWillUnmount () {
-     delete this.card;
+    delete this.card
   }
 
   handleCardClick = () => {

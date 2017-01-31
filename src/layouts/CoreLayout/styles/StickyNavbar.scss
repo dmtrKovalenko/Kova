@@ -47,11 +47,12 @@ header {
         color:white;
         font-weight: 400;
         font-size: 40px;
+        margin-bottom: 0;
     }
 
     .subheader{
         color: rgba(255, 255, 255, 0.870588);
-        margin-top:-25px;
+        margin-top: 0;
         font-size: 20px;
         font-weight: 400;
     }
@@ -93,6 +94,16 @@ header.expanded {
     header {
         h1.logo {
             margin-top:15px;
+        }
+    }
+}
+
+@media (max-width: 480px) {
+    header {
+        height: 390px;
+
+        .subheader { 
+            height: 40px;
         }
     }
 }

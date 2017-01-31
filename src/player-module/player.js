@@ -21,6 +21,7 @@ const ACTION_HANDLERS = {
 
     return Object.assign({}, state, {
       currentSongId: action.songId,
+      currentStreamUrl: newSong.streamUrl,
       playList: action.playList,
       isPlaying: true,
       isPaused: false,
@@ -91,6 +92,7 @@ const ACTION_HANDLERS = {
       shuffle: action.toShuffle,
       playList: newPlayList.slice(),
       currentSongIndex: newPlayList.findIndex(x => x.id == state.currentSongId),
+      currentStreamUrl : null,
       unShuffledPlayList: unShuffledPlayList
     })
   },
@@ -112,6 +114,7 @@ const getUpdatedSongIndexState = (newIndex, state) => {
   updateDocumentTitle(newSong.title)
 
   return Object.assign({}, state, {
+    currentStreamUrl: newSong.streamUrl,
     currentSongId: newSong.id,
     isPlaying: true,
     isPaused: false,

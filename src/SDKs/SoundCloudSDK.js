@@ -1,5 +1,4 @@
-const SCStremUrl = 'https://api.soundcloud.com/tracks/%track.id%/stream?client_id=f4323c6f7c0cd73d2d786a2b1cdae80c'
-const trackIdToken = '%track.id%'
+import { MapSCSong } from '../utils/SongMapper'
 
 class SDK {
   searchTracks (filter) {
@@ -10,16 +9,12 @@ class SDK {
         offset: 0,
         limit: filter.limit
       }).then(function (tracks) {
-        console.log(tracks)
+        const songs = tracks.collection.map(song => MapSCSong(song))
+        console.log(songs)
 
-        resolve(tracks.collection)
+        resolve(songs)
       })
     })
-  }
-
-  getStreamUrl (songId) {
-    const url = SCStremUrl.replace(trackIdToken, songId)
-    return url
   }
 }
 

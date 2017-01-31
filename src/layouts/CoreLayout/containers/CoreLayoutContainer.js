@@ -19,6 +19,7 @@ const mapDispatchToProps = {
 
 const mapStateToProps = (state) => ({
   currentSongId: state.player.currentSongId,
+  currentStreamUrl: state.player.currentStreamUrl,
   isPaused : state.player.isPaused,
   isPlaying: state.player.isPlaying,
   volume : state.player.volume,
