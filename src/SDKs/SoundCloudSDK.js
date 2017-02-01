@@ -3,7 +3,6 @@ import * as FilterConstants from '../constants/FiltersConstants'
 
 class SDK {
   searchTracks (query, filter) {
-    debugger
     return new Promise((resolve) => {
       window.SC.get('/tracks', {
         q: query,
@@ -12,7 +11,8 @@ class SDK {
         limit: filter.limit,
         types: filter.type,
         bpm: filter.bpm,
-        duration: filter.duration
+        duration: filter.duration,
+        genres: filter.genres ? filter.genres.toString() : undefined
       }).then(function (tracks) {
         const songs = tracks.collection.map(song => MapSCSong(song))
         console.log(songs)
