@@ -2,14 +2,16 @@ import React from 'react'
 import Player from './Player'
 import PlayerControls from './PlayerControls'
 import StickyNav from './StickyNavBar'
-import SearchBar from './SearchBar'
+import SearchBar from './FilterComponents/SearchBar'
 import '../styles/CoreLayout.scss'
 import '../../../styles/core.scss'
 
 export const CoreLayout = (props) => (
   <div className='app'>
     <StickyNav>
-      <SearchBar router={props.router} />
+      <SearchBar router={props.router}
+        filter={props.filter}
+        changeFilter={props.changeFilter} />
     </StickyNav>
 
     <div className='main-content'>

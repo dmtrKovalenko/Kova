@@ -100,7 +100,7 @@ class StickyNavBar extends React.Component {
             <SearchIcon color={'fff'} />
           </IconButton>
 
-          <Popover className='search-bar'
+          <Popover className='search-bar popover-search'
             open={this.state.searchOpen}
             anchorEl={this.state.anchorEl}
             anchorOrigin={{ horizontal: 'right', vertical: 'center' }}

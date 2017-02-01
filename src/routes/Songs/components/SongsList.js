@@ -7,23 +7,22 @@ import '../styles/SongsList.scss'
 
 class SongsList extends React.Component {
   shouldComponentUpdate (nextProps) {
-    if (this.props.location.query != nextProps.location.query ||
-        this.props.currentSongId != nextProps.currentSongId ||
-        this.props.isLoading != nextProps.isLoading ||
-        !Immutable.is(this.props.songsList, nextProps.songsList)) {
-      return true
-    }
-
-    return false
+    return (
+      this.props.location.query != nextProps.location.query ||
+      this.props.currentSongId != nextProps.currentSongId ||
+      this.props.isLoading != nextProps.isLoading ||
+      this.props.filter != nextProps.filter ||
+      !Immutable.is(this.props.songsList, nextProps.songsList))
   }
 
   componentDidMount () {
-    this.props.fetchSongs(new Filter(this.props.location.query.q))
+    this.props.fetchSongs(this.props.location.query.q, new Filter())
   }
 
   componentDidUpdate (prevProps) {
-    if (this.props.location.query != prevProps.location.query) {
-      this.props.fetchSongs(new Filter(this.props.location.query.q))
+    if (this.props.location.query != prevProps.location.query ||
+        this.props.filter != prevProps.filter) {
+      this.props.fetchSongs(this.props.location.query.q, this.props.filter)
     }
   }
 

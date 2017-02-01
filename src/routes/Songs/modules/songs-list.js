@@ -17,10 +17,10 @@ export function songsLoading () {
   }
 }
 
-export function fetchSongs (filter) {
+export function fetchSongs (query, filter) {
   return (dispatch) => {
     dispatch(songsLoading())
-    SoundCloudSDK.searchTracks(filter)
+    SoundCloudSDK.searchTracks(query, filter)
             .then(songs => dispatch(songsLoaded(songs)))
   }
 }
