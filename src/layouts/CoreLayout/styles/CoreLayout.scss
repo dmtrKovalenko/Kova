@@ -2,20 +2,33 @@
    width: 60%;
    margin: 0 auto;
    padding: 0 10px;
+   top: 3px !important;
 
    .search-input {
      display: inline-block;
-     width: calc(100% - 48px);
+     width: calc(100% - 96px);
+     height: 50px;
    }
 
-   .search-icon {
+   .search-icon,
+   .filter-icon {
       top: 8px;
    }
 }
 
+.popover-search {
+  .search-input {
+      width: calc(100% - 55px);
+   }
+
+  .filter-icon {
+      display: none !important;
+   }
+} 
+
 @media(max-width: 980px){
   .search-bar {
-    width: 100%;
+    width: 96%;
     padding: 0 5px;
   }
 }

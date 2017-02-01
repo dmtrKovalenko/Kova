@@ -1,7 +1,5 @@
 import React from 'react'
-import SoundCloudSdk from '../../../SDKs/SoundCloudSDK'
 
-const soundCloudSdk = new SoundCloudSdk()
 const defaultVolume = 0.5
 
 class Player extends React.Component {
@@ -15,7 +13,7 @@ class Player extends React.Component {
       this.setVolume(this.props.volume)
     }
 
-        // On seek pause playing, but not change state to avoid change of ui
+    // On seek pause playing, but not change state to avoid change of ui
     if (prevProps.isSeeking != this.props.isSeeking) {
       this.playPause(this.props.isSeeking)
     }
@@ -49,11 +47,14 @@ class Player extends React.Component {
   render () {
     return (
       <audio ref={ref => (this.audioPlayer = ref)}
-        src={soundCloudSdk.getStreamUrl(this.props.currentSongId)}
+        src={this.props.currentStreamUrl}
         controls={false}
         onCanPlayThrough={() => this.audioPlayer.play()}
         onTimeUpdate={() => this.props.changePlaybackTime(this.audioPlayer.currentTime)}
-        onEnded={() => this.props.playNextSong()} />
+        onEnded={() => {
+          this.props.playbackEnded()
+          this.audioPlayer.play()
+        }} />
     )
   }
 }

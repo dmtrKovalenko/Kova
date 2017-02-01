@@ -10,7 +10,9 @@ const mapDispatchToProps = {
 
 const mapStateToProps = (state) => ({
   songsList : state.songs.songsList,
-  currentSongId : state.player.currentSongId
+  currentSongId : state.player.currentSongId,
+  isLoading : state.songs.isLoading,
+  filter : state.player.filter
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(SongsList)

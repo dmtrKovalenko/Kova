@@ -1,48 +1,65 @@
 import React from 'react'
-import Paper from 'material-ui/Paper'
 import AutoComplete from 'material-ui/AutoComplete'
 import IconButton from 'material-ui/IconButton'
 import SearchIcon from 'material-ui/svg-icons/action/search'
+import FilterIcon from 'material-ui/svg-icons/image/tune'
+import FilterModal from './FilterModal'
 
 class SearchBar extends React.Component {
   constructor (props) {
     super(props)
 
     this.state = {
-      dataSource: []
+      dataSource: [],
+      filterOpen: false
     }
   }
+
+  handleFiltersClose = () => {
+    this.setState({ filterOpen: false })
+  };
+
+  handleFiltersOpen = () => {
+    this.setState({ filterOpen: true })
+  };
 
   handleUpdateInput = (value) => {
     this.setState({
       dataSource: [
         value,
         value + value,
-        value + value + value
-      ]
+        value + value + value ]
     })
   };
 
   search = (value) => {
+    window.scrollTo(0, 0)
     this.props.router.push({ pathname: '/songs', query: { q: value } })
   }
 
   render () {
     return (
-      <Paper zDepth={2}
-        className='search-bar'>
+      <div>
         <IconButton className='search-icon'>
-          <SearchIcon />
+          <SearchIcon color={'#857f7f'} />
         </IconButton>
 
         <div className='search-input'>
-          <AutoComplete hintText='Search'
+          <AutoComplete hintText='Search' fullWidth
             dataSource={this.state.dataSource}
             onUpdateInput={this.handleUpdateInput}
-            fullWidth
             onNewRequest={this.search} />
         </div>
-      </Paper>)
+
+        <IconButton className='filter-icon'>
+          <FilterIcon onClick={this.handleFiltersOpen} color={'#857f7f'} />
+        </IconButton>
+
+        <FilterModal filterOpen={this.state.filterOpen}
+          filter={this.props.filter}
+          handleFiltersClose={this.handleFiltersClose}
+          changeFilter={this.props.changeFilter} />
+      </div>)
   }
 }
 

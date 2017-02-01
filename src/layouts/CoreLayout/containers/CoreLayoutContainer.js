@@ -11,11 +11,17 @@ const mapDispatchToProps = {
   changeVolume : actions.changeVolume,
   seekStarted: actions.seekStarted,
   seek: actions.seek,
-  seeked: actions.seeked
+  seeked: actions.seeked,
+  loop: actions.loop,
+  shuffle: actions.shuffle,
+  playbackEnded: actions.playbackEnded,
+  changeFilter: actions.changeFilter
 }
 
 const mapStateToProps = (state) => ({
   currentSongId: state.player.currentSongId,
+  filter: state.player.filter,
+  currentStreamUrl: state.player.currentStreamUrl,
   isPaused : state.player.isPaused,
   isPlaying: state.player.isPlaying,
   volume : state.player.volume,

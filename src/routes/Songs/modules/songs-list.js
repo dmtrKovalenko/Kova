@@ -11,9 +11,16 @@ export function songsLoaded (songs) {
   }
 }
 
-export function fetchSongs (filter) {
+export function songsLoading () {
+  return {
+    type: types.SONGS_LOADING_STARTED
+  }
+}
+
+export function fetchSongs (query, filter) {
   return (dispatch) => {
-    return SoundCloudSDK.searchTracks(filter)
+    dispatch(songsLoading())
+    SoundCloudSDK.searchTracks(query, filter)
             .then(songs => dispatch(songsLoaded(songs)))
   }
 }
@@ -26,13 +33,21 @@ export const actions = {
 const ACTION_HANDLERS = {
   [types.SONGS_LOADED] : (state, action) => {
     return Object.assign({}, state, {
-      songsList: Immutable.fromJS(action.songs)
+      songsList: Immutable.fromJS(action.songs),
+      isLoading: false
+    })
+  },
+
+  [types.SONGS_LOADING_STARTED] : (state, action) => {
+    return Object.assign({}, state, {
+      isLoading: true
     })
   }
 }
 
 const initialState = {
-  songsList : null
+  songsList : null,
+  isLoading : true
 }
 
 export default function songsListReducer (state = initialState, action) {

@@ -2,14 +2,16 @@ import React from 'react'
 import Player from './Player'
 import PlayerControls from './PlayerControls'
 import StickyNav from './StickyNavBar'
-import SearchBar from './SearchBar'
+import SearchBar from './FilterComponents/SearchBar'
 import '../styles/CoreLayout.scss'
 import '../../../styles/core.scss'
 
 export const CoreLayout = (props) => (
   <div className='app'>
     <StickyNav>
-      <SearchBar router={props.router} />
+      <SearchBar router={props.router}
+        filter={props.filter}
+        changeFilter={props.changeFilter} />
     </StickyNav>
 
     <div className='main-content'>
@@ -27,16 +29,18 @@ export const CoreLayout = (props) => (
       seekStarted={props.seekStarted}
       seek={props.seek}
       seeked={props.seeked}
-      playbackTime={props.playbackTime} />
+      playbackTime={props.playbackTime}
+      shuffle={props.shuffle}
+      loop={props.loop} />
 
-    <Player currentSongId={props.currentSongId}
+    <Player currentStreamUrl={props.currentStreamUrl}
       changePlaybackTime={props.changePlaybackTime}
       isPaused={props.isPaused}
       changeVolume={props.changeVolume}
       volume={props.volume}
       isSeeking={props.isSeeking}
       playbackTime={props.playbackTime}
-      playNextSong={props.playNextSong} />
+      playbackEnded={props.playbackEnded} />
   </div>
 )
 

@@ -65,11 +65,29 @@ export function seeked () {
   }
 }
 
-export const actions = {
-  play,
-  pause,
-  changePlaybackTime,
-  playNextSong,
-  playPreviousSong,
-  changeVolume
+export function shuffle (toShuffle) {
+  return {
+    type: types.SHUFFLE,
+    toShuffle : toShuffle
+  }
+}
+
+export function loop (toLoop) {
+  return {
+    type: types.LOOP,
+    toLoop : toLoop
+  }
+}
+
+export function playbackEnded () {
+  return {
+    type: types.PLAYBACK_ENDED
+  }
+}
+
+export function changeFilter (filter) {
+  return {
+    type: types.CHANGE_FILTER,
+    filter: filter
+  }
 }
