@@ -10,7 +10,7 @@ class SongsList extends React.Component {
     return (
       this.props.location.query != nextProps.location.query ||
       this.props.currentSongId != nextProps.currentSongId ||
-      this.props.isLoading != nextProps.isLoading || 
+      this.props.isLoading != nextProps.isLoading ||
       this.props.filter != nextProps.filter ||
       !Immutable.is(this.props.songsList, nextProps.songsList))
   }
@@ -20,7 +20,7 @@ class SongsList extends React.Component {
   }
 
   componentDidUpdate (prevProps) {
-    if (this.props.location.query != prevProps.location.query || 
+    if (this.props.location.query != prevProps.location.query ||
         this.props.filter != prevProps.filter) {
       this.props.fetchSongs(this.props.location.query.q, this.props.filter)
     }

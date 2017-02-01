@@ -13,14 +13,14 @@ class SearchBar extends React.Component {
       dataSource: [],
       filterOpen: false
     }
-  } 
+  }
 
   handleFiltersClose = () => {
-    this.setState({filterOpen: false});
+    this.setState({ filterOpen: false })
   };
 
   handleFiltersOpen = () => {
-    this.setState({filterOpen: true});
+    this.setState({ filterOpen: true })
   };
 
   handleUpdateInput = (value) => {
@@ -41,7 +41,7 @@ class SearchBar extends React.Component {
     return (
       <div>
         <IconButton className='search-icon'>
-          <SearchIcon color={'#857f7f'}/>
+          <SearchIcon color={'#857f7f'} />
         </IconButton>
 
         <div className='search-input'>
@@ -50,9 +50,9 @@ class SearchBar extends React.Component {
             onUpdateInput={this.handleUpdateInput}
             onNewRequest={this.search} />
         </div>
-        
+
         <IconButton className='filter-icon'>
-          <FilterIcon onClick={this.handleFiltersOpen} color={'#857f7f'}/>
+          <FilterIcon onClick={this.handleFiltersOpen} color={'#857f7f'} />
         </IconButton>
 
         <FilterModal filterOpen={this.state.filterOpen}

@@ -88,6 +88,6 @@ export function playbackEnded () {
 export function changeFilter (filter) {
   return {
     type: types.CHANGE_FILTER,
-    filter: filter,
+    filter: filter
   }
 }

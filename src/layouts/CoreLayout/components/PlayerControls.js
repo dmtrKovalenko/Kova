@@ -54,7 +54,7 @@ export const PlayerControls = (props) => {
               onChange={(event, value) => props.seek(value)}
               onDragStop={props.seeked} />
           </div>
-          
+
           <div className='duration time'>
             {formatMS(props.currentSong.duration)}
           </div>

@@ -9,9 +9,9 @@ import '../../../styles/core.scss'
 export const CoreLayout = (props) => (
   <div className='app'>
     <StickyNav>
-      <SearchBar router={props.router} 
+      <SearchBar router={props.router}
         filter={props.filter}
-        changeFilter={props.changeFilter}/>
+        changeFilter={props.changeFilter} />
     </StickyNav>
 
     <div className='main-content'>

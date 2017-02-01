@@ -1,5 +1,4 @@
 import { MapSCSong } from '../utils/SongMapper'
-import * as FilterConstants from '../constants/FiltersConstants'
 
 class SDK {
   searchTracks (query, filter) {
@@ -20,7 +19,7 @@ class SDK {
         resolve(songs)
       })
     })
-  } 
+  }
 }
 
 export default SDK

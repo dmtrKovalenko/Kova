@@ -1,6 +1,5 @@
 import * as types from '../constants/ActionTypes'
 import shuffle from '../utils/ArrayShuffler'
-import Immutable from 'immutable'
 import Filter from '../types/Filter'
 
 const ACTION_HANDLERS = {
@@ -144,7 +143,7 @@ const initialState = {
   isSeeking: false,
   shuffle: false,
   loop: false,
-  filter: new Filter(),
+  filter: new Filter()
 }
 
 export default function playerReducer (state = initialState, action) {
