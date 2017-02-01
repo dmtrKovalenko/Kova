@@ -85,11 +85,9 @@ export function playbackEnded () {
   }
 }
 
-export const actions = {
-  play,
-  pause,
-  changePlaybackTime,
-  playNextSong,
-  playPreviousSong,
-  changeVolume
+export function changeFilter (filter) {
+  return {
+    type: types.CHANGE_FILTER,
+    filter: filter,
+  }
 }

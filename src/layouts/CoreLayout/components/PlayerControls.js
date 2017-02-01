@@ -12,22 +12,22 @@ import Checkbox from 'material-ui/Checkbox'
 import { formatMS, formatSS } from '../../../utils/TimeHelper'
 import '../styles/Controls.scss'
 
+const floatButtonClassName = 'control-button'
+
+const styles = {
+  CheckboxStyle : { display: 'inline-block', width: 25, marginLeft: 5 },
+  IconStyle : { fill: '#857f7f' }
+}
+
+const checkCheckbox = (event, isChecked, callback) => {
+  isChecked
+      ? event.target.classList.add('checked')
+      : event.target.classList.remove('checked')
+
+  callback(isChecked)
+}
+
 export const PlayerControls = (props) => {
-  const floatButtonClassName = 'control-button'
-
-  const styles = {
-    CheckboxStyle : { display: 'inline-block', width: 25, marginLeft: 5 },
-    IconStyle : { fill: '#857f7f' }
-  }
-
-  const checkCheckbox = (event, isChecked, callback) => {
-    isChecked
-        ? event.target.classList.add('checked')
-        : event.target.classList.remove('checked')
-
-    callback(isChecked)
-  }
-
   if (props.currentSong && props.isPlaying) {
     return (
       <div className='player animated slideInUp'>
@@ -44,6 +44,7 @@ export const PlayerControls = (props) => {
           <div className='current time'>
             {formatSS(props.playbackTime)}
           </div>
+
           <div className='slider-container'>
             <Slider
               sliderStyle={{ marginBottom:0, marginTop:30 }}
@@ -53,6 +54,7 @@ export const PlayerControls = (props) => {
               onChange={(event, value) => props.seek(value)}
               onDragStop={props.seeked} />
           </div>
+          
           <div className='duration time'>
             {formatMS(props.currentSong.duration)}
           </div>

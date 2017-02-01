@@ -1,5 +1,7 @@
 import * as types from '../constants/ActionTypes'
 import shuffle from '../utils/ArrayShuffler'
+import Immutable from 'immutable'
+import Filter from '../types/Filter'
 
 const ACTION_HANDLERS = {
   [types.PLAY_SONG] : (state, action) => {
@@ -101,6 +103,12 @@ const ACTION_HANDLERS = {
     return Object.assign({}, state, {
       loop: action.toLoop
     })
+  },
+
+  [types.CHANGE_FILTER] : (state, action) => {
+    return Object.assign({}, state, {
+      filter: action.filter
+    })
   }
 }
 
@@ -136,7 +144,7 @@ const initialState = {
   isSeeking: false,
   shuffle: false,
   loop: false,
-  filter: null,
+  filter: new Filter(),
 }
 
 export default function playerReducer (state = initialState, action) {

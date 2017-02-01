@@ -54,8 +54,10 @@ class SearchBar extends React.Component {
         <IconButton className='search-icon'>
           <FilterIcon onClick={this.handleFiltersOpen}/>
         </IconButton>
-        <FilterModal filterOpen={this.state.filterOpen} 
-          handleFiltersClose={this.handleFiltersClose} />
+        <FilterModal filterOpen={this.state.filterOpen}
+          filter={this.props.filter}
+          handleFiltersClose={this.handleFiltersClose}
+          changeFilter={this.props.changeFilter} />
       </div>)
   }
 }

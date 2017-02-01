@@ -23,3 +23,5 @@ export const SHUFFLE = 'SHUFFLE'
 export const LOOP = 'LOOP'
 
 export const PLAYBACK_ENDED = 'PLAYBACK_ENDED'
+
+export const CHANGE_FILTER = 'CHANGE_FILTER'
