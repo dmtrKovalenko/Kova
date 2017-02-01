@@ -41,7 +41,7 @@ class SearchBar extends React.Component {
     return (
       <div>
         <IconButton className='search-icon'>
-          <SearchIcon />
+          <SearchIcon color={'#857f7f'}/>
         </IconButton>
 
         <div className='search-input'>
@@ -50,10 +50,11 @@ class SearchBar extends React.Component {
             onUpdateInput={this.handleUpdateInput}
             onNewRequest={this.search} />
         </div>
-
-        <IconButton className='search-icon'>
-          <FilterIcon onClick={this.handleFiltersOpen}/>
+        
+        <IconButton className='filter-icon'>
+          <FilterIcon onClick={this.handleFiltersOpen} color={'#857f7f'}/>
         </IconButton>
+
         <FilterModal filterOpen={this.state.filterOpen}
           filter={this.props.filter}
           handleFiltersClose={this.handleFiltersClose}
