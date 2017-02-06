@@ -16,10 +16,6 @@ class SongsList extends React.Component {
   }
 
   componentDidMount () {
-    const x = { foo: 'bar'  };
-    const y = {...x, foo: 'bar'};
-    console.log(x === y); // false
-
     this.props.fetchSongs(this.props.location.query.q, new Filter())
   }
 

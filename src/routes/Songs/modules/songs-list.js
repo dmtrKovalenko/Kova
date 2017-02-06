@@ -1,5 +1,5 @@
 import * as types from '../constants/ActionTypes'
-import {searchTracks} from '../../../SDKs/SoundCloudSDK'
+import { searchTracks } from '../../../SDKs/SoundCloudSDK'
 import Immutable from 'immutable'
 
 export function songsLoaded (songs) {

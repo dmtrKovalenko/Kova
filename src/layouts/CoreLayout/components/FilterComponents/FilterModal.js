@@ -23,9 +23,9 @@ class FilterModal extends React.Component {
     const selectedTemp = filterConstants.bpm.find(x => x.id == this.state.temp)
     const selectedDuration = filterConstants.durations.find(x => x.id == this.state.duration)
 
-    const newFilter = {...this.props.filter,  
+    const newFilter = { ...this.props.filter,
       type : this.state.type == -1 ? undefined : this.state.type,
-      genres: this.state.selectedGenres.length > 0 
+      genres: this.state.selectedGenres.length > 0
         ? this.state.selectedGenres : undefined,
       bpm : selectedTemp
         ? { from: selectedTemp.value.from, to: selectedTemp.value.to } : undefined,

@@ -3,12 +3,10 @@ import enhanceWithClickOutside from 'react-click-outside'
 import IconButton from 'material-ui/IconButton'
 import Paper from 'material-ui/Paper'
 import Slider from 'material-ui/Slider'
-import VolumeDown from 'material-ui/svg-icons/av/volume-down'
-import VolumeUp from 'material-ui/svg-icons/av/volume-up'
-import VolumeMute from 'material-ui/svg-icons/av/volume-mute'
+import VolumeUp from 'material-ui/svg-icons/av/volume-down'
 import { cyan500 } from 'material-ui/styles/colors'
 
-const volumeBarBaseClass= ['volume-slider-container', 'animated'];
+const volumeBarBaseClass = ['volume-slider-container', 'animated']
 
 class VolumeBar extends React.Component {
   constructor (props) {
@@ -18,8 +16,8 @@ class VolumeBar extends React.Component {
     }
   }
 
-  shouldComponentUpdate(newProps, newState) {
-     return this.state.isDisplaying != newState.isDisplaying;
+  shouldComponentUpdate (newProps, newState) {
+    return this.state.isDisplaying != newState.isDisplaying
   }
 
   showVolumeBar = () => {
@@ -32,10 +30,10 @@ class VolumeBar extends React.Component {
     }
   }
 
-  getVolumeBarClassList() {
-    let classList = [...volumeBarBaseClass];
+  getVolumeBarClassList () {
+    let classList = [...volumeBarBaseClass]
 
-    if(this.state.isDisplaying == null) {
+    if (this.state.isDisplaying == null) {
       classList.push('hidden')
     } else if (this.state.isDisplaying) {
       classList.push('bounceInUp')
@@ -43,7 +41,7 @@ class VolumeBar extends React.Component {
       classList.push('bounceOutDown')
     }
 
-    return classList.join(' ');
+    return classList.join(' ')
   }
 
   render () {
