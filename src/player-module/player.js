@@ -51,7 +51,7 @@ const ACTION_HANDLERS = {
       return { ...state,
         playbackTime: 0,
         isPaused: false
-      } 
+      }
     }
 
     return getUpdatedSongIndexState(state.currentSongIndex + 1, state)
@@ -73,7 +73,7 @@ const ACTION_HANDLERS = {
     const unShuffledPlayList = action.toShuffle
       ? state.playList : null
 
-    return { ...state, 
+    return { ...state,
       shuffle: action.toShuffle,
       playList: newPlayList.slice(),
       currentSongIndex: newPlayList.findIndex(x => x.id == state.currentSongId),

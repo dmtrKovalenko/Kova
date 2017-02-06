@@ -5,7 +5,6 @@ import Immutable from 'immutable'
 import Spinner from '../../../common-components/Spinner'
 import '../styles/SongsList.scss'
 
- 
 class SongsList extends React.Component {
   shouldComponentUpdate (nextProps) {
     return (
@@ -17,10 +16,6 @@ class SongsList extends React.Component {
   }
 
   componentDidMount () {
-    const x = { foo: 'bar'  };
-    const y = {...x, foo: 'bar'};
-    console.log(x === y); // false
-
     this.props.fetchSongs(this.props.location.query.q, new Filter())
   }
 

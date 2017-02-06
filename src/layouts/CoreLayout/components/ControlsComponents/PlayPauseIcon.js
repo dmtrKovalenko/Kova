@@ -6,11 +6,7 @@ const play = 'M11,10 L17,10 17,26 11,26 M20,10 L26,10 26,26 20,26'
 
 class PlayPauseToggleIcon extends React.Component {
   shouldComponentUpdate (nextProps) {
-    if (this.props.isPaused != nextProps.isPaused) {
-      return true
-    }
-
-    return false
+    return this.props.isPaused != nextProps.isPaused
   }
 
   componentDidUpdate () {

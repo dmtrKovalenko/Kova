@@ -4,6 +4,7 @@ import IconButton from 'material-ui/IconButton'
 import SearchIcon from 'material-ui/svg-icons/action/search'
 import FilterIcon from 'material-ui/svg-icons/image/tune'
 import FilterModal from './FilterModal'
+import { autocompleteTracks } from '../../../../SDKs/LostFmSDK'
 
 class SearchBar extends React.Component {
   constructor (props) {
@@ -24,11 +25,9 @@ class SearchBar extends React.Component {
   };
 
   handleUpdateInput = (value) => {
-    this.setState({
-      dataSource: [
-        value,
-        value + value,
-        value + value + value ]
+    autocompleteTracks(value).then(values => {
+      this.setState({ dataSource: values })
+      console.log(values)
     })
   };
 
@@ -48,6 +47,7 @@ class SearchBar extends React.Component {
           <AutoComplete hintText='Search' fullWidth
             dataSource={this.state.dataSource}
             onUpdateInput={this.handleUpdateInput}
+            filter={() => true} // show all search results, withou filters
             onNewRequest={this.search} />
         </div>
 
