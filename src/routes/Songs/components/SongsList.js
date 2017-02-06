@@ -5,7 +5,6 @@ import Immutable from 'immutable'
 import Spinner from '../../../common-components/Spinner'
 import '../styles/SongsList.scss'
 
- 
 class SongsList extends React.Component {
   shouldComponentUpdate (nextProps) {
     return (

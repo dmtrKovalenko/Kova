@@ -8,6 +8,8 @@ import VolumeUp from 'material-ui/svg-icons/av/volume-up'
 import VolumeMute from 'material-ui/svg-icons/av/volume-mute'
 import { cyan500 } from 'material-ui/styles/colors'
 
+const volumeBarBaseClass= ['volume-slider-container', 'animated'];
+
 class VolumeBar extends React.Component {
   constructor (props) {
     super(props)
@@ -16,8 +18,12 @@ class VolumeBar extends React.Component {
     }
   }
 
+  shouldComponentUpdate(newProps, newState) {
+     return this.state.isDisplaying != newState.isDisplaying;
+  }
+
   showVolumeBar = () => {
-    this.setState({ isDisplaying:!this.state.isDisplaying })
+    this.setState({ isDisplaying : !this.state.isDisplaying })
   }
 
   handleClickOutside () {
@@ -26,29 +32,31 @@ class VolumeBar extends React.Component {
     }
   }
 
+  getVolumeBarClassList() {
+    let classList = [...volumeBarBaseClass];
+
+    if(this.state.isDisplaying == null) {
+      classList.push('hidden')
+    } else if (this.state.isDisplaying) {
+      classList.push('bounceInUp')
+    } else {
+      classList.push('bounceOutDown')
+    }
+
+    return classList.join(' ');
+  }
+
   render () {
-    let volumeBarClassName = 'volume-slider-container animated '
-
-    const volumeIcon = this.props.volume == 0 ? <VolumeMute color={cyan500} />
-                              : this.props.volume > 0.5 ? <VolumeUp color={cyan500} />
-                              : <VolumeDown color={cyan500} />
-
-    this.state.isDisplaying == null ? volumeBarClassName += 'hidden'
-                                      : this.state.isDisplaying ? volumeBarClassName += 'bounceInUp'
-                                      : volumeBarClassName += 'bounceOutDown'
-
     return (
       <div className='volume-bar'>
-        <Paper className={volumeBarClassName} zDepth={3}>
+        <Paper className={this.getVolumeBarClassList()} zDepth={3}>
           <Slider style={{ height: 100 }}
-            axis='y'
-            defaultValue={0.5}
-            min={0} max={1}
+            axis='y' min={0} max={1} defaultValue={0.5}
             onChange={(event, value) => this.props.onChange(value)} />
         </Paper>
 
         <IconButton onClick={this.showVolumeBar}>
-          {volumeIcon}
+          <VolumeUp color={cyan500} />
         </IconButton>
       </div>)
   }
