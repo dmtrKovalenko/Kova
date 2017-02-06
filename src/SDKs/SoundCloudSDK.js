@@ -1,25 +1,22 @@
 import { MapSCSong } from '../utils/SongMapper'
 
-class SDK {
-  searchTracks (query, filter) {
-    return new Promise((resolve) => {
-      window.SC.get('/tracks', {
-        q: query,
-        linked_partitioning: 1,
-        offset: 0,
-        limit: filter.limit,
-        types: filter.type,
-        bpm: filter.bpm,
-        duration: filter.duration,
-        genres: filter.genres ? filter.genres.toString() : undefined
-      }).then(function (tracks) {
-        const songs = tracks.collection.map(song => MapSCSong(song))
-        console.log(songs)
+export function searchTracks (query, filter) {
+  return new Promise((resolve) => {
+    window.SC.get('/tracks', {
+      q: query,
+      linked_partitioning: 1,
+      offset: 0,
+      limit: filter.limit,
+      types: filter.type,
+      bpm: filter.bpm,
+      duration: filter.duration,
+      genres: filter.genres ? filter.genres.toString() : undefined
+    }).then(function (tracks) {
+      const songs = tracks.collection.map(song => MapSCSong(song))
+      console.log(songs)
 
-        resolve(songs)
-      })
+      resolve(songs)
     })
-  }
+  })
 }
 
-export default SDK

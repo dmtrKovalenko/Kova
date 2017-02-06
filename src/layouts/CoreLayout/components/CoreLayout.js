@@ -1,6 +1,6 @@
 import React from 'react'
 import Player from './Player'
-import PlayerControls from './PlayerControls'
+import PlayerControls from './ControlsComponents/PlayerControls'
 import StickyNav from './StickyNavBar'
 import SearchBar from './FilterComponents/SearchBar'
 import '../styles/CoreLayout.scss'

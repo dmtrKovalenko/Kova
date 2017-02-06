@@ -20,7 +20,8 @@ export function MapSCSong (track) {
 
 function getSCArtworks (artworkUrl) {
   if (!artworkUrl) {
-    return { artwork : defaultImg, croppedArtwork: smallDefaultImg }
+    const id = Math.floor(Math.random() * 6 + 1).toString();
+    return { artwork : require(`../assets/${id}.jpg`), croppedArtwork: require(`../assets/${id}-cropped.jpg`) }
   }
 
   const artwork = artworkUrl.replace('large.jpg', 't300x300.jpg')

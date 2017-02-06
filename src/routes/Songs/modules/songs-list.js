@@ -1,8 +1,6 @@
 import * as types from '../constants/ActionTypes'
-import SoundCloudSdk from '../../../SDKs/SoundCloudSDK'
+import { searchTracks } from '../../../SDKs/SoundCloudSDK'
 import Immutable from 'immutable'
-
-const SoundCloudSDK = new SoundCloudSdk()
 
 export function songsLoaded (songs) {
   return {
@@ -20,8 +18,9 @@ export function songsLoading () {
 export function fetchSongs (query, filter) {
   return (dispatch) => {
     dispatch(songsLoading())
-    SoundCloudSDK.searchTracks(query, filter)
-            .then(songs => dispatch(songsLoaded(songs)))
+
+    searchTracks(query, filter)
+      .then(songs => dispatch(songsLoaded(songs)))
   }
 }
 
@@ -32,16 +31,16 @@ export const actions = {
 
 const ACTION_HANDLERS = {
   [types.SONGS_LOADED] : (state, action) => {
-    return Object.assign({}, state, {
+    return { ...state,
       songsList: Immutable.fromJS(action.songs),
       isLoading: false
-    })
+    }
   },
 
   [types.SONGS_LOADING_STARTED] : (state, action) => {
-    return Object.assign({}, state, {
+    return { ...state,
       isLoading: true
-    })
+    }
   }
 }
 

@@ -4,23 +4,18 @@ import Filter from '../types/Filter'
 
 const ACTION_HANDLERS = {
   [types.PLAY_SONG] : (state, action) => {
-    return Object.assign({}, state, {
-      isPlaying : true,
-      isPaused : false
-    })
+    return { ...state, isPlaying : true, isPaused : false }
   },
 
   [types.PAUSE_SONG] : (state, action) => {
-    return Object.assign({}, state, {
-      isPaused: true
-    })
+    return { ...state, isPaused: true }
   },
 
   [types.SELECT_SONG] : (state, action) => {
     const newSong = action.playList.find(song => song.id == action.songId)
     updateDocumentTitle(newSong.title)
 
-    return Object.assign({}, state, {
+    return { ...state,
       currentSongId: action.songId,
       currentStreamUrl: newSong.streamUrl,
       playList: action.playList,
@@ -28,45 +23,35 @@ const ACTION_HANDLERS = {
       isPaused: false,
       playbackTime: 0,
       currentSongIndex: action.playList.indexOf(newSong)
-    })
+    }
   },
 
   [types.CHANGE_PLAYBACK_TIME] : (state, action) => {
-    return Object.assign({}, state, {
-      playbackTime: action.payload
-    })
+    return { ...state, playbackTime: action.payload }
   },
 
   [types.CHANGE_VOLUME] : (state, action) => {
-    return Object.assign({}, state, {
-      volume : action.volume
-    })
+    return { ...state, volume : action.volume }
   },
 
   [types.SEEK_STARTED]: (state, action) => {
-    return Object.assign({}, state, {
-      isSeeking: true
-    })
+    return { ...state, isSeeking: true }
   },
 
   [types.SEEK]: (state, action) => {
-    return Object.assign({}, state, {
-      playbackTime: action.value
-    })
+    return { ...state, playbackTime: action.value }
   },
 
   [types.SEEK_ENDED]: (state, action) => {
-    return Object.assign({}, state, {
-      isSeeking: false
-    })
+    return { ...state, isSeeking: false }
   },
 
   [types.PLAYBACK_ENDED]: (state, action) => {
     if (state.loop) {
-      return Object.assign({}, state, {
+      return { ...state,
         playbackTime: 0,
         isPaused: false
-      })
+      }
     }
 
     return getUpdatedSongIndexState(state.currentSongIndex + 1, state)
@@ -86,28 +71,23 @@ const ACTION_HANDLERS = {
       : state.unShuffledPlayList
 
     const unShuffledPlayList = action.toShuffle
-      ? state.playList
-      : null
+      ? state.playList : null
 
-    return Object.assign({}, state, {
+    return { ...state,
       shuffle: action.toShuffle,
       playList: newPlayList.slice(),
       currentSongIndex: newPlayList.findIndex(x => x.id == state.currentSongId),
       currentStreamUrl : null,
       unShuffledPlayList: unShuffledPlayList
-    })
+    }
   },
 
   [types.LOOP] : (state, action) => {
-    return Object.assign({}, state, {
-      loop: action.toLoop
-    })
+    return { ...state, loop: action.toLoop }
   },
 
   [types.CHANGE_FILTER] : (state, action) => {
-    return Object.assign({}, state, {
-      filter: action.filter
-    })
+    return { ...state, filter: action.filter }
   }
 }
 
@@ -120,13 +100,13 @@ const getUpdatedSongIndexState = (newIndex, state) => {
 
   updateDocumentTitle(newSong.title)
 
-  return Object.assign({}, state, {
+  return { ...state,
     currentStreamUrl: newSong.streamUrl,
     currentSongId: newSong.id,
     isPlaying: true,
     isPaused: false,
     currentSongIndex: newIndex
-  })
+  }
 }
 
 const updateDocumentTitle = (songTitle) => {
