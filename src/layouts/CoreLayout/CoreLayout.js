@@ -6,7 +6,7 @@ import '../../styles/core.scss'
 
 export const CoreLayout = (props) => (
   <div className='app'>
-    <Navbar router={props.router}/>
+    <Navbar router={props.router} />
 
     <div className='main-content'>
       {props.children}

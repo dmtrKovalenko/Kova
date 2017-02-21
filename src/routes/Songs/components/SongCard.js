@@ -38,28 +38,28 @@ class SongCard extends React.Component {
 
   render () {
     return (
-    <div ref={(ref) => { this.card = ref }} className='card'>
-      <div className='main'
-        style={{ backgroundImage : 'url(' + this.props.artwork + ')' }} />
+      <div ref={(ref) => { this.card = ref }} className='card'>
+        <div className='main'
+          style={{ backgroundImage : 'url(' + this.props.artwork + ')' }} />
 
-      <div className='fab'
-        onClick={this.handleCardClick} >
-        <PlayIcon color={'#fff'}
-          style={{ width: 44, height: 44 }} />
-      </div>
+        <div className='fab'
+          onClick={this.handleCardClick} >
+          <PlayIcon color={'#fff'}
+            style={{ width: 44, height: 44 }} />
+        </div>
 
-      <div className='fab-sha' />
-      <div className='close'
-        onClick={this.unSelectSong} />
+        <div className='fab-sha' />
+        <div className='close'
+          onClick={this.unSelectSong} />
 
-      <img className='powered-logo'
-        src={PoweredBySC} />
+        <img className='powered-logo'
+          src={PoweredBySC} />
 
-      <div className='title-container'>
-        <span className='user-name'> {this.props.userName} </span>
-        <span className='title'> {this.props.title} </span>
-      </div>
-    </div>)
+        <div className='title-container'>
+          <span className='user-name'> {this.props.userName} </span>
+          <span className='title'> {this.props.title} </span>
+        </div>
+      </div>)
   }
 }
 

@@ -7,7 +7,7 @@ const mapDispatchToProps = {
   playPause : (isPaused) => isPaused ? actions.play() : actions.pause(),
   changePlaybackTime : actions.changePlaybackTime,
   playbackEnded: actions.playbackEnded,
-  changeVolume : actions.changeVolume,
+  changeVolume : actions.changeVolume
 }
 
 const mapStateToProps = (state) => ({
@@ -15,7 +15,7 @@ const mapStateToProps = (state) => ({
   isPaused : state.player.isPaused,
   volume : state.player.volume,
   isSeeking: state.player.isSeeking,
-  playbackTime: state.player.playbackTime,
+  playbackTime: state.player.playbackTime
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(PlayerComponent)
