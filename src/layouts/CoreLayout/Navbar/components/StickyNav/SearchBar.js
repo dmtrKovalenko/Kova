@@ -3,8 +3,9 @@ import AutoComplete from 'material-ui/AutoComplete'
 import IconButton from 'material-ui/IconButton'
 import SearchIcon from 'material-ui/svg-icons/action/search'
 import FilterIcon from 'material-ui/svg-icons/image/tune'
-import FilterModal from './FilterModal'
-import { autocompleteTracks } from '../../../../SDKs/LostFmSDK'
+import FilterModal from '../Filter/FilterModal'
+import { autocompleteTracks } from '../../../../../SDKs/LostFmSDK'
+import '../../styles/SearchBar.scss'
 
 class SearchBar extends React.Component {
   constructor (props) {

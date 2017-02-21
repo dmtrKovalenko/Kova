@@ -1,5 +1,6 @@
 import React from 'react'
 import PoweredBySC from '../assets/powered-by-sc.png'
+import PlayingAnimation from '../assets/bang-bang.gif'
 import PlayIcon from 'material-ui/svg-icons/av/play-arrow'
 import '../styles/SongCard.scss'
 
@@ -12,9 +13,6 @@ class SongCard extends React.Component {
     }
   }
 
-  componentWillUnmount () {
-    delete this.card
-  }
 
   handleCardClick = () => {
     this.props.onSelect()
@@ -25,8 +23,8 @@ class SongCard extends React.Component {
   selectSong = () => {
     if (this.card != null) {
       this.card.classList.add('active', 'icon-hidden')
-      setTimeout(() => (this.card.classList.add('img-visible')), 550)
       setTimeout(() => (this.card.classList.add('title-visible')), 480)
+      setTimeout(() => (this.card.classList.add('img-visible')), 550)
     }
   }
 
@@ -41,14 +39,14 @@ class SongCard extends React.Component {
   }
 
   render () {
-    return <div ref={(ref) => { this.card = ref }}
-      className='card'>
+    return (
+    <div ref={(ref) => { this.card = ref }} className='card'>
       <div className='main'
         style={{ backgroundImage : 'url(' + this.props.artwork + ')' }} />
 
       <div className='fab'
         onClick={this.handleCardClick} >
-        <PlayIcon color={'fff'}
+        <PlayIcon color={'#fff'}
           style={{ width: 44, height: 44 }} />
       </div>
 
@@ -59,11 +57,14 @@ class SongCard extends React.Component {
       <img className='powered-logo'
         src={PoweredBySC} />
 
+      <img className='animation'
+        src={PlayingAnimation} />
+
       <div className='title-container'>
         <span className='user-name'> {this.props.userName} </span>
         <span className='title'> {this.props.title} </span>
       </div>
-    </div>
+    </div>)
   }
 }
 

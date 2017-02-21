@@ -1,7 +1,7 @@
 import { connect } from 'react-redux'
 import * as actions from '../../../player-module/player-actions'
 
-import CoreLayout from '../components/CoreLayout.js'
+import ControlsComponent from './components/PlayerControls'
 
 const mapDispatchToProps = {
   playPause : (isPaused) => isPaused ? actions.play() : actions.pause(),
@@ -32,4 +32,4 @@ const mapStateToProps = (state) => ({
         : null
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(CoreLayout)
+export default connect(mapStateToProps, mapDispatchToProps)(ControlsComponent)

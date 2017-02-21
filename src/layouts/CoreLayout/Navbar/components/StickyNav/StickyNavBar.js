@@ -1,12 +1,12 @@
 import React from 'react'
-import '../styles/StickyNavBar.scss'
 import MenuIcon from 'material-ui/svg-icons/navigation/menu'
 import IconButton from 'material-ui/IconButton'
-import LogoImg from '../../../assets/logo.png'
-import SearchIcon from 'material-ui/svg-icons/action/search'
-import Slogans from '../../../constants/MusicSlogans'
 import Paper from 'material-ui/Paper'
 import Popover from 'material-ui/Popover'
+import SearchIcon from 'material-ui/svg-icons/action/search'
+import Slogans from '../../../../../constants/MusicSlogans'
+import LogoImg from '../../../../../assets/logo.png'
+import '../../styles/StickyNavBar.scss'
 
 class StickyNavBar extends React.Component {
   constructor (props) {
