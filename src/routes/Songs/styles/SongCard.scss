@@ -23,16 +23,26 @@
     background-size: cover;
   }
 
-  .powered-logo {
+  .powered-logo,
+  .animation {
     display: none;
-  }
-
-  &.img-visible .powered-logo { 
-    display: block;
     position: absolute; 
     z-index: 100;
+  }
+
+  .powered-logo {
     left: 20px;
     top: 0;
+  }
+
+  .animation {
+    width: 100%;
+    top: 20%;
+  }
+
+  &.img-visible .powered-logo,
+  &.img-visible .animation { 
+    display: block;
   }
 
   .fab {
