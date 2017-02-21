@@ -1,6 +1,5 @@
 import React from 'react'
 import PoweredBySC from '../assets/powered-by-sc.png'
-import PlayingAnimation from '../assets/bang-bang.gif'
 import PlayIcon from 'material-ui/svg-icons/av/play-arrow'
 import '../styles/SongCard.scss'
 
@@ -12,7 +11,6 @@ class SongCard extends React.Component {
       this.unSelectSong()
     }
   }
-
 
   handleCardClick = () => {
     this.props.onSelect()
@@ -56,9 +54,6 @@ class SongCard extends React.Component {
 
       <img className='powered-logo'
         src={PoweredBySC} />
-
-      <img className='animation'
-        src={PlayingAnimation} />
 
       <div className='title-container'>
         <span className='user-name'> {this.props.userName} </span>
