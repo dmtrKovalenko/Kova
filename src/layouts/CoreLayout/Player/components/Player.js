@@ -57,6 +57,18 @@ class Player extends React.Component {
     this.props.playNextSong()
   }
 
+  onEnded = () => {
+    this.props.playbackEnded()
+    this.audioPlayer.play()
+  }
+
+  /**For 3rd paty devices, changing state outside of website */
+  onPlayPause = () => {
+    if(this.props.isPaused !== this.audioPlayer.isPaused) {
+      this.props.playPause(isNowPaused)
+    }
+  }
+
   render () {
     return (
       <span>
@@ -65,11 +77,10 @@ class Player extends React.Component {
           controls={false}
           onCanPlayThroughCapture={() => this.audioPlayer.play()}
           onTimeUpdate={() => this.props.changePlaybackTime(this.audioPlayer.currentTime)}
+          onPlay={this.onPlayPause}
+          onPause={this.onPlayPause}
           onError={this.showError}
-          onEnded={() => {
-            this.props.playbackEnded()
-            this.audioPlayer.play()
-          }} />
+          onEnded={this.onEnded} />
 
         <Snackbar open={this.state.isErrorShackOpen}
             message="Oops, error was thrown, dont worry."
