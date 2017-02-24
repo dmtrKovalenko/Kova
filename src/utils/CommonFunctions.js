@@ -1,4 +1,4 @@
-/* eslint one-var: "off" */
+/* eslint one-vary: "off" */
 
 // Returns a function, that, as long as it continues to be invoked, will not
 // be triggered. The function will be called after it stops being called for
