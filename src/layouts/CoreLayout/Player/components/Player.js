@@ -1,11 +1,11 @@
 import React from 'react'
-import Snackbar from 'material-ui/Snackbar';
+import Snackbar from 'material-ui/Snackbar'
 
 const defaultVolume = 0.5
 
 class Player extends React.Component {
-  constructor(props) {
-    super(props);
+  constructor (props) {
+    super(props)
 
     this.state = {
       isErrorShackOpen : false
@@ -53,7 +53,7 @@ class Player extends React.Component {
   }
 
   showError = (e) => {
-    this.setState({isErrorShackOpen: true})
+    this.setState({ isErrorShackOpen: true })
     this.props.playNextSong()
   }
 
@@ -62,10 +62,10 @@ class Player extends React.Component {
     this.audioPlayer.play()
   }
 
-  /**For 3rd paty devices, changing state outside of website */
+  /** For 3rd paty devices, changing state outside of website */
   onPlayPause = () => {
-    if(this.props.isPaused !== this.audioPlayer.isPaused) {
-      this.props.playPause(isNowPaused)
+    if (this.props.isPaused !== this.audioPlayer.isPaused) {
+      this.props.playPause(this.audioPlayer.isPaused)
     }
   }
 
@@ -83,9 +83,9 @@ class Player extends React.Component {
           onEnded={this.onEnded} />
 
         <Snackbar open={this.state.isErrorShackOpen}
-            message="Oops, error was thrown, dont worry."
-            autoHideDuration={2000}
-            onRequestClose={() => this.setState({isErrorShackOpen: false})}  />
+          message='Oops, error was thrown, dont worry.'
+          autoHideDuration={2000}
+          onRequestClose={() => this.setState({ isErrorShackOpen: false })} />
       </span>
     )
   }

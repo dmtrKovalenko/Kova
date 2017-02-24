@@ -12,7 +12,7 @@ class SongCard extends React.Component {
     }
   }
 
-  shouldComponentUpdate(nextProps, nextState) {
+  shouldComponentUpdate (nextProps, nextState) {
     return this.props.isCurrent !== nextProps.isCurrent
   }
 
@@ -23,17 +23,17 @@ class SongCard extends React.Component {
   }
 
   selectSong = () => {
-      this.card.classList.add('active', 'icon-hidden')
-      setTimeout(() => (this.card.classList.add('title-visible')), 480)
-      setTimeout(() => (this.card.classList.add('img-visible')), 550)
+    this.card.classList.add('active', 'icon-hidden')
+    setTimeout(() => (this.card.classList.add('title-visible')), 480)
+    setTimeout(() => (this.card.classList.add('img-visible')), 550)
   }
 
   unSelectSong = () => {
-      this.card.classList.remove('active')
+    this.card.classList.remove('active')
 
-      setTimeout(() => (this.card.classList.remove('img-visible')), 500)
-      setTimeout(() => (this.card.classList.remove('title-visible')), 550)
-      setTimeout(() => (this.card.classList.remove('icon-hidden')), 700)
+    setTimeout(() => (this.card.classList.remove('img-visible')), 500)
+    setTimeout(() => (this.card.classList.remove('title-visible')), 550)
+    setTimeout(() => (this.card.classList.remove('icon-hidden')), 700)
   }
 
   render () {
