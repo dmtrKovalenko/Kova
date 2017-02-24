@@ -64,8 +64,8 @@ class Player extends React.Component {
 
   /** For 3rd paty devices, changing state outside of website */
   onPlayPause = () => {
-    if (this.props.isPaused !== this.audioPlayer.isPaused) {
-      this.props.playPause(this.audioPlayer.isPaused)
+    if (this.props.isPaused !== this.audioPlayer.paused) {
+      this.props.playPause(this.audioPlayer.paused)
     }
   }
 
