@@ -4,7 +4,7 @@ import FlatButton from 'material-ui/FlatButton'
 import GenreChip from './GenreChip'
 import FilterSelect from './FilterSelect'
 import MenuItem from 'material-ui/MenuItem'
-import * as filterConstants from '../../../../constants/FiltersConstants'
+import * as filterConstants from '../../../../../constants/FiltersConstants'
 import '../../styles/Filters.scss'
 
 class FilterModal extends React.Component {

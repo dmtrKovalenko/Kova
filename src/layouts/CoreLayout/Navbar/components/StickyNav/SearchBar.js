@@ -3,13 +3,16 @@ import AutoComplete from 'material-ui/AutoComplete'
 import IconButton from 'material-ui/IconButton'
 import SearchIcon from 'material-ui/svg-icons/action/search'
 import FilterIcon from 'material-ui/svg-icons/image/tune'
-import FilterModal from './FilterModal'
-import { autocompleteTracks } from '../../../../SDKs/LostFmSDK'
+import FilterModal from '../Filter/FilterModal'
+import { autocompleteTracks } from '../../../../../SDKs/LostFmSDK'
+import { throttle } from '../../../../../utils/CommonFunctions'
+import '../../styles/SearchBar.scss'
 
 class SearchBar extends React.Component {
   constructor (props) {
     super(props)
 
+    this.handleUpdateInput = throttle(this.handleUpdateInput, 200)
     this.state = {
       dataSource: [],
       filterOpen: false
@@ -25,10 +28,10 @@ class SearchBar extends React.Component {
   };
 
   handleUpdateInput = (value) => {
-    autocompleteTracks(value).then(values => {
-      this.setState({ dataSource: values })
-      console.log(values)
-    })
+    if (value) {
+      autocompleteTracks(value)
+        .then(values => this.setState({ dataSource: values }))
+    }
   };
 
   search = (value) => {

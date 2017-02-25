@@ -1,5 +1,5 @@
 // We only need to import the modules necessary for initial render
-import CoreLayout from '../layouts/CoreLayout/containers/CoreLayoutContainer'
+import CoreLayout from '../layouts/CoreLayout/CoreLayout'
 import Songs from './Songs'
 import CounterRoute from './Counter'
 

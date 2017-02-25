@@ -10,7 +10,7 @@ import Shuffle from 'material-ui/svg-icons/av/shuffle'
 import Loop from 'material-ui/svg-icons/av/loop'
 import Checkbox from 'material-ui/Checkbox'
 import { formatMS, formatSS } from '../../../../utils/TimeHelper'
-import '../../styles/Controls.scss'
+import '../styles/Controls.scss'
 
 const floatButtonClassName = 'control-button'
 

@@ -1,12 +1,13 @@
 import React from 'react'
-import '../styles/StickyNavBar.scss'
 import MenuIcon from 'material-ui/svg-icons/navigation/menu'
 import IconButton from 'material-ui/IconButton'
-import LogoImg from '../../../assets/logo.png'
-import SearchIcon from 'material-ui/svg-icons/action/search'
-import Slogans from '../../../constants/MusicSlogans'
 import Paper from 'material-ui/Paper'
 import Popover from 'material-ui/Popover'
+import SearchIcon from 'material-ui/svg-icons/action/search'
+import Slogans from '../../../../../constants/MusicSlogans'
+import LogoImg from '../../../../../assets/logo.png'
+import { throttle } from '../../../../../utils/CommonFunctions'
+import '../../styles/StickyNavBar.scss'
 
 class StickyNavBar extends React.Component {
   constructor (props) {
@@ -26,11 +27,11 @@ class StickyNavBar extends React.Component {
   }
 
   componentDidMount () {
-    window.addEventListener('scroll', this.handleScroll)
+    window.addEventListener('scroll', throttle(this.handleScroll.bind(this), 100))
   }
 
   componentWillUnmount () {
-    window.removeEventListener('scroll', this.handleScroll)
+    window.removeEventListener('scroll', this.handleScroll.bind(this))
   }
 
   handleScroll = () => {
