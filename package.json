@@ -57,7 +57,7 @@
       }
     },
     "azure" : {
-      "command": "npm run test && npm run compile",
+      "command": "npm run compile",
       "env": {
         "NODE_ENV": "production",
         "DEBUG": "app:*"
