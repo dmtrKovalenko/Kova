@@ -100,7 +100,7 @@ IF EXIST "%DEPLOYMENT_TARGET%\package.json" (
 )
 
 :: 2. Run lint, test and compile
-call :ExecuteCmd !NPM_CMD! deploy:prod
+call :ExecuteCmd !NPM_CMD! run deploy:prod
 
 :: 3. KuduSync
 IF /I "%IN_PLACE_DEPLOYMENT%" NEQ "1" (
