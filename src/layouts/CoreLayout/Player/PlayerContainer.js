@@ -7,7 +7,8 @@ const mapDispatchToProps = {
   playPause : (isPaused) => isPaused ? actions.play() : actions.pause(),
   changePlaybackTime : actions.changePlaybackTime,
   playbackEnded: actions.playbackEnded,
-  changeVolume : actions.changeVolume
+  changeVolume : actions.changeVolume,
+  playNextSong: actions.playNextSong
 }
 
 const mapStateToProps = (state) => ({

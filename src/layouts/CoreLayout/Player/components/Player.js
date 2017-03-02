@@ -1,8 +1,16 @@
 import React from 'react'
+import Snackbar from 'material-ui/Snackbar'
 
 const defaultVolume = 0.5
 
 class Player extends React.Component {
+  constructor (props) {
+    super(props)
+
+    this.state = {
+      isErrorShackOpen : false
+    }
+  }
   // Pass there checks for state changing and call appropriate method for html5 audio
   componentDidUpdate (prevProps) {
     if (prevProps.isPaused != this.props.isPaused) {
@@ -28,7 +36,7 @@ class Player extends React.Component {
     this.props.changeVolume(defaultVolume)
   }
 
-  playPause (toPause) {
+  playPause = (toPause) => {
     if (toPause) {
       this.audioPlayer.pause()
     } else {
@@ -36,25 +44,49 @@ class Player extends React.Component {
     }
   }
 
-  seekTo (value) {
+  seekTo = (value) => {
     this.audioPlayer.currentTime = value
   }
 
-  setVolume (newVolume) {
+  setVolume = (newVolume) => {
     this.audioPlayer.volume = this.props.volume
+  }
+
+  showError = (e) => {
+    this.setState({ isErrorShackOpen: true })
+    this.props.playNextSong()
+  }
+
+  onEnded = () => {
+    this.props.playbackEnded()
+    this.audioPlayer.play()
+  }
+
+  /** For 3rd paty devices, changing state outside of website */
+  onPlayPause = () => {
+    if (this.props.isPaused !== this.audioPlayer.paused) {
+      this.props.playPause(this.audioPlayer.paused)
+    }
   }
 
   render () {
     return (
-      <audio ref={ref => (this.audioPlayer = ref)}
-        src={this.props.currentStreamUrl}
-        controls={false}
-        onCanPlayThrough={() => this.audioPlayer.play()}
-        onTimeUpdate={() => this.props.changePlaybackTime(this.audioPlayer.currentTime)}
-        onEnded={() => {
-          this.props.playbackEnded()
-          this.audioPlayer.play()
-        }} />
+      <span>
+        <audio ref={ref => (this.audioPlayer = ref)}
+          src={this.props.currentStreamUrl}
+          controls={false}
+          onCanPlayThroughCapture={() => this.audioPlayer.play()}
+          onTimeUpdate={() => this.props.changePlaybackTime(this.audioPlayer.currentTime)}
+          onPlay={this.onPlayPause}
+          onPause={this.onPlayPause}
+          onError={this.showError}
+          onEnded={this.onEnded} />
+
+        <Snackbar open={this.state.isErrorShackOpen}
+          message='Oops, error was thrown, dont worry.'
+          autoHideDuration={2000}
+          onRequestClose={() => this.setState({ isErrorShackOpen: false })} />
+      </span>
     )
   }
 }
