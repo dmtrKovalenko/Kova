@@ -17,6 +17,8 @@ class StickyNavBar extends React.Component {
       isExpanded : false,
       searchOpen : false
     }
+
+    this.throttleHandleScroll = throttle(this.handleScroll, 100)
   }
 
   shouldComponentUpdate (nextProps, nextState) {
@@ -27,19 +29,19 @@ class StickyNavBar extends React.Component {
   }
 
   componentDidMount () {
-    window.addEventListener('scroll', throttle(this.handleScroll.bind(this), 100))
+    window.addEventListener('scroll', this.throttleHandleScroll)
   }
 
   componentWillUnmount () {
-    window.removeEventListener('scroll', this.handleScroll.bind(this))
+    window.removeEventListener('scroll', this.throttleHandleScroll)
   }
 
   handleScroll = () => {
-    if (window.scrollY > 100 && !this.state.isSmaller) {
+    if (window.scrollY > 20 && !this.state.isSmaller) {
       this.setState({
         isSmaller : true
       })
-    } else if (window.scrollY < 100 && this.state.isSmaller) {
+    } else if (window.scrollY < 20 && this.state.isSmaller) {
       this.setState({
         isSmaller : false,
         searchOpen : false
