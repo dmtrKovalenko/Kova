@@ -108,7 +108,7 @@ IF EXIST "%DEPLOYMENT_TEMP%\package.json" (
 :: 2. Run lint, test and compile
 IF EXIST "%DEPLOYMENT_TEMP%\package.json" (
   pushd "%DEPLOYMENT_TEMP%"
-  call :ExecuteCmd !NPM_CMD! run deploy:prod
+  call :ExecuteCmd !NPM_CMD! run azure
   IF !ERRORLEVEL! NEQ 0 goto error
   popd
 )
