@@ -100,7 +100,7 @@ IF /I "%IN_PLACE_DEPLOYMENT%" NEQ "1" (
 :: 2. Install npm packages
 IF EXIST "%DEPLOYMENT_TEMP%\package.json" (
   pushd "%DEPLOYMENT_TEMP%"
-  call :ExecuteCmd !NPM_CMD! install --production
+  call :ExecuteCmd !NPM_CMD! install
   IF !ERRORLEVEL! NEQ 0 goto error
   popd
 )
