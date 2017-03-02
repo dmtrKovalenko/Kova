@@ -1,7 +1,7 @@
 {
-  "name": "react-redux-starter-kit",
-  "version": "3.0.0-alpha.2",
-  "description": "Get started with React, Redux, and React-Router!",
+  "name": "Kova",
+  "version": "1.0.1-alpha.1",
+  "description": "Amazing material web player, that you will enjoy.",
   "main": "index.js",
   "engines": {
     "node": ">=4.5.0",
