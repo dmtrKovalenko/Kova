@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { PropTypes } from 'react'
 import SelectField from 'material-ui/SelectField'
 
 const FilterSelect = (props) => {
@@ -9,7 +9,15 @@ const FilterSelect = (props) => {
         onChange={(ev, index, value) => props.onChange(value)}>
         {props.items}
       </SelectField>
-    </div>)
+    </div>
+  )
+}
+
+FilterSelect.propTypes = {
+  label: PropTypes.string,
+  value: PropTypes.string,
+  onChange: PropTypes.func,
+  items: PropTypes.array
 }
 
 export default FilterSelect

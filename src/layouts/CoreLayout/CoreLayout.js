@@ -18,7 +18,8 @@ export const CoreLayout = (props) => (
 )
 
 CoreLayout.propTypes = {
-  children : React.PropTypes.element.isRequired
+  children : React.PropTypes.element.isRequired,
+  router: React.PropTypes.object
 }
 
 export default CoreLayout

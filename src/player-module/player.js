@@ -12,7 +12,7 @@ const ACTION_HANDLERS = {
   },
 
   [types.SELECT_SONG] : (state, action) => {
-    const newSong = action.playList.find(song => song.id == action.songId)
+    const newSong = action.playList.find(song => song.id === action.songId)
     updateDocumentTitle(newSong.title)
 
     return { ...state,
@@ -76,7 +76,7 @@ const ACTION_HANDLERS = {
     return { ...state,
       shuffle: action.toShuffle,
       playList: newPlayList.slice(),
-      currentSongIndex: newPlayList.findIndex(x => x.id == state.currentSongId),
+      currentSongIndex: newPlayList.findIndex(x => x.id === state.currentSongId),
       currentStreamUrl : null,
       unShuffledPlayList: unShuffledPlayList
     }

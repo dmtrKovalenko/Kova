@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { PropTypes } from 'react'
 import enhanceWithClickOutside from 'react-click-outside'
 import IconButton from 'material-ui/IconButton'
 import Paper from 'material-ui/Paper'
@@ -17,7 +17,7 @@ class VolumeBar extends React.Component {
   }
 
   shouldComponentUpdate (newProps, newState) {
-    return this.state.isDisplaying != newState.isDisplaying
+    return this.state.isDisplaying !== newState.isDisplaying
   }
 
   showVolumeBar = () => {
@@ -58,6 +58,10 @@ class VolumeBar extends React.Component {
         </IconButton>
       </div>)
   }
+}
+
+VolumeBar.propTypes = {
+  onChange: PropTypes.func
 }
 
 export default enhanceWithClickOutside(VolumeBar)

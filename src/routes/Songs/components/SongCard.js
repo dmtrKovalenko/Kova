@@ -1,6 +1,7 @@
-import React from 'react'
-import PoweredBySC from '../assets/powered-by-sc.png'
+import React, { PropTypes } from 'react'
+import PoweredBySC from '../../../assets/powered-by-sc.png'
 import PlayIcon from 'material-ui/svg-icons/av/play-arrow'
+
 import '../styles/SongCard.scss'
 
 class SongCard extends React.Component {
@@ -40,7 +41,7 @@ class SongCard extends React.Component {
     return (
       <div ref={(ref) => { this.card = ref }} className='card'>
         <div className='main'
-          style={{ backgroundImage : 'url(' + this.props.artwork + ')' }} />
+          style={{ backgroundImage: 'url(' + this.props.artwork + ')' }} />
 
         <div className='fab'
           onClick={this.handleCardClick} >
@@ -61,6 +62,15 @@ class SongCard extends React.Component {
         </div>
       </div>)
   }
+}
+
+SongCard.propTypes = {
+  isCurrent: PropTypes.bool,
+  artwork: PropTypes.string,
+  userName: PropTypes.string,
+  title: PropTypes.string,
+
+  onSelect: PropTypes.func
 }
 
 export default SongCard

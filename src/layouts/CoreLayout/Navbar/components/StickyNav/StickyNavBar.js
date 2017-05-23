@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { PropTypes } from 'react'
 import MenuIcon from 'material-ui/svg-icons/navigation/menu'
 import IconButton from 'material-ui/IconButton'
 import Paper from 'material-ui/Paper'
@@ -23,9 +23,9 @@ class StickyNavBar extends React.Component {
 
   shouldComponentUpdate (nextProps, nextState) {
     return (
-      nextState.isExpanded != this.state.isExpanded ||
-      nextState.isSmaller != this.state.isSmaller ||
-      nextState.searchOpen != this.state.searchOpen)
+      nextState.isExpanded !== this.state.isExpanded ||
+      nextState.isSmaller !== this.state.isSmaller ||
+      nextState.searchOpen !== this.state.searchOpen)
   }
 
   componentDidMount () {
@@ -126,6 +126,10 @@ class StickyNavBar extends React.Component {
         </div>
       </header>)
   }
+}
+
+StickyNavBar.propTypes = {
+  children: PropTypes.arrayOf(PropTypes.element)
 }
 
 export default StickyNavBar

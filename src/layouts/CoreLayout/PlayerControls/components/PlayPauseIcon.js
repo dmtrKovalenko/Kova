@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { PropTypes } from 'react'
 import '../styles/PlayPauseIcon.scss'
 
 const pause = 'M11,10 L18,13.74 18,22.28 11,26 M18,13.74 L26,18 26,18 18,22.28'
@@ -6,7 +6,7 @@ const play = 'M11,10 L17,10 17,26 11,26 M20,10 L26,10 26,26 20,26'
 
 class PlayPauseToggleIcon extends React.Component {
   shouldComponentUpdate (nextProps) {
-    return this.props.isPaused != nextProps.isPaused
+    return this.props.isPaused !== nextProps.isPaused
   }
 
   componentDidUpdate () {
@@ -31,10 +31,13 @@ class PlayPauseToggleIcon extends React.Component {
         <button onClick={this.props.onClick}
           className='play-pause-btn'>
 
-          <svg ref={ref => (this.iconSvg = ref)}
+          <svg
+            ref={ref => (this.iconSvg = ref)}
             className='play-pause-svg playing'
-            width='100%' height='100%'
-            viewBox='0 0 36 36' version='1.1'
+            width='100%'
+            height='100%'
+            viewBox='0 0 36 36'
+            version='1.1'
             xmlns='http://www.w3.org/2000/svg'
             xmlnsXlink='http://www.w3.org/1999/xlink'>
 
@@ -55,6 +58,11 @@ class PlayPauseToggleIcon extends React.Component {
       </div>
     )
   }
+}
+
+PlayPauseToggleIcon.propTypes = {
+  isPaused: PropTypes.bool,
+  onClick: PropTypes.func
 }
 
 export default PlayPauseToggleIcon
