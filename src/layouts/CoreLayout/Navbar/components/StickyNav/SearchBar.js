@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { PropTypes } from 'react'
 import AutoComplete from 'material-ui/AutoComplete'
 import IconButton from 'material-ui/IconButton'
 import SearchIcon from 'material-ui/svg-icons/action/search'
@@ -47,7 +47,9 @@ class SearchBar extends React.Component {
         </IconButton>
 
         <div className='search-input'>
-          <AutoComplete hintText='Search' fullWidth
+          <AutoComplete
+            fullWidth
+            hintText='Search'
             dataSource={this.state.dataSource}
             onUpdateInput={this.handleUpdateInput}
             filter={() => true} // show all search results, withou filters
@@ -55,15 +57,25 @@ class SearchBar extends React.Component {
         </div>
 
         <IconButton className='filter-icon'>
-          <FilterIcon onClick={this.handleFiltersOpen} color={'#857f7f'} />
+          <FilterIcon
+            color={'#857f7f'}
+            onClick={this.handleFiltersOpen} />
         </IconButton>
 
-        <FilterModal filterOpen={this.state.filterOpen}
+        <FilterModal
           filter={this.props.filter}
+          filterOpen={this.state.filterOpen}
           handleFiltersClose={this.handleFiltersClose}
           changeFilter={this.props.changeFilter} />
-      </div>)
+      </div>
+    )
   }
+}
+
+SearchBar.propTypes = {
+  router: PropTypes.object,
+  filter: PropTypes.string,
+  changeFilter: PropTypes.func
 }
 
 export default SearchBar

@@ -1,7 +1,8 @@
 import { connect } from 'react-redux'
-import { fetchSongs } from '../modules/songs-list'
-import { selectSong } from '../../../player-module/player-actions'
-import SongsList from '../components/SongsList'
+import { fetchSongs } from './SongsListActions'
+import { selectSong } from '../../player-module/player-actions'
+
+import SongsList from './components/SongsList'
 
 const mapDispatchToProps = {
   selectSong : (id, playList) => selectSong(id, playList),

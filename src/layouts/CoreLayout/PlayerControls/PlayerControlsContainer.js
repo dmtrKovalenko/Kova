@@ -28,7 +28,7 @@ const mapStateToProps = (state) => ({
   isSeeking: state.player.isSeeking,
   playbackTime: state.player.playbackTime,
   currentSong: state.player.playList
-        ? state.player.playList.find(song => song.id == state.player.currentSongId)
+        ? state.player.playList.find(song => song.id === state.player.currentSongId)
         : null
 })
 
