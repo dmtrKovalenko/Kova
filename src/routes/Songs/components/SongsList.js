@@ -35,13 +35,13 @@ class SongsList extends React.Component {
 
     const tracks = this.props.songsList
       ? this.props.songsList.toJS().map(track =>
-          <SongCard
-            key={track.id}
-            artwork={track.artworkUrl}
-            title={track.title}
-            userName={track.user.name}
-            isCurrent={this.props.currentSongId === track.id}
-            onSelect={() => this.props.selectSong(track.id, this.props.songsList.toJS())} />)
+        <SongCard
+          key={track.id}
+          artwork={track.artworkUrl}
+          title={track.title}
+          userName={track.user.name}
+          isCurrent={this.props.currentSongId === track.id}
+          onSelect={() => this.props.selectSong(track.id, this.props.songsList.toJS())} />)
       : null
 
     return <div className='tracks-container'> {tracks} </div>

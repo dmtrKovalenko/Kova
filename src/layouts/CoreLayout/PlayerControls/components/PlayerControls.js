@@ -66,7 +66,7 @@ export const PlayerControls = (props) => {
         <div className='controls flex-container'>
           <VolumeBar onChange={props.changeVolume} />
 
-          <FloatingActionButton mini 
+          <FloatingActionButton mini
             className={floatButtonClassName}
             onClick={props.playPreviousSong}>
             <Previous />
