@@ -3,7 +3,7 @@ const express = require('express');
 const project = require('../config/project.config')
 
 const app = express();
-const PORT = 8080;
+const PORT = process.env.PORT || 8080;
 
 app.use(express.static(project.dir_dist));
 
