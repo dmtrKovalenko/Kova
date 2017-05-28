@@ -8,7 +8,7 @@ const PORT = process.env.PORT || 8080;
 app.use(express.static(project.dir_dist));
 
 app.get('/', function(request, response) {
-  response.sendFile(project.dir_dist + '/index.html');
+  response.sendFile('/index.html', {"root": project.dir_dist});
 });
 
 app.listen(PORT, error => {
