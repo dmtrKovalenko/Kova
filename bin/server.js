@@ -5,10 +5,10 @@ const project = require('../config/project.config')
 const app = express();
 const PORT = process.env.PORT || 8080;
 
-app.use(express.static(path.join(__dirname + '/../dist')));
+//app.use(express.static(path.join(__dirname + '/../dist')));
 
 app.get('*', function(request, response) {
-  response.sendFile(path.resolve(__dirname + '/../bin/server.js'));
+  response.sendFile(path.resolve(__dirname + '/../dist/index.html'));
 });
 
 app.listen(PORT, error => {
