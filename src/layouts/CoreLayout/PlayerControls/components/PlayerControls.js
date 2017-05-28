@@ -111,7 +111,7 @@ PlayerControls.propTypes = {
 
   seeked: PropTypes.func,
   seekStarted: PropTypes.func,
-  seel: PropTypes.func,
+  seek: PropTypes.func,
   playNextSong: PropTypes.func,
   playPreviousSong: PropTypes.func,
   loop: PropTypes.func,
