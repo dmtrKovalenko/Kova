@@ -5,7 +5,7 @@ const project = require('../config/project.config')
 const app = express();
 const PORT = process.env.PORT || 8080;
 
-app.use(path.resolve(__dirname + '/../dist'));
+app.use(express.static(path.join(__dirname + '/../dist'));
 
 app.get('*', function(request, response) {
   response.sendFile('index.html');
