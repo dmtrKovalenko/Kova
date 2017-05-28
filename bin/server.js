@@ -8,11 +8,11 @@ const PORT = process.env.PORT || 8080;
 //app.use(express.static(path.join(__dirname + '/../dist')));
 
 app.get('*', function(request, response) {
-  response.sendFile(path.resolve(__dirname + '/../dist/index.html'));
+  response.sendFile(path.resolve(__dirname + '/../dist/human.txt'));
 });
 
 app.listen(PORT, error => {
   error
   ? console.error(error)
-  : console.info(`==> 🌎 Listening on port ${PORT}. Visit http://localhost:${PORT}/ in your browser.`)
+  : console.info(`==> 🌎 Listening on port ${PORT}.`)
 });
