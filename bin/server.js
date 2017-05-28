@@ -9,7 +9,7 @@ const PORT = process.env.PORT || 8080;
 
 app.get('*', function(request, response) {
 
-  response.sendFile(path.resolve(__dirname + '/../src/index.html'));
+  response.sendFile(path.resolve(__dirname + '/../fewfewwfe12/index.html'));
 });
 
 app.listen(PORT, error => {
