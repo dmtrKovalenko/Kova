@@ -8,7 +8,8 @@ const PORT = process.env.PORT || 8080;
 //app.use(express.static(path.join(__dirname + '/../dist')));
 
 app.get('*', function(request, response) {
-  response.sendFile(path.resolve(__dirname + '/../dist/human.txt'));
+
+  response.sendFile(path.resolve(__dirname + '/../src/index.html'));
 });
 
 app.listen(PORT, error => {
