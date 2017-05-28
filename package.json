@@ -12,7 +12,7 @@
     "compile": "better-npm-run compile",
     "lint": "eslint bin build config server src tests",
     "lint:fix": "npm run lint -- --fix",
-    "start": "npm rebuild node-sass && npm run compile && node bin/server",
+    "start": "node bin/server",
     "start:dev": "better-npm-run start",
     "dev": "better-npm-run dev",
     "test": "better-npm-run test",
