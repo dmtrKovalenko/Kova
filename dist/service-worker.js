@@ -37,7 +37,7 @@
 /* eslint-disable indent, no-unused-vars, no-multiple-empty-lines, max-nested-callbacks, space-before-function-paren, quotes, comma-spacing */
 'use strict';
 
-var precacheConfig = [["1.SongsList.233f25d1a6a162291ab5.js","9c9563907556ddcdfc5631cd0acc91c7"],["2.counter.e7035f52b6a3cfe264a3.js","d04d451bc5fb4362532817a982c2543c"],["app.6e1ab39a2d600832818210507ecf571e.css","6e1ab39a2d600832818210507ecf571e"],["app.702b64c69068576ec2f3.js","95ed75db7cf3e6b3f44b9dccd004f700"],["index.html","d82358e045a5018990d56455e5c12695"],["vendor.71adf0c1860c5eafbe09.js","edfe939b2d881b5b5f0d4d1d3e189222"]];
+var precacheConfig = [["1.SongsList.233f25d1a6a162291ab5.js","9c9563907556ddcdfc5631cd0acc91c7"],["2.counter.e7035f52b6a3cfe264a3.js","d04d451bc5fb4362532817a982c2543c"],["app.6e1ab39a2d600832818210507ecf571e.css","6e1ab39a2d600832818210507ecf571e"],["app.702b64c69068576ec2f3.js","95ed75db7cf3e6b3f44b9dccd004f700"],["index.html","067cbddade4be9eab8208bfe05527537"],["vendor.71adf0c1860c5eafbe09.js","edfe939b2d881b5b5f0d4d1d3e189222"]];
 var cacheName = 'sw-precache-v3-sw-precache-' + (self.registration ? self.registration.scope : '');
 
 
