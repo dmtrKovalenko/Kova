@@ -10,7 +10,7 @@
   "scripts": {
     "clean": "del dist",
     "compile": "better-npm-run compile",
-    "compile:prod": "better-npm-run compile:prod",
+    "compile:prod": "better-npm-run compile:prod && sw-precache --config=sw-precache-config.js",
     "sw-generate": "sw-precache --config=sw-precache-config.js",
     "lint": "eslint bin build config server src tests",
     "lint:fix": "npm run lint -- --fix",
