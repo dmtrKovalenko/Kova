@@ -8,7 +8,6 @@
     "npm": "^3.0.0"
   },
   "scripts": {
-    "install": "npm install yarn -g && yarn install",
     "postinstall": "npm run compile:prod && npm run sw-generate",
 
     "clean": "del dist",
