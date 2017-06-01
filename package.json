@@ -9,25 +9,21 @@
   },
   "scripts": {
     "postinstall": "npm run compile:prod && npm run sw-generate",
-
     "clean": "del dist",
     "compile": "better-npm-run compile",
     "compile:prod": "better-npm-run compile:prod",
     "sw-generate": "sw-precache --config=sw-precache-config.js",
     "lint": "eslint bin build config server src tests",
-
     "lint:fix": "npm run lint -- --fix",
     "start": "node bin/server",
     "start:dev": "better-npm-run start",
     "dev": "better-npm-run dev",
-
     "test": "better-npm-run test",
     "test:dev": "npm run test -- --watch",
     "codecov": "cat coverage/*/lcov.info | codecov",
-
     "deploy": "better-npm-run deploy",
     "deploy:dev": "better-npm-run deploy:dev",
-    "deploy:prod": "better-npm-run deploy:prod"   
+    "deploy:prod": "better-npm-run deploy:prod"
   },
   "betterScripts": {
     "compile": {
@@ -157,6 +153,7 @@
     "karma-phantomjs-launcher": "^1.0.2",
     "karma-webpack-with-fast-source-maps": "^1.9.2",
     "mocha": "^3.0.1",
+    "node-sass": "^3.4.2",
     "nodemon": "^1.10.2",
     "phantomjs-prebuilt": "^2.1.12",
     "react-addons-test-utils": "^15.0.0",
