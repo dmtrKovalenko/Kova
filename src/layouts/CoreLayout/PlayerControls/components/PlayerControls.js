@@ -66,7 +66,7 @@ export const PlayerControls = (props) => {
         <div className='controls flex-container'>
           <VolumeBar onChange={props.changeVolume} />
 
-          <FloatingActionButton mini 
+          <FloatingActionButton mini
             className={floatButtonClassName}
             onClick={props.playPreviousSong}>
             <Previous />
@@ -111,7 +111,7 @@ PlayerControls.propTypes = {
 
   seeked: PropTypes.func,
   seekStarted: PropTypes.func,
-  seel: PropTypes.func,
+  seek: PropTypes.func,
   playNextSong: PropTypes.func,
   playPreviousSong: PropTypes.func,
   loop: PropTypes.func,

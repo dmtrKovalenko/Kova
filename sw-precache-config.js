@@ -8,7 +8,7 @@ module.exports = {
   ],
   root: 'dist',
   stripPrefix: 'dist/',
-  navigateFallback: '/index.html',
+  navigateFallback: '/',
   runtimeCaching: [{
     urlPattern: /http/,
     handler: 'networkFirst'
