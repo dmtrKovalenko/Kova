@@ -17,7 +17,6 @@
     "lint": "eslint bin build config server src tests",
 
     "lint:fix": "npm run lint -- --fix",
-    "postinstall": "better-npm-run compile",
     "start": "node bin/server",
     "start:dev": "better-npm-run start",
     "dev": "better-npm-run dev",
