@@ -22,7 +22,7 @@
     "codecov": "cat coverage/*/lcov.info | codecov",
     "deploy": "better-npm-run deploy",
     "deploy:dev": "better-npm-run deploy:dev",
-    "deploy:prod": "better-npm-run deploy:prod &&  git push heroku master"
+    "deploy:prod": "better-npm-run deploy:prod && git add . && git commit -m deploy && git push heroku master"
   },
   "betterScripts": {
     "compile": {
