@@ -4,10 +4,11 @@
   "description": "Amazing material web player, that you will enjoy.",
   "main": "index.js",
   "engines": {
-    "node": ">=4.5.0",
+    "node": ">=6.0.0",
     "npm": "^3.0.0"
   },
   "scripts": {
+    "install": "npm install yarn -g && yarn install",
     "postinstall": "npm run compile:prod && npm run sw-generate",
 
     "clean": "del dist",
