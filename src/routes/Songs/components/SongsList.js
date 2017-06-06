@@ -51,7 +51,7 @@ class SongsList extends React.Component {
 SongsList.propTypes = {
   location: PropTypes.object,
   isLoading: PropTypes.bool,
-  filter: PropTypes.objectOf(Filter),
+  filter: PropTypes.object,
   currentSongId: PropTypes.number,
   songsList: PropTypes.object,
 

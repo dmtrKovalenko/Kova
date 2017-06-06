@@ -74,7 +74,7 @@ class SearchBar extends React.Component {
 
 SearchBar.propTypes = {
   router: PropTypes.object,
-  filter: PropTypes.string,
+  filter: PropTypes.object,
   changeFilter: PropTypes.func
 }
 

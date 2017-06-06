@@ -49,9 +49,9 @@ class FilterModal extends React.Component {
     const selectedIndex = this.state.selectedGenres.indexOf(genre)
 
     if (selectedIndex !== -1) {
-      this.setState({ selectedGenres :
-                this.state.selectedGenres.slice(0, selectedIndex)
-                    .concat(this.state.selectedGenres.slice(selectedIndex + 1))
+      this.setState({selectedGenres :
+        this.state.selectedGenres.slice(0, selectedIndex)
+            .concat(this.state.selectedGenres.slice(selectedIndex + 1))
       })
     } else {
       this.setState({
@@ -117,7 +117,7 @@ class FilterModal extends React.Component {
 
           <FilterSelect
             label='Duration'
-            items={listItems.urationItems}
+            items={listItems.durationItems}
             value={this.state.duration}
             onChange={(value) => this.setState({ duration: value })} />
         </div>
@@ -131,7 +131,7 @@ class FilterModal extends React.Component {
 }
 
 FilterModal.propTypes = {
-  filter: PropTypes.objectOf(Filter),
+  filter: PropTypes.object,
   changeFilter: PropTypes.func,
   handleFiltersClose: PropTypes.func,
   filterOpen: PropTypes.bool

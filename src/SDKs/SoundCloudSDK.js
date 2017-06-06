@@ -10,7 +10,7 @@ export function searchTracks (query, filter) {
       types: filter.type,
       bpm: filter.bpm,
       duration: filter.duration,
-      genres: filter.genres ? filter.genres.toString() : undefined
+      tags: filter.genres ? filter.genres.toString() : undefined
     }).then(function (tracks) {
       const songs = tracks.collection.map(song => MapSCSong(song))
       console.log(songs)

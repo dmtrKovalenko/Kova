@@ -5,7 +5,10 @@ class Filter {
     this.type = type
     this.genres = genres
     this.bpm = { from: bpmFrom, to : bpmTo }
-    this.duration = { from: durationFrom, to : durationTo }
+
+    if (durationFrom && durationTo) {
+      this.duration = { from: durationFrom, to : durationTo }
+    }
   }
 }
 

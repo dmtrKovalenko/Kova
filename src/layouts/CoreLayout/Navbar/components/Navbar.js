@@ -1,6 +1,7 @@
 import React, { PropTypes } from 'react'
 import StickyNav from './StickyNav/StickyNavBar'
 import SearchBar from './StickyNav/SearchBar'
+import Filter from '../../../../types/Filter'
 
 const Navbar = props => {
   return (
@@ -15,7 +16,7 @@ const Navbar = props => {
 
 Navbar.propTypes = {
   router: PropTypes.object,
-  filter: PropTypes.string,
+  filter: PropTypes.object,
   changeFilter: PropTypes.func
 }
 

@@ -8,7 +8,7 @@ function getUrl (method, params) {
     stringParams = stringParams.concat(`&${key}=${params[key]}`)
   })
 
-  return `http://ws.audioscrobbler.com/2.0/?` +
+  return `https://ws.audioscrobbler.com/2.0/?` +
     `api_key=6c3a39877d68d9a35900afe9a8f6d52e&format=json&method=${method}${stringParams}`
 }
 

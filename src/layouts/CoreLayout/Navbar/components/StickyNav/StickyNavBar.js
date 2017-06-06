@@ -9,6 +9,8 @@ import LogoImg from '../../../../../assets/logo.png'
 import { throttle } from '../../../../../utils/CommonFunctions'
 import '../../styles/StickyNavBar.scss'
 
+const scrollingHeight = 70;
+
 class StickyNavBar extends React.Component {
   constructor (props) {
     super(props)
@@ -37,11 +39,11 @@ class StickyNavBar extends React.Component {
   }
 
   handleScroll = () => {
-    if (window.scrollY > 20 && !this.state.isSmaller) {
+    if (window.scrollY > scrollingHeight && !this.state.isSmaller) {
       this.setState({
         isSmaller : true
       })
-    } else if (window.scrollY < 20 && this.state.isSmaller) {
+    } else if (window.scrollY < scrollingHeight && this.state.isSmaller) {
       this.setState({
         isSmaller : false,
         searchOpen : false
@@ -98,17 +100,21 @@ class StickyNavBar extends React.Component {
             <p className='app-title'> Kova </p>
           </div>
 
-          <IconButton className='search-button'
-            onTouchTap={this.openSearch}>
+          <IconButton 
+            className='search-button'
+            onTouchTap={this.openSearch}
+          >
             <SearchIcon color={'fff'} />
           </IconButton>
 
-          <Popover className='search-bar popover-search'
+          <Popover 
+            className='search-bar popover-search'
             open={this.state.searchOpen}
             anchorEl={this.state.anchorEl}
             anchorOrigin={{ horizontal: 'right', vertical: 'center' }}
             targetOrigin={{ horizontal: 'right', vertical: 'center' }}
-            onRequestClose={this.closeSearch} >
+            onRequestClose={this.closeSearch}
+            >
             {this.props.children}
           </Popover>
         </div>
@@ -129,7 +135,7 @@ class StickyNavBar extends React.Component {
 }
 
 StickyNavBar.propTypes = {
-  children: PropTypes.arrayOf(PropTypes.element)
+  children: React.PropTypes.node.isRequired,
 }
 
 export default StickyNavBar

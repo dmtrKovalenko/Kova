@@ -1,14 +1,12 @@
 // We only need to import the modules necessary for initial render
 import CoreLayout from '../layouts/CoreLayout/CoreLayout'
 import Songs from './Songs'
-import CounterRoute from './Counter'
 
 export const createRoutes = (store) => ({
   path        : '/',
   component   : CoreLayout,
   indexRoute  : { onEnter: (nextState, replace) => replace('/songs') },
   childRoutes : [
-    CounterRoute(store),
     Songs(store)
   ]
 })
