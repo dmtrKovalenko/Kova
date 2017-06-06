@@ -8,7 +8,7 @@
     "npm": "^3.0.0"
   },
   "scripts": {
-    "clean": "del dist",
+    "clean": "rimraf dist",
     "compile": "better-npm-run compile",
     "compile:prod": "better-npm-run compile:prod && sw-precache --config=sw-precache-config.js",
     "sw-generate": "sw-precache --config=sw-precache-config.js",
@@ -157,6 +157,7 @@
     "phantomjs-prebuilt": "^2.1.12",
     "react-addons-test-utils": "^15.0.0",
     "redbox-react": "^1.2.10",
+    "rimraf": "^2.6.1",
     "sinon": "^1.17.5",
     "sinon-chai": "^2.8.0",
     "sw-precache": "^5.1.1",
