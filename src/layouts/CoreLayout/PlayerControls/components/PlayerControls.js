@@ -115,7 +115,9 @@ PlayerControls.propTypes = {
   playNextSong: PropTypes.func,
   playPreviousSong: PropTypes.func,
   loop: PropTypes.func,
-  changeVolume: PropTypes.func
+  changeVolume: PropTypes.func,
+  playPause: PropTypes.func,
+  shuffle: PropTypes.func
 }
 
 export default PlayerControls

@@ -9,7 +9,7 @@ import LogoImg from '../../../../../assets/logo.png'
 import { throttle } from '../../../../../utils/CommonFunctions'
 import '../../styles/StickyNavBar.scss'
 
-const scrollingHeight = 70;
+const scrollingHeight = 70
 
 class StickyNavBar extends React.Component {
   constructor (props) {
@@ -100,14 +100,14 @@ class StickyNavBar extends React.Component {
             <p className='app-title'> Kova </p>
           </div>
 
-          <IconButton 
+          <IconButton
             className='search-button'
             onTouchTap={this.openSearch}
           >
             <SearchIcon color={'fff'} />
           </IconButton>
 
-          <Popover 
+          <Popover
             className='search-bar popover-search'
             open={this.state.searchOpen}
             anchorEl={this.state.anchorEl}
@@ -135,7 +135,7 @@ class StickyNavBar extends React.Component {
 }
 
 StickyNavBar.propTypes = {
-  children: React.PropTypes.node.isRequired,
+  children: PropTypes.node.isRequired
 }
 
 export default StickyNavBar

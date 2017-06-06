@@ -6,7 +6,6 @@ import FlatButton from 'material-ui/FlatButton'
 import GenreChip from './GenreChip'
 import FilterSelect from './FilterSelect'
 import MenuItem from 'material-ui/MenuItem'
-import Filter from '../../../../../types/Filter'
 
 import '../../styles/Filters.scss'
 
@@ -49,7 +48,7 @@ class FilterModal extends React.Component {
     const selectedIndex = this.state.selectedGenres.indexOf(genre)
 
     if (selectedIndex !== -1) {
-      this.setState({selectedGenres :
+      this.setState({ selectedGenres :
         this.state.selectedGenres.slice(0, selectedIndex)
             .concat(this.state.selectedGenres.slice(selectedIndex + 1))
       })

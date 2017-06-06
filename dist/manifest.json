@@ -1,0 +1,15 @@
+{
+  "short_name": "Kova",
+  "name": "Kova",
+  "icons": [
+    {
+      "src": "favicon192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    }
+  ],
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#fff",
+  "theme_color": "#00bcd4"
+}
