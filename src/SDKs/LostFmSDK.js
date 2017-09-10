@@ -15,9 +15,9 @@ function getUrl (method, params) {
 export function autocompleteTracks (query) {
   return new Promise((resolve) => {
     fetch(getUrl('track.search', { limit: 10, track: query }))
-            .then(response => response.json())
-                .then(data => {
-                  resolve([...new Set(data.results.trackmatches.track.map(track => track.name))])
-                })
+      .then(response => response.json())
+        .then(data => {
+          resolve([...new Set(data.results.trackmatches.track.map(track => track.name))])
+        })
   })
 }

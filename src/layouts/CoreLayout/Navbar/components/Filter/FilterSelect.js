@@ -6,10 +6,10 @@ const FilterSelect = (props) => {
     <div className='select-block'>
       <SelectField
         floatingLabelText={props.label}
-        style={{ width:230 }}
+        style={{ width : 230 }}
         value={props.value || -1}
         onChange={(ev, index, value) => props.onChange(value)}
-        >
+      >
         {props.items}
       </SelectField>
     </div>
