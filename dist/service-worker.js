@@ -37,7 +37,7 @@
 /* eslint-disable indent, no-unused-vars, no-multiple-empty-lines, max-nested-callbacks, space-before-function-paren, quotes, comma-spacing */
 'use strict';
 
-var precacheConfig = [["1.SongsList.cef17585121eabee104d.js","8ffd339f72b9636e35db053e42115929"],["app.483772a3450061ec8a76.js","057b7b5810da85139c946dcac3d48172"],["app.6e1ab39a2d600832818210507ecf571e.css","6e1ab39a2d600832818210507ecf571e"],["index.html","674be2978505c0a24646d33aee30bf59"],["vendor.397656e0b62c6eb0a53d.js","a9f9b0bb7b806b1d75e19936d6efe9fa"]];
+var precacheConfig = [["1.SongsList.0334cc5358d89b6307ac.js","6d107bda69916ca917149036abd8fcb7"],["app.6e1ab39a2d600832818210507ecf571e.css","6e1ab39a2d600832818210507ecf571e"],["app.77ae0a937f3d19e9cea6.js","7f75922913e3524bb290957f643012fb"],["index.html","ffdd101cd23a5725c31d3715f1d5f879"],["vendor.5852d0b747bf9036fe33.js","64e9208d6daa2d95fd757aae712a3767"]];
 var cacheName = 'sw-precache-v3-sw-precache-' + (self.registration ? self.registration.scope : '');
 
 
